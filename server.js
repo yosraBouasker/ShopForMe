@@ -12,17 +12,24 @@ app.use(function(req, res, next) {
     next();
   });
 
-// const auth = require('./server/routes/auth')
-// app.use('/auth', auth);
+const auth = require('./server/routes/auth')
+app.use('/auth', auth);
 
-// const article = require('./server/routes/article')
-// app.use('/article', article);
+const category = require('./server/routes/category')
+app.use('/category', category);
 
-// const comment = require('./server/routes/comment')
-// app.use('/comment', comment);
+const subCategory = require('./server/routes/subCategory')
+app.use('/subCategory', subCategory);
 
-// const user = require('./server/routes/user')
-//app.use('/user', user);
+const product = require('./server/routes/product')
+app.use('/product', product);
+
+const user = require('./server/routes/user')
+app.use('/user', user);
+
+app.get('/', function(req, res) { // création de la route sous le verbe get
+  res.send('Hello world  ! ') // envoi de hello world a l'utilisateur
+})
 
 app.listen(3000, ()=>{
   console.log('port:3000')
