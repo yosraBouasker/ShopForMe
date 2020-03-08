@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
         console.log(res);
         if (res.message === 'ok') {
           localStorage.setItem('token', res.token);
-          //this.router.navigate(['/home']);
+          this.router.navigate(['/home']);
 
         } else {
           this.message = res.message;
