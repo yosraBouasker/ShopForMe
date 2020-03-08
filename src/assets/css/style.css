@@ -182,6 +182,8 @@ button.w3view-cart:focus{
 }
 .logo_products {
     padding: 2em 0;
+    padding-top: 8px;
+    padding-bottom: 8px;
 }
 .w3ls_logo_products_left {
     float: left;
