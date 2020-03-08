@@ -26,6 +26,7 @@
     "express": "^4.17.1",
     "jquery": "^3.2.1",
     "jsonwebtoken": "^8.5.1",
+    "jwt-decode": "^2.2.0",
     "mongoose": "^5.9.3",
     "node-addon-api": "^2.0.0",
     "node-pre-gyp": "^0.14.0",
