@@ -32,14 +32,17 @@ export class LoginComponent implements OnInit {
         console.log(res);
         if (res.message === 'ok') {
           // redirection
-          console.log( jwt_decode(res.token));
+          // console.log( jwt_decode(res.token));
           localStorage.setItem('token', res.token);
-          this.router.navigate(['/home']);
-
+          this.router.navigate(['/home'])
+          .then(() => {
+            window.location.reload();
+          });
         } else {
           this.message = res.message;
         }
       });
-    } else { console.log(this.loginForm); }
+    }
+    // else { console.log(this.loginForm); }
   }
 }
