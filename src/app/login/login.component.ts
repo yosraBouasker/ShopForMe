@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
   }
 
   loginBtn() {
@@ -31,6 +31,8 @@ export class LoginComponent implements OnInit {
       this.apiService.login(this.loginForm.value).subscribe((res: any) => {
         console.log(res);
         if (res.message === 'ok') {
+          // redirection
+          console.log( jwt_decode(res.token));
           localStorage.setItem('token', res.token);
           this.router.navigate(['/home']);
 
@@ -38,6 +40,6 @@ export class LoginComponent implements OnInit {
           this.message = res.message;
         }
       });
-    }
+    } else { console.log(this.loginForm); }
   }
 }

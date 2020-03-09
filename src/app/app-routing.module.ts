@@ -4,7 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { ShopGridComponent } from './shop-grid/shop-grid.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-
+//import { AuthGuard } from './shared/auth.guard';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent },
