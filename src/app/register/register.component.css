@@ -1,0 +1,32 @@
+h1
+{
+  color:white;
+}
+
+h1::first-letter{
+  font-size:50px;
+}
+
+#pwdVisibility{
+  visibility: hidden;
+}
+
+#strength{
+  margin-left: 10px;
+}
+
+.pass-high{
+  color: green;
+}
+
+.pass-medium{
+    color: orange;
+  }
+
+  .pass-weak{
+    color: orangered;
+  }
+
+  .pass-invalid{
+    color: red;
+  }

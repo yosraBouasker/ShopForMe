@@ -15,27 +15,37 @@
   <div class="container">
     <h2>Register Here</h2>
     <div class="login-form-grids">
-      <h5>profile information</h5>
-      <form action="#" method="post">
-        <input type="text" placeholder="First Name..." required=" " >
-        <input type="text" placeholder="Last Name..." required=" " >
-      </form>
-      <div class="register-check-box">
-        <div class="check">
-          <label class="checkbox"><input type="checkbox" name="checkbox"><i> </i>Subscribe to Newsletter</label>
-        </div>
+      <h5 style="text-align: center;">join us!</h5>
+      <form [formGroup]="registerForm" method="post">
+        <div class="form-group">
+        <input type="text" placeholder="First Name" required formControlName="name">
       </div>
-      <h6>Login information</h6>
-        <form action="#" method="post">
-        <input type="email" placeholder="Email Address" required=" " >
-        <input type="password" placeholder="Password" required=" " >
-        <input type="password" placeholder="Password Confirmation" required=" " >
-        <div class="register-check-box">
+      <div class="form-group">
+        <input type="text" placeholder="Last Name" required formControlName="lastname">
+      </div>
+      <div class="form-group">
+        <input type="email" placeholder="Email Address" required formControlName="email">
+      </div>
+        <div class="form-group">
+        <input type="password" placeholder="Password" required formControlName="password" #password (keyup)="validatePassword(password.value)">
+      </div>
+      <div class="text-muted font-italic" id="pwdVisibility"><small>Password strength:<span
+        class="font-weight-700"
+        id="strength">{{ strength }}</span></small></div>
+      <!-- <div class="form-group">
+        <input type="password" placeholder="Password Confirmation" required >
+      </div> -->
+        <div class="register-check-box form-group">
           <div class="check">
-            <label class="checkbox"><input type="checkbox" name="checkbox"><i> </i>I accept the terms and conditions</label>
+            <label class="checkbox"><input type="checkbox" name="checkbox" required><i> </i>I accept the terms and conditions</label>
           </div>
         </div>
-        <input type="submit" value="Register">
+        <div class="register-check-box form-group">
+          <div class="check">
+            <label class="checkbox"><input type="checkbox" name="checkbox"><i> </i>Subscribe to Newsletter</label>
+          </div>
+        </div>
+        <input type="submit" value="Register" (click)="registerBtn()">
       </form>
     </div>
     <div class="register-home">
