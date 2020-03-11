@@ -27,6 +27,15 @@ app.use('/product', product);
 const user = require('./server/routes/user')
 app.use('/user', user);
 
+const client = require('./server/routes/client')
+app.use('/client', client);
+
+const purchase = require('./server/routes/purchase')
+app.use('/purchase', purchase);
+
+const purchaseDetail = require('./server/routes/purchaseDetail')
+app.use('/purchaseDetail', purchaseDetail);
+
 app.get('/', function(req, res) { // création de la route sous le verbe get
   res.send('Hello world  ! ') // envoi de hello world a l'utilisateur
 })
