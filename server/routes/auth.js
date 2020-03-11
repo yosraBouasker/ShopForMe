@@ -14,7 +14,7 @@ router.post('/register', async (req, res) => {
   req.body.password = bcrypt.hashSync(req.body.password, 10);
   const userResult = await user.create(req.body).catch(err => err);
   console.log(req.body)
-  res.send({ message: 'ok', data: userResult });
+  res.send({ message: 'ok', token: jwt.sign({ data: userResult }, ' secret_pass ') });
 })
 
 router.get('/all', async (req,res )=> {
