@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { ShopGridComponent } from './shop-grid/shop-grid.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { ContactComponent } from './contact/contact.component';
 //import { AuthGuard } from './shared/auth.guard';
 
 const routes: Routes = [
@@ -11,6 +12,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent },
   {path: 'register', component: RegisterComponent },
   {path: 'shop', component: ShopGridComponent },
+  {path: 'contactUs', component: ContactComponent },
   { path: '**', redirectTo: '/home', pathMatch: 'full' }
 ];
 
