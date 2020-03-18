@@ -13,6 +13,7 @@ import { NavigatorComponent } from './navigator/navigator.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ContactComponent } from './contact/contact.component';
+import { SingleProductComponent } from './single-product/single-product.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ContactComponent } from './contact/contact.component';
     FooterComponent,
     HeaderComponent,
     NavigatorComponent,
-    ContactComponent
+    ContactComponent,
+    SingleProductComponent
   ],
   imports: [
     BrowserModule,
