@@ -39,23 +39,29 @@
     <div class="col-md-6 w3_agileits_contact_grid_right">
       <h2 class="w3_agile_header">Leave a<span> Message</span></h2>
 
-      <form action="#" method="post">
+      <form [formGroup]="messageForm" method="post">
         <span class="input input--ichiro">
-          <input class="input__field input__field--ichiro" type="text" id="input-25" name="Name" placeholder=" "
-            required="" />
-          <label class="input__label input__label--ichiro" for="input-25">
-            <span class="input__label-content input__label-content--ichiro">Your Name</span>
-          </label>
+          <div class="form-group">
+            <input formControlName="fullName" class="input__field input__field--ichiro" type="text" id="input-25" name="Name" placeholder=" "
+              required="" />
+            <label class="input__label input__label--ichiro" for="input-25">
+              <span class="input__label-content input__label-content--ichiro">Your Name</span>
+            </label>
+          </div>
         </span>
         <span class="input input--ichiro">
-          <input class="input__field input__field--ichiro" type="email" id="input-26" name="Email" placeholder=" "
+          <div class="form-group">
+          <input class="input__field input__field--ichiro" type="email" id="input-26" formControlName="email" placeholder=" "
             required="" />
           <label class="input__label input__label--ichiro" for="input-26">
             <span class="input__label-content input__label-content--ichiro">Your Email</span>
           </label>
+        </div>
         </span>
-        <textarea name="Message" placeholder="Your message here..." required=""></textarea>
-        <input type="submit" value="Submit">
+        <div class="form-group">
+        <textarea formControlName="text" placeholder="Your message here..." required=""></textarea>
+        </div>
+        <input type="submit" value="Submit" (click)="messageBtn()">
       </form>
     </div>
     <div class="clearfix"> </div>

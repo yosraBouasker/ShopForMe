@@ -4,13 +4,13 @@ const subCategory = require('../models/subCategory');
 
 router.post('/add/:idSubCat', async (req, res) => {
     req.body.subCategory = req.params.idSubCat;
-    req.body.createdAt = new Date();
     const productResult = await product.create(req.body).catch(err => err);
     const subCatResult = await subCategory.updateOne({ "_id": req.params.idSubCat }, { $push: { products: productResult._id } }).exec();
     res.send({ data: subCatResult })
   })
 
 router.post('/update/:idProduct', async (req, res) => {
+    req.body.updatedAt = new Date();
     const productResult = await product.update({ "_id": req.params.idProduct }, { $set: req.body }).exec();
     res.send({ data: productResult })
   })

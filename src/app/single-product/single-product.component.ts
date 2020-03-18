@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiProductService } from '../shared/api-product.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router'; 
 
 @Component({
   selector: 'app-single-product',
@@ -15,7 +15,6 @@ export class SingleProductComponent implements OnInit {
 
   ngOnInit() {
     //this.apiService.decodeToken();
-
     const id = this.activatedRoute.snapshot.paramMap.get('id')
     console.log(id)
 

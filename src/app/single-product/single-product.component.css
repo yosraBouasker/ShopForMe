@@ -1,3 +1,15 @@
-#discount{
-   /* visibility: hidden;*/
+.ref{
+   font-weight: 600;
+   font-size: 15px;
+   margin-bottom: 1em;
+   margin-top: -10px;
+   color: #999;
+}
+
+.nameP{
+   margin: 0;
+}
+
+.rating1{
+   margin-left: -12px;
 }

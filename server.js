@@ -36,6 +36,9 @@ app.use('/purchase', purchase);
 const purchaseDetail = require('./server/routes/purchaseDetail')
 app.use('/purchaseDetail', purchaseDetail);
 
+const message = require('./server/routes/message')
+app.use('/message', message);
+
 app.get('/', function(req, res) { // création de la route sous le verbe get
   res.send('Hello world  ! ') // envoi de hello world a l'utilisateur
 })

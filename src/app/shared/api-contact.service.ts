@@ -4,18 +4,18 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class ApiProductService {
+export class ApiContactService {
   decodeToken() {
     throw new Error("Method not implemented.");
   }
 
   constructor(private http: HttpClient) { }
 
-  getProduct(id) {
-    return this.http.get('http://localhost:3000/product/byId/'+ id);
+  addMessage(form) {
+    return this.http.post('http://localhost:3000/message/add', form);
   }
 
-  getProducts() {
-    return this.http.get('http://localhost:3000/product/all');
+  getMessages() {
+    return this.http.get('http://localhost:3000/message/all');
   }
 }

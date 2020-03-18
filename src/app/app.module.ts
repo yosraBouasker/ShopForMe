@@ -14,6 +14,9 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ContactComponent } from './contact/contact.component';
 import { SingleProductComponent } from './single-product/single-product.component';
+import { NewOffersComponent } from './new-offers/new-offers.component';
+import { RouterLink, RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -26,18 +29,29 @@ import { SingleProductComponent } from './single-product/single-product.componen
     HeaderComponent,
     NavigatorComponent,
     ContactComponent,
-    SingleProductComponent
+    SingleProductComponent,
+    NewOffersComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent],
-  exports: [RegisterComponent]
+  exports: [
+    RegisterComponent, 
+    SingleProductComponent, 
+    NewOffersComponent, 
+    LoginComponent,
+    NavigatorComponent,
+    HeaderComponent,
+    FooterComponent,
+    ContactComponent
+  ]
 
 })
 export class AppModule { }

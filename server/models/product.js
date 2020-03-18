@@ -8,7 +8,7 @@ const product = new mongoose.Schema({
   price: Number,
   discount: Number,
   image:{ data: Buffer, contentType: String },
-  createdAt: Date
+  updatedAt: Date
 })
 
 module.exports = mongoose.model('product', product);
