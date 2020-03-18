@@ -1,0 +1,20 @@
+.contact-container{
+  text-align:center;
+  padding-top: 23px;
+  font-weight: bold;
+}
+
+.contact-container li {
+  padding-top: 8px;
+  list-style-type: none;
+}
+
+.agile_map iframe {
+  margin-top: 20px;
+  min-height: 300px;
+  width: 110%;
+}
+
+.contact-info-container {
+  padding-left: 40px;
+}
