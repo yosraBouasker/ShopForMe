@@ -10,7 +10,9 @@ router.post('/add/:idSubCat', async (req, res) => {
   })
 
 router.post('/update/:idProduct', async (req, res) => {
-    req.body.updatedAt = new Date();
+    if (req.body.discount != undefined){
+      req.body.updatedAt = new Date();
+    }
     const productResult = await product.update({ "_id": req.params.idProduct }, { $set: req.body }).exec();
     res.send({ data: productResult })
   })
