@@ -17,6 +17,7 @@ import { SingleProductComponent } from './single-product/single-product.componen
 import { NewOffersComponent } from './new-offers/new-offers.component';
 import { RouterLink, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { CommonModule } from '@angular/common';
     NavigatorComponent,
     ContactComponent,
     SingleProductComponent,
-    NewOffersComponent
+    NewOffersComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
