@@ -18,4 +18,8 @@ export class ApiProductService {
   getProducts() {
     return this.http.get('http://localhost:3000/product/all');
   }
+
+  getProductsBySubCat(id) {
+    return this.http.get('http://localhost:3000/product/all/' + id);
+  }
 }

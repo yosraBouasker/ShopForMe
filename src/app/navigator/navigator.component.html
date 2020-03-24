@@ -24,7 +24,7 @@
                         <ul class="multi-column-dropdown">
                           <h6>All {{category?.name}}</h6>
                           <li *ngFor="let subCategory of subCategories">
-                            <a href="household.html">{{subCategory?.name}}</a>
+                            <a href="shop/{{subCategory?._id}}">{{subCategory?.name}}</a>
                           </li>
                         </ul>
                       </div>

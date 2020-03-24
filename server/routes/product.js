@@ -27,6 +27,12 @@ router.get('/all', async (req, res) => {
     res.send({ data: result })
   })
 
+
+router.get('/all/:idSub', async (req, res) => {
+    const result = await product.find({ "subCategory": req.params.idSub }).exec();
+    res.send({ data: result })
+  })
+
 router.get('/byId/:id', async (req, res) => {
     const productResult = await product.findOne({ "_id": req.params.id }).exec();
     res.send({ data: productResult })

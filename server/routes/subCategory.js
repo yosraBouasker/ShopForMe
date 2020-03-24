@@ -33,5 +33,10 @@ router.get('/byName/:name', async (req, res) => {
     const subcatResult = await subCategory.findOne({ "name": req.params.name }).populate({ path: 'products' }).exec();
     res.send({ data: subcatResult })
   })
+
+router.get('/name/:id', async (req, res) => {
+    const subcatResult = await subCategory.findOne({ "_id": req.params.id }).exec();
+    res.send({ data: subcatResult.name })
+  })
   
 module.exports = router;

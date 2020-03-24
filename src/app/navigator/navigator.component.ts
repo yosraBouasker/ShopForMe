@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiCategoryService } from '../shared/api-category.service';
+import {Router} from "@angular/router";
+import { ApiProductService } from '../shared/api-product.service';
+import { ShopGridComponent } from '../shop-grid/shop-grid.component';
 
 @Component({
   selector: 'app-navigator',
@@ -10,7 +13,7 @@ export class NavigatorComponent implements OnInit {
 
   categories = [];
   subCategories = [];
-  constructor(private apiService: ApiCategoryService) { }
+  constructor(private apiService: ApiCategoryService, private router: Router, private apiProductService: ApiProductService) { }
 
   ngOnInit() {
     console.log('here')
@@ -21,13 +24,4 @@ export class NavigatorComponent implements OnInit {
     });
     
   }
-
-  // getSubCategorie(id) {
-  //   console.log(id);
-  //   this.apiService.getSubCategories(id).subscribe((res: any) => {
-  //     console.log(res);
-  //     this.subCategories = res.data;
-  //   });
-  // }
-
 }

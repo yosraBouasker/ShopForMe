@@ -13,6 +13,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent },
   {path: 'register', component: RegisterComponent },
   {path: 'shop', component: ShopGridComponent },
+  {path: 'shop/:id', component: ShopGridComponent },
   {path: 'contactUs', component: ContactComponent },
   {path: 'aboutUs', component: AboutComponent },
   {path: 'product/:id', component: SingleProductComponent},

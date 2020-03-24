@@ -18,6 +18,9 @@ import { NewOffersComponent } from './new-offers/new-offers.component';
 import { RouterLink, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AboutComponent } from './about/about.component';
+import {NgxPaginationModule} from 'ngx-pagination';
+import { JwPaginationComponent } from 'jw-angular-pagination';
+
 
 @NgModule({
   declarations: [
@@ -32,7 +35,8 @@ import { AboutComponent } from './about/about.component';
     ContactComponent,
     SingleProductComponent,
     NewOffersComponent,
-    AboutComponent
+    AboutComponent,
+    JwPaginationComponent
   ],
   imports: [
     BrowserModule,
