@@ -18,8 +18,8 @@ import { NewOffersComponent } from './new-offers/new-offers.component';
 import { RouterLink, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AboutComponent } from './about/about.component';
-import {NgxPaginationModule} from 'ngx-pagination';
-import { JwPaginationComponent } from 'jw-angular-pagination';
+import { ProfileComponent } from './profile/profile.component';
+
 
 
 @NgModule({
@@ -36,7 +36,7 @@ import { JwPaginationComponent } from 'jw-angular-pagination';
     SingleProductComponent,
     NewOffersComponent,
     AboutComponent,
-    JwPaginationComponent
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -49,9 +49,9 @@ import { JwPaginationComponent } from 'jw-angular-pagination';
   providers: [],
   bootstrap: [AppComponent],
   exports: [
-    RegisterComponent, 
-    SingleProductComponent, 
-    NewOffersComponent, 
+    RegisterComponent,
+    SingleProductComponent,
+    NewOffersComponent,
     LoginComponent,
     NavigatorComponent,
     HeaderComponent,

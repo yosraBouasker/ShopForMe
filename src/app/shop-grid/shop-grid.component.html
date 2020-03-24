@@ -57,9 +57,7 @@
         </div>
       </div>
       <div class="agile_top_brands_grids">
-        <div class="col-md-4 top_brand_left" 
-            *ngFor="let product of products; let i=index;" 
-            style="margin-bottom: 15px;">
+        <div class="col-md-4 top_brand_left" *ngFor="let product of products; let i=index;" style="margin-bottom: 15px;">
           <div class="hover14 column">
             <div class="agile_top_brand_left_grid">
               <div class="agile_top_brand_left_grid_pos">
@@ -75,7 +73,7 @@
                         <div [id]="i+123456789">
                           <span style="padding: 0;"> {{product?.price | number:'.3'}}DT</span>
                         </div>
-                        {{getFinalPrice(product?.price, product?.discount, i, i+123456789) | number:'.3'}}DT 
+                        {{getFinalPrice(product?.price, product?.discount, i, i+123456789) | number:'.3'}}DT
                       </h4>
                     </div>
                     <div class="snipcart-details top_brand_home_details">
@@ -103,8 +101,6 @@
       </div>
       <div class="clearfix"> </div>
 
-      <jw-pagination [items]="items" (changePage)="onChangePage($event)"></jw-pagination>
-
 
       <nav class="numbering">
         <ul class="pagination paging">
@@ -117,7 +113,7 @@
           <li><a href="#">2</a></li>
           <li><a href="#">3</a></li>
           <li><a href="#">4</a></li>
-          <li><a href="#">5</a></li> 
+          <li><a href="#">5</a></li>
           <li>
             <a href="#" aria-label="Next">
             <span aria-hidden="true">&raquo;</span>

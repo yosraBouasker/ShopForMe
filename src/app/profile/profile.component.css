@@ -1,0 +1,36 @@
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {
+  color: #333;
+  background: #dcdcdc;
+  border: 0px solid transparent;
+}
+
+.nav-tabs>li>a {
+  margin: 0 0px;
+  padding: 10px 53px;
+  line-height: 1.42857143;
+  font-size: 20px;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 600;
+  border: 0px solid transparent;
+  border-radius: 0px 0px 0 0;
+  color: #333;
+}
+
+
+.nav-tabs>li>a:hover, .nav>li>a:focus {
+  text-decoration: none;
+  background: #dcdcdc;
+  color: #333;
+  border: 0px solid transparent;
+}
+
+.nav> li>a:hover, .nav>li>a:focus {
+  background: none;
+  color: #333 !important;
+}
+
+.col-xs-6 h4{
+  margin-top:15px ;
+  margin-bottom:15px;
+}
