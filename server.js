@@ -24,6 +24,9 @@ app.use('/subCategory', subCategory);
 const product = require('./server/routes/product')
 app.use('/product', product);
 
+const profile = require('./server/routes/profile')
+app.use('/profile', profile);
+
 const user = require('./server/routes/user')
 app.use('/user', user);
 

@@ -18,6 +18,10 @@ export class ApiCategoryService {
     return this.http.get('http://localhost:3000/subCategory/all');
   }
 
+  getSubCatByCat(id) {
+    return this.http.get('http://localhost:3000/subCategory/byCategory/'+id);
+  }
+
   getSubCategoryName(id) {
     return this.http.get('http://localhost:3000/subCategory/name/' + id);
   }

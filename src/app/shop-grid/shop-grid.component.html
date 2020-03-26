@@ -21,8 +21,13 @@
         <ul class="cate" style="padding-bottom: 0;">
           <li><a href="shop"><i class="fa fa-arrow-right" aria-hidden="true"></i>All</a></li>
         </ul>
-        <ul class="cate" style="padding-top: 0;">
-          <li *ngFor="let category of categories"><a><i class="fa fa-arrow-right" aria-hidden="true"></i>{{category?.name}}</a></li>
+        <ul class="cate" style="padding-top: 0;"
+        *ngFor="let category of categories"
+
+        (loaded)="getSubCategoriesByCat(category._id)">
+          <li>
+            <a><i class="fa fa-arrow-right" aria-hidden="true"></i>{{category?.name}}</a>
+          </li>
             <ul>
               <li *ngFor="let subC of subCategories">
                 <a style="cursor: pointer;" (click)="filterProducts(subC._id)">
@@ -70,10 +75,10 @@
                       <a href="single.html"><img title=" " alt=" " src="{{product?.image}}"></a>
                       <p>{{product?.name}}</p>
                       <h4>
-                        <div [id]="i+123456789">
+                        <div [id]="i+98456621445">
                           <span style="padding: 0;"> {{product?.price | number:'.3'}}DT</span>
                         </div>
-                        {{getFinalPrice(product?.price, product?.discount, i, i+123456789) | number:'.3'}}DT
+                        {{getFinalPrice(product?.price, product?.discount, i, i+98456621445) | number:'.3'}}DT
                       </h4>
                     </div>
                     <div class="snipcart-details top_brand_home_details">

@@ -16,12 +16,11 @@ export class NavigatorComponent implements OnInit {
   constructor(private apiService: ApiCategoryService, private router: Router, private apiProductService: ApiProductService) { }
 
   ngOnInit() {
-    console.log('here')
     this.apiService.getCategories().subscribe((res: any) => {
       console.log(res);
       this.categories = res.data;
       this.subCategories = res.data[0].subCategories;
     });
-    
+
   }
 }

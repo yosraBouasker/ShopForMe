@@ -19,10 +19,10 @@
 
 
         <div class="text-center">
-          <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail"
+          <img src={{info?.image}} class="avatar img-circle img-thumbnail"
             alt="avatar">
           <div class="col-sm-10" style="margin-top:12px ;margin-left:20px ; margin-bottom:30px ; ">
-            <h3>User name</h3>
+            <h3>{{info?.name}} {{info?.lastname}}</h3>
           </div>
         </div>
       </div>
@@ -37,108 +37,74 @@
         <div class="tab-content">
           <div class="tab-pane active" id="home">
 
-            <form class="form" action="##" method="post" id="registrationForm">
-              <div class="form-group">
-
+            <form class="form">
                 <div class="col-xs-6">
                   <label for="first_name">
                     <h4>First name</h4>
                   </label>
-                  <input type="text" class="form-control" name="first_name" id="first_name" placeholder="first name"
-                    title="enter your first name if any.">
+                  <input type="text" class="form-control" name="first_name" id="first_name" value={{info?.name}} placeholder="first name"
+                    title="Edit your first name." #name>
                 </div>
-              </div>
-              <div class="form-group">
-
+          
                 <div class="col-xs-6">
                   <label for="last_name">
-                    <h4>Last name</h4>
+                    <h4>Last name </h4>
                   </label>
-                  <input type="text" class="form-control" name="last_name" id="last_name" placeholder="last name"
-                    title="enter your last name if any.">
+                  <input type="text" class="form-control" name="last_name" id="last_name" value={{info?.lastname}} placeholder="Last name"
+                    title="Edit your last name." #lastname>
                 </div>
-              </div>
-
-              <div class="form-group">
-
-                <div class="col-xs-6">
-                  <label for="phone">
-                    <h4>Phone</h4>
-                  </label>
-                  <input type="text" class="form-control" name="phone" id="phone" placeholder="enter phone"
-                    title="enter your phone number if any.">
-                </div>
-              </div>
-
-              <div class="form-group">
-                <div class="col-xs-6">
-                  <label for="mobile">
-                    <h4>Mobile</h4>
-                  </label>
-                  <input type="text" class="form-control" name="mobile" id="mobile" placeholder="Enter mobile number"
-                    title="Enter your mobile number if any.">
-                </div>
-              </div>
-              <div class="form-group">
-
+              
                 <div class="col-xs-6">
                   <label for="email">
                     <h4>Email</h4>
                   </label>
-                  <input type="email" class="form-control" name="email" id="email" placeholder="you@email.com"
-                    title="Enter your email.">
+                  <input type="email" class="form-control" name="email" id="email" value={{info?.email}} placeholder="Email"
+                  title="Edit your e-mail." #email>
                 </div>
-              </div>
-              <div class="form-group">
-
-                <div class="col-xs-6">
-                  <label for="email">
-                    <h4>Location</h4>
-                  </label>
-                  <input type="email" class="form-control" id="location" placeholder="Location"
-                    title="Enter a location">
-                </div>
-              </div>
-              <div class="form-group">
-
+              
                 <div class="col-xs-6">
                   <label for="password">
                     <h4>Password</h4>
                   </label>
-                  <input type="password" class="form-control" name="password" id="password" placeholder="Password"
-                    title="Enter your password.">
+                  <input type="password" class="form-control" name="password" id="password" value={{info?.password}} placeholder="Password"
+                    title="Edit your password." #password>
                 </div>
-              </div>
-              <div class="form-group">
-
+              
                 <div class="col-xs-6">
-                  <label for="password2">
-                    <h4>Verify</h4>
+                  <label for="phone">
+                    <h4>Phone</h4>
                   </label>
-                  <input type="password" class="form-control" name="password2" id="password2"
-                    placeholder="Verify Password" title="Verify your password.">
+                  <input type="text" class="form-control" name="phone" id="phone" value={{info?.phone}} placeholder="enter phone"
+                    title="Edit your phone number." #phone>
                 </div>
-              </div>
-              <div class="form-group">
-
+              
+                <div class="col-xs-6">
+                  <label for="location">
+                    <h4>Location</h4>
+                  </label>
+                  <input type="text" class="form-control" id="location" value={{info?.location}} placeholder="Location"
+                    title="Edit your location" #location>
+                </div>
+              
                 <div class="col-xs-6">
                   <label for="Image">
                     <h4>Profile Image</h4>
                   </label>
                   <button class="form-control" style="height:40px">
-                    <input type="file" style="font-size:16px" class="text-center center-block file-upload">
+                    <input type="file" style="font-size:16px" class="text-center center-block file-upload" #image>
                   </button>
                 </div>
-              </div>
-              <div class="form-group">
+              
                 <div class="col-xs-12" style="margin-left:530px">
                   <br>
                   <br>
-                  <button class="btn btn-lg" type="reset"
-                    style="width:150px ; margin-right:10px ; color: black; background-color: #dcdcdc;">Reset</button>
-                  <button class="btn btn-lg" style="width:150px; color: black; background-color: #fe9126; " type="submit">Save</button>
+                  <button class="btn btn-lg" type="button" 
+                    style="width:150px ; margin-right:10px ; color: black; background-color: #dcdcdc;" (click)="resetBtn()">Reset</button>
+                  <button type="button" class="btn btn-lg" style="width:150px; color: black; background-color: #fe9126;"
+                    (click)="updateProfile(name.value, lastname.value, email.value, location.value, phone.value, image.value, password.value)">
+                    Save</button>
                 </div>
-              </div>
+              
             </form>
           </div>
           <!--/tab-pane-->

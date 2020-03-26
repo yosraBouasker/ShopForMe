@@ -3,7 +3,7 @@
     <div class="container">
         <h3>New offers</h3>
             <div class="agile_top_brands_grids">
-                <div class="col-md-3 top_brand_left-1" *ngFor="let offer of offers">
+                <div class="col-md-3 top_brand_left-1" *ngFor="let offer of offers" style="margin-bottom: 15px;">
                     <div class="hover14 column">
                         <div class="agile_top_brand_left_grid">
                             <div class="agile_top_brand_left_grid_pos">
@@ -13,7 +13,7 @@
                                 <figure>
                                     <div class="snipcart-item block">
                                         <div class="snipcart-thumb">
-                                            <a href="/product/{{offer?._id}}"><img title=" " alt=" " src="{{offer?.image}}"></a>		
+                                            <a href="/product/{{offer?._id}}"><img title=" " alt=" " src="{{offer?.image}}"></a>
                                             <p>{{offer?.name}}</p>
                                             <div class="stars">
                                                 <i class="fa fa-star blue-star" aria-hidden="true"></i>

@@ -42,5 +42,5 @@ router.get('/byName/:name', async (req, res) => {
     const productResult = await product.findOne({ "name": req.params.name }).exec();
     res.send({ data: productResult })
   })
-  
+
 module.exports = router;
