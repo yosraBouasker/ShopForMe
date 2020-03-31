@@ -23,7 +23,7 @@
                       <div class="multi-gd-img">
                         <ul class="multi-column-dropdown">
                           <h6>All {{category?.name}}</h6>
-                          <li *ngFor="let subCategory of subCategories">
+                          <li *ngFor="let subCategory of category.subCategories">
                             <a href="shop/{{subCategory?._id}}">{{subCategory?.name}}</a>
                           </li>
                         </ul>

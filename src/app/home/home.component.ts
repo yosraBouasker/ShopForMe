@@ -29,16 +29,28 @@ export class HomeComponent implements OnInit {
       var dates=[];
       for (let i=0; i<this.allProducts.length; i++){
           if(this.allProducts[i].discount !=0) {
+            if (this.allProducts[i].updatedAt != undefined){
             dates[i] = this.allProducts[i].updatedAt;
+            }
+            else {
+              dates[i] = this.allProducts[i].createdAt;
+            }
           }
       }
       dates.reverse();
       dates = dates.slice(0,6);
       for (let j=0; j<6; j++) {
         for (let i=0; i<this.allProducts.length; i++) {
+          if (this.allProducts[i].updatedAt != undefined){
           if (this.allProducts[i].updatedAt == dates[j]){
             this.newOffers.push(this.allProducts[i]);
           }
+        }
+        else {
+          if (this.allProducts[i].createdAt == dates[j]){
+            this.newOffers.push(this.allProducts[i]);
+          }
+        }
         }
       }
     })
