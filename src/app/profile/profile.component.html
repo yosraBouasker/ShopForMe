@@ -45,7 +45,7 @@
                   <input type="text" class="form-control" name="first_name" id="first_name" value={{info?.name}} placeholder="first name"
                     title="Edit your first name." #name>
                 </div>
-          
+
                 <div class="col-xs-6">
                   <label for="last_name">
                     <h4>Last name </h4>
@@ -53,7 +53,7 @@
                   <input type="text" class="form-control" name="last_name" id="last_name" value={{info?.lastname}} placeholder="Last name"
                     title="Edit your last name." #lastname>
                 </div>
-              
+
                 <div class="col-xs-6">
                   <label for="email">
                     <h4>Email</h4>
@@ -61,7 +61,7 @@
                   <input type="email" class="form-control" name="email" id="email" value={{info?.email}} placeholder="Email"
                   title="Edit your e-mail." #email>
                 </div>
-              
+
                 <div class="col-xs-6">
                   <label for="password">
                     <h4>Password</h4>
@@ -69,7 +69,7 @@
                   <input type="password" class="form-control" name="password" id="password" value={{info?.password}} placeholder="Password"
                     title="Edit your password." #password>
                 </div>
-              
+
                 <div class="col-xs-6">
                   <label for="phone">
                     <h4>Phone</h4>
@@ -77,7 +77,7 @@
                   <input type="text" class="form-control" name="phone" id="phone" value={{info?.phone}} placeholder="enter phone"
                     title="Edit your phone number." #phone>
                 </div>
-              
+
                 <div class="col-xs-6">
                   <label for="location">
                     <h4>Location</h4>
@@ -85,7 +85,7 @@
                   <input type="text" class="form-control" id="location" value={{info?.location}} placeholder="Location"
                     title="Edit your location" #location>
                 </div>
-              
+
                 <div class="col-xs-6">
                   <label for="Image">
                     <h4>Profile Image</h4>
@@ -94,17 +94,17 @@
                     <input type="file" style="font-size:16px" class="text-center center-block file-upload" #image>
                   </button>
                 </div>
-              
+
                 <div class="col-xs-12" style="margin-left:530px">
                   <br>
                   <br>
-                  <button class="btn btn-lg" type="button" 
+                  <button class="btn btn-lg" type="button"
                     style="width:150px ; margin-right:10px ; color: black; background-color: #dcdcdc;" (click)="resetBtn()">Reset</button>
                   <button type="button" class="btn btn-lg" style="width:150px; color: black; background-color: #fe9126;"
                     (click)="updateProfile(name.value, lastname.value, email.value, location.value, phone.value, image.value, password.value)">
                     Save</button>
                 </div>
-              
+
             </form>
           </div>
           <!--/tab-pane-->
