@@ -13,11 +13,19 @@ export class ShopGridComponent implements OnInit {
   subCategories = [];
   products = [];
   allProd = [];
-  // tslint:disable-next-line: max-line-length
-  constructor(private apiCategoryService: ApiCategoryService, private apiProductService: ApiProductService, private activatedRoute: ActivatedRoute) { }
+  config: any;
+  itemsPerPage;
+  term;
+  
+  constructor(private apiCategoryService: ApiCategoryService, private apiProductService: ApiProductService, private activatedRoute: ActivatedRoute) {
+    this.config = {
+      itemsPerPage: 200,
+      currentPage: 1,
+      totalItems: this.products.length
+    };
+   }
 
   ngOnInit() {
-
     const id = this.activatedRoute.snapshot.paramMap.get('id');
     // tslint:disable-next-line: triple-equals
     if (id != undefined) {
@@ -27,6 +35,7 @@ export class ShopGridComponent implements OnInit {
         //console.log(res);
         this.products = res.data;
         this.allProd = res.data;
+        this.config.itemsPerPage = this.products.length;
       });
     }
     this.apiCategoryService.getCategories().subscribe((res: any) => {
@@ -225,6 +234,25 @@ export class ShopGridComponent implements OnInit {
       if (val.value != "Default sorting"){
         this.filter(val, dis);
       }
+    }
+  }
+
+  pageChanged(event){
+    this.config.currentPage = event;
+  }
+
+  setItemsPerPage(items) {
+    if (items.value == "All items"){
+      this.config.itemsPerPage = this.products.length;
+    }
+    if (items.value == "Item on page 6"){
+      this.config.itemsPerPage = 6;
+    }
+    if (items.value == "Item on page 9"){
+      this.config.itemsPerPage = 9;
+    }
+    if (items.value == "Item on page 12"){
+      this.config.itemsPerPage = 12;
     }
   }
 

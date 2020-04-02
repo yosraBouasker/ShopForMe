@@ -2,13 +2,14 @@
 <div class="agileits_header">
   <div class="container">
     <div class="w3l_offers">
-      <p>SALE UP TO 70% OFF. USE CODE "SALE70%" . <a href="products.html">SHOP NOW</a></p>
+      <p>SALE UP TO 50% OFF. DON'T MISS OUT! <a href="shop" style="margin-left: 5px;"> SHOP NOW</a></p>
     </div>
     <div class="agile-login">
       <ul>
-        <li><a href="register"> Register</a></li>
-        <li><a href="login">Login</a></li>
-        <li><a href="profile">My Account</a></li>
+        <li *ngIf="!isConnected()"><a href="register">Register</a></li>
+        <li style="margin-right: -400px;" *ngIf="!isConnected()"><a href="login">Login</a></li>
+        <li *ngIf="isConnected()"><a href="profile">My Account</a></li>
+        <li style="margin-right: -400px;" *ngIf="isConnected()"><a (click)="logout()" style="cursor: pointer;">Logout</a></li>
 
       </ul>
     </div>
@@ -16,7 +17,7 @@
         <form action="#" method="post" class="last">
           <input type="hidden" name="cmd" value="_cart">
           <input type="hidden" name="display" value="1">
-          <button class="w3view-cart" type="submit" name="submit" value=""><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></button>
+          <button style="margin-top: -1.5px;" class="w3view-cart" type="submit" name="submit" value=""><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></button>
         </form>
     </div>
     <div class="clearfix"> </div>
@@ -27,7 +28,7 @@
   <div class="container">
   <div class="w3ls_logo_products_left1">
       <ul class="phone_email">
-        <li><i class="fa fa-phone" aria-hidden="true"></i>Order online or call us : +(216) 71 230 440</li>
+        <li><i class="fa fa-phone" aria-hidden="true"></i>Order online or call us : (+216) 71 230 440</li>
 
       </ul>
     </div>
@@ -36,15 +37,7 @@
         <img src="assets/images/logo.png" alt="logo images">
       </a>
     </div>
-  <div class="w3l_search">
-    <form action="#" method="post">
-      <input type="search" name="Search" placeholder="Search for a Product..." required="">
-      <button type="submit" class="btn btn-default search" aria-label="Left Align">
-        <i class="fa fa-search" aria-hidden="true"> </i>
-      </button>
-      <div class="clearfix"></div>
-    </form>
-  </div>
+  
 
     <div class="clearfix"> </div>
   </div>

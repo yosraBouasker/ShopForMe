@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
       for (let i=0; i<this.allProducts.length; i++){
           if(this.allProducts[i].discount !=0) {
             if (this.allProducts[i].updatedAt != undefined){
-            dates[i] = this.allProducts[i].updatedAt;
+              dates[i] = this.allProducts[i].updatedAt;
             }
             else {
               dates[i] = this.allProducts[i].createdAt;
@@ -42,15 +42,15 @@ export class HomeComponent implements OnInit {
       for (let j=0; j<6; j++) {
         for (let i=0; i<this.allProducts.length; i++) {
           if (this.allProducts[i].updatedAt != undefined){
-          if (this.allProducts[i].updatedAt == dates[j]){
-            this.newOffers.push(this.allProducts[i]);
+            if (this.allProducts[i].updatedAt == dates[j]){
+              this.newOffers.push(this.allProducts[i]);
+            }
           }
-        }
-        else {
-          if (this.allProducts[i].createdAt == dates[j]){
-            this.newOffers.push(this.allProducts[i]);
+          else {
+            if (this.allProducts[i].createdAt == dates[j]){
+              this.newOffers.push(this.allProducts[i]);
+            }
           }
-        }
         }
       }
     })

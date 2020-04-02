@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 import * as jwt_decode from 'jwt-decode';
+import { HomeComponent } from '../home/home.component';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +10,7 @@ import * as jwt_decode from 'jwt-decode';
 
 export class ApiAuthService {
   userId;
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   login(form) {
     return this.http.post('http://localhost:3000/auth/login', form);
@@ -23,5 +25,10 @@ export class ApiAuthService {
 
   register(form) {
     return this.http.post('http://localhost:3000/auth/register', form);
+  }
+
+  logout() {
+    localStorage.removeItem('token');
+    this.router.navigate(['home']);
   }
 }

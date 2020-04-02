@@ -19,8 +19,8 @@ import { RouterLink, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AboutComponent } from './about/about.component';
 import { ProfileComponent } from './profile/profile.component';
-
-
+import {NgxPaginationModule} from 'ngx-pagination';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -44,7 +44,9 @@ import { ProfileComponent } from './profile/profile.component';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    RouterModule
+    RouterModule,
+    NgxPaginationModule,
+    Ng2SearchPipeModule
   ],
   providers: [],
   bootstrap: [AppComponent],

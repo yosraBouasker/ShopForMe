@@ -6,64 +6,63 @@
         <h3>Contact</h3>
 
         <ul class="address">
-          <li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>1234k Avenue, 4th block, <span>New York City.</span></li>
-          <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a href="mailto:info@example.com">info@example.com</a></li>
-          <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+1234 567 567</li>
+          <li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>Les Berges du Lac 2, <span>Tunis.</span></li>
+          <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a href="mailto:info@example.com">info@shopforme.tn</a></li>
+          <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>(+216) 71 230 440</li>
+         
         </ul>
+        <div class="w3layouts-foot">
+          <ul>
+            <li style="margin-left: 30px;"><a href="#" class="w3_agile_facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+            <li><a href="#" class="w3_agile_dribble"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+            <li><a href="#" class="agile_twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+          </ul>
+        </div>
       </div>
       <div class="col-md-3 w3_footer_grid">
         <h3>Information</h3>
         <ul class="info">
-          <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="about.html">About Us</a></li>
+          <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="aboutUs">About Us</a></li>
           <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="contactUs">Contact Us</a></li>
-          <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="short-codes.html">Short Codes</a></li>
-          <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="faq.html">FAQ's</a></li>
-          <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="products.html">Special Products</a></li>
+          <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="shop">Our Products</a></li>
         </ul>
       </div>
       <div class="col-md-3 w3_footer_grid">
         <h3>Category</h3>
         <ul class="info">
-          <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="groceries.html">Groceries</a></li>
-          <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="household.html">Household</a></li>
-          <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="personalcare.html">Personal Care</a></li>
-          <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="packagedfoods.html">Packaged Foods</a></li>
-          <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="beverages.html">Beverages</a></li>
+          <li *ngFor="let category of categories">
+            <i class="fa fa-arrow-right" aria-hidden="true"></i>
+            <a href="shop">{{category?.name}}</a>
+          </li>
         </ul>
       </div>
       <div class="col-md-3 w3_footer_grid">
         <h3>Profile</h3>
         <ul class="info">
-          <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="products.html">Store</a></li>
-          <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="checkout.html">My Cart</a></li>
-          <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="login.html">Login</a></li>
-          <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="registered.html">Create Account</a></li>
+          <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="shop">Store</a></li>
+          <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="cart">My Cart</a></li>
+          <li *ngIf="!isConnected()"><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="login">Login</a></li>
+          <li *ngIf="!isConnected()"><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="register">Create Account</a></li>
+          <li *ngIf="isConnected()"><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="profile">My Profile</a></li>
+          <li *ngIf="isConnected()"><i class="fa fa-arrow-right" aria-hidden="true"></i><a (click)="logout()" style="cursor: pointer;">Logout</a></li>
         </ul>
       </div>
       <div class="clearfix"> </div>
     </div>
   </div>
 
-  <div class="footer-copy">
-
-    <div class="container">
-      <p>© 2020 Shop For Me. All rights reserved</p>
-    </div>
-  </div>
 
 </div>
 <div class="footer-botm">
     <div class="container">
       <div class="w3layouts-foot">
-        <ul>
-          <li><a href="#" class="w3_agile_facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-          <li><a href="#" class="agile_twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-          <li><a href="#" class="w3_agile_dribble"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
-          <li><a href="#" class="w3_agile_vimeo"><i class="fa fa-vimeo" aria-hidden="true"></i></a></li>
-        </ul>
+        
       </div>
-      <div class="payment-w3ls">
-        <img src="assets/images/card.png" alt=" " class="img-responsive">
+      <div class="payment-w3ls" style="float: none;">
+            <p style="color: #bfbfbf;
+            text-align: center;
+            font-size: 15px;
+            margin-top: 5px;">© 2020 Shop For Me. All rights reserved</p>
       </div>
       <div class="clearfix"> </div>
     </div>
