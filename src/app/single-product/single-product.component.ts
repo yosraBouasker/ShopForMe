@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiProductService } from '../shared/api-product.service';
-import { ActivatedRoute } from '@angular/router'; 
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-single-product',
@@ -10,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 export class SingleProductComponent implements OnInit {
 
   product;
-  
+
   constructor(private apiService: ApiProductService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
@@ -25,7 +25,7 @@ export class SingleProductComponent implements OnInit {
   }
 
   getFinalPrice() : number{
-    
+
     var dis = document.getElementById("discount");
 
     if (this.product.discount == 0){
@@ -37,7 +37,6 @@ export class SingleProductComponent implements OnInit {
       return initialPrice;
     }
   }
-    
-  
+
 
 }

@@ -1,0 +1,135 @@
+.bg-gradient-default{
+  background: linear-gradient(87deg, #43076b 0, #50428d 100%) !important
+}
+h1, p{
+  width: 100%;
+  color: black;
+}
+
+#head{
+  padding: 0;
+  margin-left: 380px;
+}
+textarea{
+  width: 400px !important;
+  border-width: 2px;
+    border-style: inset;
+    border-color: initial;
+    border-image: initial;
+}
+input, textarea{
+  margin-left: 20px;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+textarea{
+  width: 100%;
+  padding: 15px;
+  border-radius: 5px;
+  border-color: #b8b2b2;
+}
+
+.card-header{
+  padding-right: 60px;
+  padding-left: 80px;
+}
+
+.card-body{
+  padding-right: 50px;
+  padding-left: 50px;
+}
+
+.card-body a{
+  background-color: transparent;
+  border-color: blue;
+  color: black;
+  margin-top: -15px;
+}
+
+#checkDone{
+  background-color: transparent !important;
+  color: black;
+  margin-right: 10px;
+  margin-left: 0;
+  height: 25px;
+  width: 25px;
+  border-color: blue !important;
+}
+
+#result{
+  color: #50428d;
+  text-decoration: underline;
+}
+
+#charge{
+  color: #50428d;
+  text-decoration: wavy;
+}
+#result:hover, #charge:hover{
+  cursor: pointer;
+}
+label{
+  margin-top: 10px;
+}
+
+.bloc_left_price {
+  color: #c01508;
+  text-align: center;
+  font-weight: bold;
+  font-size: 150%;
+}
+.category_block li:hover {
+  background-color: #007bff;
+}
+.category_block li:hover a {
+  color: #ffffff;
+}
+.category_block li a {
+  color: #343a40;
+}
+.add_to_cart_block .price {
+  color: #c01508;
+  text-align: center;
+  font-weight: bold;
+  font-size: 200%;
+  margin-bottom: 0;
+}
+.add_to_cart_block .price_discounted {
+  color: #343a40;
+  text-align: center;
+  text-decoration: line-through;
+  font-size: 140%;
+}
+.product_rassurance {
+  padding: 10px;
+  margin-top: 15px;
+  background: #ffffff;
+  border: 1px solid #6c757d;
+  color: #6c757d;
+}
+.product_rassurance .list-inline {
+  margin-bottom: 0;
+  text-transform: uppercase;
+  text-align: center;
+}
+.product_rassurance .list-inline li:hover {
+  color: #343a40;
+}
+.reviews_product .fa-star {
+  color: gold;
+}
+.pagination {
+  margin-top: 20px;
+}
+footer {
+  background: #343a40;
+  padding: 40px;
+}
+footer a {
+  color: #f8f9fa!important
+}
+
+.modal-header{
+  padding: 15px 20px 15px 30px;
+}

@@ -36,7 +36,7 @@
                                                     <input type="hidden" name="currency_code" value="USD">
                                                     <input type="hidden" name="return" value=" ">
                                                     <input type="hidden" name="cancel_return" value=" ">
-                                                    <input type="submit" name="submit" value="Add to cart" class="button">
+                                                    <input type="submit" name="submit" value="Add to cart" class="button" data-toggle="modal" data-target="#cartModal">
                                                 </fieldset>
                                             </form>
                                         </div>
@@ -49,4 +49,8 @@
                     <div class="clearfix"> </div>
             </div>
     </div>
+</div>
+<div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <app-cart></app-cart>
 </div>

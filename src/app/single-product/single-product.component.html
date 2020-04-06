@@ -13,13 +13,13 @@
 <div class="products">
     <div class="container">
         <div class="agileinfo_single">
-            
+
             <div class="col-md-4 agileinfo_single_left">
                 <img id="example" src={{product.image}} alt=" " class="img-responsive">
             </div>
             <div class="col-md-8 agileinfo_single_right">
             <h2 class="nameP">{{product?.name}}</h2>
-            <div class="ref">{{product?.reference}}</div> 
+            <div class="ref">{{product?.reference}}</div>
                 <div class="rating1">
                     <span class="starRating">
                         <input id="rating5" type="radio" name="rating" value="5">
@@ -54,7 +54,8 @@
                                 <input type="hidden" name="currency_code" value="USD">
                                 <input type="hidden" name="return" value=" ">
                                 <input type="hidden" name="cancel_return" value=" ">
-                                <input type="submit" name="submit" value="Add to cart" class="button">
+                                <input type="submit" name="submit" value="Add to cart" class="button"
+                                data-toggle="modal" data-target="#cartModal">
                             </fieldset>
                         </form>
                     </div>
@@ -63,6 +64,10 @@
             <div class="clearfix"> </div>
         </div>
     </div>
+</div>
+<div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <app-cart></app-cart>
 </div>
 <app-new-offers></app-new-offers>
 <app-footer></app-footer>

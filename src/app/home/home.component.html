@@ -74,7 +74,7 @@
 																	<input type="hidden" name="currency_code" value="USD" />
 																	<input type="hidden" name="return" value=" " />
 																	<input type="hidden" name="cancel_return" value=" " />
-																	<input type="submit" name="submit" value="Add to cart" class="button" />
+																	<input type="submit" name="submit" value="Add to cart" class="button" data-toggle="modal" data-target="#cartModal"/>
 																</fieldset>
 															</form>
 														</div>
@@ -113,7 +113,7 @@
 																<i class="fa fa-star gray-star" aria-hidden="true"></i>
 															</div>
 															<h4>{{getFinalPrice(newOffer?.price, newOffer?.discount) | number:'.3'}}DT <span>{{newOffer?.price | number:'.3'}}DT</span></h4>														</div>
-													 
+
 														<div class="snipcart-details top_brand_home_details">
 															<form action="#" method="post">
 																<fieldset>
@@ -126,7 +126,7 @@
 																	<input type="hidden" name="currency_code" value="USD" />
 																	<input type="hidden" name="return" value=" " />
 																	<input type="hidden" name="cancel_return" value=" " />
-																	<input type="submit" name="submit" value="Add to cart" class="button" />
+																	<input type="submit" name="submit" value="Add to cart" class="button" data-toggle="modal" data-target="#cartModal" />
 																</fieldset>
 															</form>
 														</div>
@@ -169,6 +169,10 @@
         </div>
       </div>
 
-    </div><!-- /.carousel --> 
+    </div><!-- /.carousel -->
+<div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+  <app-cart></app-cart>
+</div>
 <app-new-offers></app-new-offers>
 <app-footer></app-footer>
