@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ApiCategoryService } from '../shared/api-category.service';
 import { ApiProductService } from '../shared/api-product.service';
 import { ActivatedRoute } from '@angular/router';
+import { CartComponent } from '../cart/cart.component';
+import { CartService } from '../shared/cart.service';
+import { ApiAuthService } from '../shared/api-auth.service';
 
 @Component({
   selector: 'app-shop-grid',
@@ -17,7 +20,8 @@ export class ShopGridComponent implements OnInit {
   itemsPerPage;
   term;
   
-  constructor(private apiCategoryService: ApiCategoryService, private apiProductService: ApiProductService, private activatedRoute: ActivatedRoute) {
+  constructor(private apiCategoryService: ApiCategoryService, private apiProductService: ApiProductService, 
+    private activatedRoute: ActivatedRoute, private cartService: CartService, private apiService: ApiAuthService) {
     this.config = {
       itemsPerPage: 200,
       currentPage: 1,
@@ -254,6 +258,11 @@ export class ShopGridComponent implements OnInit {
     if (items.value == "Item on page 12"){
       this.config.itemsPerPage = 12;
     }
+  }
+
+  openModal(val) {
+    var cart = new CartComponent(this.apiService, this.cartService);
+    cart.executeModal(val);
   }
 
 }

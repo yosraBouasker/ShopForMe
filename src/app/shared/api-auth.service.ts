@@ -10,6 +10,7 @@ import { HomeComponent } from '../home/home.component';
 
 export class ApiAuthService {
   userId;
+  public clientId;
   constructor(private http: HttpClient, private router: Router) { }
 
   login(form) {
@@ -20,6 +21,7 @@ export class ApiAuthService {
     if (localStorage.getItem('token')) {
       const token = localStorage.getItem('token');
       this.userId = jwt_decode(token).data._id;
+      this.clientId = jwt_decode(token).data.client;
     }
   }
 

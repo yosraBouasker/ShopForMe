@@ -1,5 +1,6 @@
 const router = require('express').Router();
-const user = require('../models/user')
+const user = require('../models/user');
+const client = require('../models/client');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 
@@ -13,7 +14,8 @@ router.post('/login', async (req, res) => {
 router.post('/register', async (req, res) => {
   req.body.password = bcrypt.hashSync(req.body.password, 10);
   const userResult = await user.create(req.body).catch(err => err);
-  console.log(req.body)
+  const clientResult = await client.create({'user':userResult._id}).catch(err => err);
+  const Result = await user.update({ "_id": userResult._id }, { $set: {'client': clientResult._id} }).exec();
   res.send({ message: 'ok', token: jwt.sign({ data: userResult }, ' secret_pass ') });
 })
 
