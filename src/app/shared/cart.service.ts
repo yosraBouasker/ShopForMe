@@ -5,7 +5,10 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class CartService {
-
+  idProductToAdd;
+  purchaseDetailsList = [];
+  isCartEmpty: boolean;
+  cart;
   constructor(private http: HttpClient) { }
 
   addPurchase(id, body) {
@@ -41,6 +44,4 @@ export class CartService {
     var body ={};
     return this.http.post('http://localhost:3000/purchaseDetail/delete/'+id, body);
   }
-
-
 }

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiProductService } from '../shared/api-product.service';
 import { ActivatedRoute } from '@angular/router';
+import { CartService } from '../shared/cart.service';
+import { CartComponent } from '../cart/cart.component';
+import { ApiAuthService } from '../shared/api-auth.service';
 
 @Component({
   selector: 'app-single-product',
@@ -11,7 +14,7 @@ export class SingleProductComponent implements OnInit {
 
   product;
 
-  constructor(private apiService: ApiProductService, private activatedRoute: ActivatedRoute) { }
+  constructor(private apiService: ApiProductService,private authService: ApiAuthService, private cartService: CartService,private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
     //this.apiService.decodeToken();
@@ -38,5 +41,10 @@ export class SingleProductComponent implements OnInit {
     }
   }
 
+  openModal(val) {
+    this.cartService.idProductToAdd = val;
+    var cart = new CartComponent(this.apiService, this.authService, this.cartService);
+    this.cartService.isCartEmpty = cart.isEmpty();
+  }
 
 }

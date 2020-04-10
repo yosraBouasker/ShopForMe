@@ -261,8 +261,9 @@ export class ShopGridComponent implements OnInit {
   }
 
   openModal(val) {
-    var cart = new CartComponent(this.apiService, this.cartService);
-    cart.executeModal(val);
+    this.cartService.idProductToAdd = val;
+    var cart = new CartComponent(this.apiProductService, this.apiService, this.cartService);
+    this.cartService.isCartEmpty = cart.isEmpty();
   }
 
 }

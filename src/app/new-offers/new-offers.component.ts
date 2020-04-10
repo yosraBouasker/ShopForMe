@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiProductService } from '../shared/api-product.service';
+import { CartComponent } from '../cart/cart.component';
+import { ApiAuthService } from '../shared/api-auth.service';
+import { CartService } from '../shared/cart.service';
 
 @Component({
   selector: 'app-new-offers',
@@ -9,7 +12,7 @@ import { ApiProductService } from '../shared/api-product.service';
 export class NewOffersComponent implements OnInit {
   allProducts = [];
   offers=[];
-  constructor(private apiService: ApiProductService) { }
+  constructor(private apiService: ApiProductService, private apiauthService: ApiAuthService, private cartApiService: CartService) { }
 
   ngOnInit() {
     this.apiService.getProducts().subscribe((res: any) => {
@@ -48,4 +51,11 @@ export class NewOffersComponent implements OnInit {
       var finalPrice= price - (price*discount)/100;
       return finalPrice;
   }
+  
+  openModal(val) {
+    this.cartApiService.idProductToAdd = val;
+    var cart = new CartComponent(this.apiService, this.apiauthService, this.cartApiService);
+    this.cartApiService.isCartEmpty = cart.isEmpty();
+  }
+
 }

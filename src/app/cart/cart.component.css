@@ -1,3 +1,19 @@
+.loginStyle {
+  width: 70%;
+  text-align: center;
+  padding: 100px;
+  padding-top: 80px;
+}
+
+.loginBtn {
+  background-color: #fe9126;
+  border-color: #fe9126;
+}
+.loginBtn:hover {
+  background-color: #5f5c59;
+  border-color: #5f5c59;
+}
+
 .bg-gradient-default{
   background: linear-gradient(87deg, #43076b 0, #50428d 100%) !important
 }

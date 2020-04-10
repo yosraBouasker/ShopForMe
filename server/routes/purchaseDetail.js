@@ -20,8 +20,11 @@ router.post('/update/:idPurchase', async (req, res) => {
 })
 
 router.post('/delete/:idPurchase', async (req, res) => {
-    const Result = await purchaseDetail.deleteOne({ "_id": req.params.idPurchase }).exec();
-    res.send({ data: Result })
+    const purchaseD = await purchaseDetail.findOne({ "_id": req.params.idPurchase }).exec();
+    var idCart = purchaseD.purchase;
+    const Result = await purchase.updateOne({ "_id": idCart }, { $pull: { purchaseDetails: req.params.idPurchase } }).exec();
+    const deleteResult = await purchaseDetail.deleteOne({ "_id": req.params.idPurchase }).exec();
+    res.send({ data: deleteResult })
 })
 
 module.exports = router;
