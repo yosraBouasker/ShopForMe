@@ -10,7 +10,18 @@
       <div class="container mb-4">
         <div class="row">
           <div class="col-12">
-            <div class="table-responsive">
+
+            <div class="loginStyle" *ngIf="!loggedIn">
+              <h2>You should be logged in!</h2>
+              <a href="login"><button style="width: 25%; margin-top: 20px;" class="btn btn-light btn-success text-uppercase loginBtn">
+               Login</button></a>
+            </div>
+
+            <div class="loginStyle" style="padding-bottom: 70px;" *ngIf="loggedIn && isEmpty()">
+              <img src="assets/images/empty-cart.jpg">
+            </div>
+
+            <div class="table-responsive" *ngIf="loggedIn && !isEmpty()">
               <table class="table table-striped">
                 <thead>
                   <tr>
@@ -22,12 +33,17 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td style="width: 100px;"><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
-                    <td style="width: 270px;">Product Name Dada</td>
-                    <td style="width: 120px;"><input class="form-control" type="text" value="1" /></td>
-                    <td style="width: 200px;" class="text-right">124,90 €</td>
-                    <td style="width: 130px;" class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button>
+                  <tr *ngFor="let purchaseDetail of cartApiService?.purchaseDetailsList">
+                    <td style="width: 100px;"><img src="{{purchaseDetail?.product?.image}}" /> </td>
+                    <td style="width: 270px;">{{purchaseDetail?.product?.name}}</td>
+                    <td style="width: 120px;">
+                      <input class="form-control" type="number" #qty
+                        min="1"
+                       value={{purchaseDetail?.quantity}} 
+                       (change)="calculatePrice(qty.value, purchaseDetail?.product?.price, purchaseDetail?.product?.discount, purchaseDetail?._id)" />
+                    </td>
+                    <td style="width: 200px;" class="text-right">{{purchaseDetail?.subTotal | number:'.3'}}DT</td>
+                    <td style="width: 130px;" class="text-right"><button class="btn btn-sm btn-danger" (click)="delete(purchaseDetail?._id)"><i class="fa fa-trash"></i> </button>
                     </td>
                   </tr>
                   <tr>
@@ -35,21 +51,21 @@
                     <td></td>
                     <td></td>
                     <td><strong>Sub-Total</strong></td>
-                    <td class="text-right">255,90 €</td>
+                    <td class="text-right">{{calculateSubTotal() | number:'.3'}}DT</td>
                   </tr>
                   <tr>
                     <td></td>
                     <td></td>
                     <td></td>
                     <td><strong>Shipping</strong></td>
-                    <td class="text-right">6,90 €</td>
+                    <td class="text-right">6.000DT</td>
                   </tr>
                   <tr>
                     <td></td>
                     <td></td>
                     <td></td>
                     <td><strong>Total</strong></td>
-                    <td class="text-right"><strong>346,90 €</strong></td>
+                    <td class="text-right"><strong>{{calculateTotal() | number:'.3'}}DT</strong></td>
                     <td style="visibility: hidden;"></td>
                   </tr>
                 </tbody>
@@ -60,14 +76,17 @@
 
       </div>
     </div>
-    <div class="modal-footer">
+    <div class="modal-footer" *ngIf="loggedIn && !isEmpty()">
       <div class="col mb-2">
-
             <button style="margin-left: 20px; width: 25%;"
             type="button" class="btn btn-light text-uppercase"
             data-dismiss="modal">Continue Shopping</button>
+<<<<<<< HEAD
             <a href="checkout"><button style="width: 25%;" class="btn btn-light btn-success text-uppercase">Checkout</button></a>
 
+=======
+            <button style="width: 25%;" class="btn btn-light btn-success text-uppercase">Checkout</button>
+>>>>>>> 4c2d437ac08b3bde25c18ba9630c1d846758d06f
       </div>
     </div>
   </div>

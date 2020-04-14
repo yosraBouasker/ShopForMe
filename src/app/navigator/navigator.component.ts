@@ -17,7 +17,6 @@ export class NavigatorComponent implements OnInit {
 
   ngOnInit() {
     this.apiService.getCategories().subscribe((res: any) => {
-      console.log(res);
       this.categories = res.data;
       this.subCategories = res.data[0].subCategories;
     });
