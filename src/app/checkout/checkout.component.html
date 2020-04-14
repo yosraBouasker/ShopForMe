@@ -1,236 +1,191 @@
 <app-header></app-header>
 <app-navigator></app-navigator>
-<div class="container">
-  <div class="py-5 text-center">
-    <img class="d-block mx-auto mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt=""
-      width="72" height="72">
-    <h2>Checkout form</h2>
-    <p class="lead">Below is an example form built entirely with Bootstrap's form controls. Each required form group has
-      a validation state that can be triggered by attempting to submit the form without completing it.</p>
-  </div>
-
-  <div class="row">
-    <div class="col-md-4 order-md-2 mb-4">
-      <h4 class="d-flex justify-content-between align-items-center mb-3">
-        <span class="text-muted">Your cart</span>
-        <span class="badge badge-secondary badge-pill">3</span>
-      </h4>
-      <ul class="list-group mb-3">
-        <li class="list-group-item d-flex justify-content-between lh-condensed">
-          <div>
-            <h6 class="my-0">Product name</h6>
-            <small class="text-muted">Brief description</small>
-          </div>
-          <span class="text-muted">$12</span>
-        </li>
-        <li class="list-group-item d-flex justify-content-between lh-condensed">
-          <div>
-            <h6 class="my-0">Second product</h6>
-            <small class="text-muted">Brief description</small>
-          </div>
-          <span class="text-muted">$8</span>
-        </li>
-        <li class="list-group-item d-flex justify-content-between lh-condensed">
-          <div>
-            <h6 class="my-0">Third item</h6>
-            <small class="text-muted">Brief description</small>
-          </div>
-          <span class="text-muted">$5</span>
-        </li>
-        <li class="list-group-item d-flex justify-content-between bg-light">
-          <div class="text-success">
-            <h6 class="my-0">Promo code</h6>
-            <small>EXAMPLECODE</small>
-          </div>
-          <span class="text-success">-$5</span>
-        </li>
-        <li class="list-group-item d-flex justify-content-between">
-          <span>Total (USD)</span>
-          <strong>$20</strong>
-        </li>
-      </ul>
-
-      <form class="card p-2">
-        <div class="input-group">
-          <input type="text" class="form-control" placeholder="Promo code">
-          <div class="input-group-append">
-            <button type="submit" class="btn btn-secondary">Redeem</button>
-          </div>
-        </div>
-      </form>
-    </div>
-    <div class="col-md-8 order-md-1">
-      <h4 class="mb-3">Billing address</h4>
-      <form class="needs-validation" novalidate>
-        <div class="row">
-          <div class="col-md-6 mb-3">
-            <label for="firstName">First name</label>
-            <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
-            <div class="invalid-feedback">
-              Valid first name is required.
-            </div>
-          </div>
-          <div class="col-md-6 mb-3">
-            <label for="lastName">Last name</label>
-            <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
-            <div class="invalid-feedback">
-              Valid last name is required.
-            </div>
-          </div>
-        </div>
-
-        <div class="mb-3">
-          <label for="username">Username</label>
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text">@</span>
-            </div>
-            <input type="text" class="form-control" id="username" placeholder="Username" required>
-            <div class="invalid-feedback" style="width: 100%;">
-              Your username is required.
-            </div>
-          </div>
-        </div>
-
-        <div class="mb-3">
-          <label for="email">Email <span class="text-muted">(Optional)</span></label>
-          <input type="email" class="form-control" id="email" placeholder="you@example.com">
-          <div class="invalid-feedback">
-            Please enter a valid email address for shipping updates.
-          </div>
-        </div>
-
-        <div class="mb-3">
-          <label for="address">Address</label>
-          <input type="text" class="form-control" id="address" placeholder="1234 Main St" required>
-          <div class="invalid-feedback">
-            Please enter your shipping address.
-          </div>
-        </div>
-
-        <div class="mb-3">
-          <label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>
-          <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
-        </div>
-
-        <div class="row">
-          <div class="col-md-5 mb-3">
-            <label for="country">Country</label>
-            <select class="custom-select d-block w-100" id="country" required>
-              <option value="">Choose...</option>
-              <option>United States</option>
-            </select>
-            <div class="invalid-feedback">
-              Please select a valid country.
-            </div>
-          </div>
-          <div class="col-md-4 mb-3">
-            <label for="state">State</label>
-            <select class="custom-select d-block w-100" id="state" required>
-              <option value="">Choose...</option>
-              <option>California</option>
-            </select>
-            <div class="invalid-feedback">
-              Please provide a valid state.
-            </div>
-          </div>
-          <div class="col-md-3 mb-3">
-            <label for="zip">Zip</label>
-            <input type="text" class="form-control" id="zip" placeholder="" required>
-            <div class="invalid-feedback">
-              Zip code required.
-            </div>
-          </div>
-        </div>
-        <hr class="mb-4">
-        <div class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input" id="same-address">
-          <label class="custom-control-label" for="same-address">Shipping address is the same as my billing
-            address</label>
-        </div>
-        <div class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input" id="save-info">
-          <label class="custom-control-label" for="save-info">Save this information for next time</label>
-        </div>
-        <hr class="mb-4">
-
-        <h4 class="mb-3">Payment</h4>
-
-        <div class="d-block my-3">
-          <div class="custom-control custom-radio">
-            <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked required>
-            <label class="custom-control-label" for="credit">Credit card</label>
-          </div>
-          <div class="custom-control custom-radio">
-            <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required>
-            <label class="custom-control-label" for="debit">Debit card</label>
-          </div>
-          <div class="custom-control custom-radio">
-            <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required>
-            <label class="custom-control-label" for="paypal">Paypal</label>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6 mb-3">
-            <label for="cc-name">Name on card</label>
-            <input type="text" class="form-control" id="cc-name" placeholder="" required>
-            <small class="text-muted">Full name as displayed on card</small>
-            <div class="invalid-feedback">
-              Name on card is required
-            </div>
-          </div>
-          <div class="col-md-6 mb-3">
-            <label for="cc-number">Credit card number</label>
-            <input type="text" class="form-control" id="cc-number" placeholder="" required>
-            <div class="invalid-feedback">
-              Credit card number is required
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-3 mb-3">
-            <label for="cc-expiration">Expiration</label>
-            <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
-            <div class="invalid-feedback">
-              Expiration date required
-            </div>
-          </div>
-          <div class="col-md-3 mb-3">
-            <label for="cc-expiration">CVV</label>
-            <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
-            <div class="invalid-feedback">
-              Security code required
-            </div>
-          </div>
-        </div>
-        <hr class="mb-4">
-        <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
-      </form>
-    </div>
+<!-- breadcrumbs -->
+<div class="breadcrumbs">
+  <div class="container">
+    <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
+      <li><a href="home"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
+      <li class="active">Checkout</li>
+    </ol>
   </div>
 </div>
+<!-- //breadcrumbs -->
+<div class="container bootstrap snippet" style="padding-top:60px ;">
+  <div class="row">
+    <div class="col-sm-12">
+      <ul class="nav nav-tabs" style="margin-bottom:40px ;">
+        <li id="first" class="active"><a >Shipping Information</a></li>
+        <li id ="second"><a >Orders</a></li>
+      </ul>
+
+
+      <div class="tab-content">
+        <div class="tab-pane active" id="home">
+
+          <form class="form">
+
+            <div class="col-xs-6">
+              <label for="first_name">
+                <h4>First name</h4>
+              </label>
+              <input type="text" class="form-control" name="first_name" id="first_name" value={{info?.name}}
+                placeholder="first name" title="Edit your first name from profile page" #name disabled>
+            </div>
+
+            <div class="col-xs-6">
+              <label for="last_name">
+                <h4>Last name </h4>
+              </label>
+              <input type="text" class="form-control" name="last_name" id="last_name" value={{info?.lastname}}
+                placeholder="Last name" title="Edit your last name from profile page" #lastname disabled>
+            </div>
+
+            <div class="col-xs-6">
+              <label for="email">
+                <h4>Email</h4>
+              </label>
+              <input type="email" class="form-control" name="email" id="email" value={{info?.email}} placeholder="Email"
+                title="Edit your e-mail from profile page" #email disabled>
+            </div>
+
+            <div class="col-xs-6">
+              <label for="phone">
+                <h4>Phone</h4>
+              </label>
+              <input type="text" class="form-control" name="phone" id="phone" value={{form?.phone}}
+                placeholder="Phone Number" title="Add phone number" #phone>
+            </div>
+
+            <div class="col-xs-6">
+              <label for="address">
+                <h4>Address</h4>
+              </label>
+              <input type="text" class="form-control" value={{form?.address}} placeholder="Address"
+                title="Add your address" #address>
+            </div>
+            <div class="col-xs-6">
+              <label for="city">
+                <h4>City</h4>
+              </label>
+              <input type="text" class="form-control" value={{form?.city}} placeholder="City"
+                title="Add your city" #city>
+            </div>
+            <div class="col-xs-6">
+              <label for="code">
+                <h4>Postal Code</h4>
+              </label>
+              <input type="text" class="form-control" value={{form?.code}} placeholder="Postal Code"
+                title="Add your Postal Code" #code>
+            </div>
+
+
+
+            <div class="col-xs-12" style="margin-left:960px">
+              <br>
+              <br>
+              <a data-toggle="tab" href="#messages"><button type="button" class="btn btn-lg" style="width:150px; color: white; background-color: #fe9126;"
+                (click)="setPurchase(address.value, city.value, code.value, phone.value)">
+                Next ></button></a>
+            </div>
+
+          </form>
+        </div>
+        <!--/tab-pane-->
+        <div class="tab-pane" id="messages">
+          <div class="table-responsive" style="margin-left:70px">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col"> </th>
+                  <th scope="col">Product</th>
+                  <th style="width:90px" scope="col" class="text-center">Quantity</th>
+                  <th scope="col" class="text-right">Price</th>
+                  <th> </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let purchaseDetail of cartApiService?.purchaseDetailsList">
+                  <td style="width:120px" ><img style="padding-left: 20px;width:70px;height:50px"src="{{purchaseDetail?.product?.image}}" /> </td>
+                  <td style="width:350px">{{purchaseDetail?.product?.name}}</td>
+                  <td>
+                    <input class="form-control" style="width:100px" type="number" #qty min="1" value={{purchaseDetail?.quantity}}
+                      (change)="calculatePrice(qty.value, purchaseDetail?.product?.price, purchaseDetail?.product?.discount, purchaseDetail?._id)" />
+                  </td>
+                  <td class="text-right">{{purchaseDetail?.subTotal | number:'.3'}}DT</td>
+                  <td class="text-right" style="padding-right: 20px;"><button class="btn btn-sm btn-danger"
+                      (click)="delete(purchaseDetail?._id)"><i class="fa fa-trash"></i> </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td><strong>Sub-Total</strong></td>
+                  <td class="text-right">{{calculateSubTotal() | number:'.3'}}DT</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td><strong>Shipping</strong></td>
+                  <td class="text-right">6.000DT</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td><strong>Total</strong></td>
+                  <td class="text-right"><strong>{{calculateTotal() | number:'.3'}}DT</strong></td>
+                  <td style="visibility: hidden;"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-xs-12" style="margin-left:740px">
+            <br>
+            <a data-toggle="tab" href="#home"><button class="btn btn-lg" type="button"
+              style="width:150px ; margin-right:10px ; color: white; background-color: rgb(124, 124, 124);" (click)="previous()">
+              < Previous</button></a>
+            <button type="button" class="btn btn-lg" style="width: 200px; color: white; background-color: #fe9126;">
+              Confirm</button>
+          </div>
+
+        </div>
+      </div>
+      <!--/tab-pane-->
+    </div>
+    <!--/tab-content-->
+
+  </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<!--/row-->
 <app-footer></app-footer>
-
-
 <script>
-  // Example starter JavaScript for disabling form submissions if there are invalid fields
-  (function () {
-    'use strict';
+  $(document).ready(function () {
 
-    window.addEventListener('load', function () {
-      // Fetch all the forms we want to apply custom Bootstrap validation styles to
-      var forms = document.getElementsByClassName('needs-validation');
 
-      // Loop over them and prevent submission
-      var validation = Array.prototype.filter.call(forms, function (form) {
-        form.addEventListener('submit', function (event) {
-          if (form.checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
-          }
-          form.classList.add('was-validated');
-        }, false);
-      });
-    }, false);
-  })();
+    var readURL = function (input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+          $('.avatar').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+
+
+    $(".file-upload").on('change', function () {
+      readURL(this);
+    });
+  });
 </script>

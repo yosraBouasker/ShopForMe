@@ -4,6 +4,8 @@ const purchase = new mongoose.Schema({
   client: { type: mongoose.Schema.Types.ObjectId, ref: 'client' },
   orderDate: Date,
   shippingDate: Date,
+  shippingAddress: String,
+  phone: String,
   total: Number,
   purchaseDetails: [{ type: mongoose.Schema.Types.ObjectId, ref: 'purchaseDetail' }]
 })

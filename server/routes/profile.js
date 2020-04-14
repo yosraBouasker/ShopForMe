@@ -11,7 +11,7 @@ router.post('/update/:id', async (req, res) => {
 })
 
 router.get('/info/:id', async (req, res) => {
-  const userResult = await user.find({ "_id": req.params.id }).exec();
+  const userResult = await user.find({ "_id": req.params.id }).populate({path : 'client'}).exec();
   res.send({ userResult });
 })
 
