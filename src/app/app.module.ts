@@ -23,6 +23,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { CartComponent } from './cart/cart.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { CheckoutComponent } from './checkout/checkout.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +39,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     NewOffersComponent,
     AboutComponent,
     ProfileComponent,
-    CartComponent
+    CartComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,
