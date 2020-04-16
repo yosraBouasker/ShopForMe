@@ -3,122 +3,234 @@
 <!-- breadcrumbs -->
 <div class="breadcrumbs">
   <div class="container">
-    <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
-      <li><a href="home"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
+    <ol
+      class="breadcrumb breadcrumb1 animated wow slideInLeft"
+      data-wow-delay=".5s"
+    >
+      <li>
+        <a href="home"
+          ><span class="glyphicon glyphicon-home" aria-hidden="true"></span
+          >Home</a
+        >
+      </li>
       <li class="active">Checkout</li>
     </ol>
   </div>
 </div>
 <!-- //breadcrumbs -->
-<div class="container bootstrap snippet" style="padding-top:60px ;">
+<div class="container bootstrap snippet" style="padding-top: 60px;">
   <div class="row">
     <div class="col-sm-12">
-      <ul class="nav nav-tabs" style="margin-bottom:40px ;">
-        <li id="first" class="active"><a >Shipping Information</a></li>
-        <li id ="second"><a >Orders</a></li>
+      <ul class="nav nav-tabs" style="margin-bottom: 40px;">
+        <li id="first" class="active"><a>Shipping Information</a></li>
+        <li id="second"><a>Orders</a></li>
       </ul>
-
 
       <div class="tab-content">
         <div class="tab-pane active" id="home">
-
           <form class="form">
-
             <div class="col-xs-6">
               <label for="first_name">
                 <h4>First name</h4>
               </label>
-              <input type="text" class="form-control" name="first_name" id="first_name" value={{info?.name}}
-                placeholder="first name" title="Edit your first name from profile page" #name disabled>
+              <input
+                type="text"
+                class="form-control"
+                name="first_name"
+                id="first_name"
+                value="{{ info?.name }}"
+                placeholder="first name"
+                title="Edit your first name from profile page"
+                #name
+                disabled
+              />
             </div>
 
             <div class="col-xs-6">
               <label for="last_name">
-                <h4>Last name </h4>
+                <h4>Last name</h4>
               </label>
-              <input type="text" class="form-control" name="last_name" id="last_name" value={{info?.lastname}}
-                placeholder="Last name" title="Edit your last name from profile page" #lastname disabled>
+              <input
+                type="text"
+                class="form-control"
+                name="last_name"
+                id="last_name"
+                value="{{ info?.lastname }}"
+                placeholder="Last name"
+                title="Edit your last name from profile page"
+                #lastname
+                disabled
+              />
             </div>
 
             <div class="col-xs-6">
               <label for="email">
                 <h4>Email</h4>
               </label>
-              <input type="email" class="form-control" name="email" id="email" value={{info?.email}} placeholder="Email"
-                title="Edit your e-mail from profile page" #email disabled>
+              <input
+                type="email"
+                class="form-control"
+                name="email"
+                id="email"
+                value="{{ info?.email }}"
+                placeholder="Email"
+                title="Edit your e-mail from profile page"
+                #email
+                disabled
+              />
             </div>
 
             <div class="col-xs-6">
               <label for="phone">
                 <h4>Phone</h4>
               </label>
-              <input type="text" class="form-control" name="phone" id="phone" value={{form?.phone}}
-                placeholder="Phone Number" title="Add phone number" #phone>
+              <input
+                type="text"
+                class="form-control"
+                name="phone"
+                id="phone"
+                value="{{ form?.phone }}"
+                placeholder="Phone Number"
+                title="Add phone number"
+                #phone
+              />
             </div>
 
             <div class="col-xs-6">
               <label for="address">
                 <h4>Address</h4>
               </label>
-              <input type="text" class="form-control" value={{form?.address}} placeholder="Address"
-                title="Add your address" #address>
+              <input
+                type="text"
+                class="form-control"
+                value="{{ form?.address }}"
+                placeholder="Address"
+                title="Add your address"
+                #address
+              />
             </div>
             <div class="col-xs-6">
               <label for="city">
                 <h4>City</h4>
               </label>
-              <input type="text" class="form-control" value={{form?.city}} placeholder="City"
-                title="Add your city" #city>
+              <input
+                type="text"
+                class="form-control"
+                value="{{ form?.city }}"
+                placeholder="City"
+                title="Add your city"
+                #city
+              />
             </div>
             <div class="col-xs-6">
               <label for="code">
                 <h4>Postal Code</h4>
               </label>
-              <input type="text" class="form-control" value={{form?.code}} placeholder="Postal Code"
-                title="Add your Postal Code" #code>
+              <input
+                type="text"
+                class="form-control"
+                value="{{ form?.code }}"
+                placeholder="Postal Code"
+                title="Add your Postal Code"
+                #code
+              />
             </div>
 
-
-
-            <div class="col-xs-12" style="margin-left:960px">
-              <br>
-              <br>
-              <a data-toggle="tab" href="#messages"><button type="button" class="btn btn-lg" style="width:150px; color: white; background-color: #fe9126;"
-                (click)="setPurchase(address.value, city.value, code.value, phone.value)">
-                Next ></button></a>
+            <div class="col-xs-12" style="margin-left: 960px;">
+              <br />
+              <br />
+              <a data-toggle="tab" href="#messages"
+                ><button
+                  type="button"
+                  class="btn btn-lg"
+                  style="width: 150px; color: white; background-color: #fe9126;"
+                  (click)="
+                    setPurchase(
+                      address.value,
+                      city.value,
+                      code.value,
+                      phone.value
+                    )
+                  "
+                >
+                  Next >
+                </button></a
+              >
             </div>
-
           </form>
         </div>
         <!--/tab-pane-->
         <div class="tab-pane" id="messages">
-          <div class="loginStyle" style="padding-bottom: 70px;" *ngIf="isEmpty()">
-            <img src="assets/images/empty-cart.jpg" style="margin-left: 280px;
-            width: 600px;
-            margin-top: 70px;">
+          <div
+            class="loginStyle"
+            style="padding-bottom: 70px;"
+            *ngIf="isEmpty()"
+          >
+            <img
+              src="assets/images/empty-cart.jpg"
+              style="margin-left: 280px; width: 600px; margin-top: 70px;"
+            />
           </div>
-          <div class="table-responsive" style="margin-left:70px" *ngIf="!isEmpty()">
+          <div
+            class="table-responsive"
+            style="margin-left: 70px;"
+            *ngIf="!isEmpty()"
+          >
             <table class="table table-striped">
               <thead>
                 <tr>
-                  <th scope="col"> </th>
+                  <th scope="col"></th>
                   <th scope="col">Product</th>
-                  <th style="width:90px" scope="col" class="text-center">Quantity</th>
+                  <th style="width: 90px;" scope="col" class="text-center">
+                    Quantity
+                  </th>
                   <th scope="col" class="text-right">Price</th>
-                  <th> </th>
+                  <th></th>
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let purchaseDetail of cartApiService?.purchaseDetailsList">
-                  <td style="width:120px" ><img style="padding-left: 20px;width:70px;height:50px"src="{{purchaseDetail?.product?.image}}" /> </td>
-                  <td style="width:350px">{{purchaseDetail?.product?.name}}</td>
-                  <td>
-                    <input class="form-control" style="width:100px" type="number" #qty min="1" value={{purchaseDetail?.quantity}}
-                      (change)="calculatePrice(qty.value, purchaseDetail?.product?.price, purchaseDetail?.product?.discount, purchaseDetail?._id)" />
+                <tr
+                  *ngFor="
+                    let purchaseDetail of cartApiService?.purchaseDetailsList
+                  "
+                >
+                  <td style="width: 120px;">
+                    <img
+                      style="padding-left: 20px; width: 70px; height: 50px;"
+                      src="{{ purchaseDetail?.product?.image }}"
+                    />
                   </td>
-                  <td class="text-right">{{purchaseDetail?.subTotal | number:'.3'}}DT</td>
-                  <td class="text-right" style="padding-right: 20px;"><button class="btn btn-sm btn-danger"
-                      (click)="delete(purchaseDetail?._id)"><i class="fa fa-trash"></i> </button>
+                  <td style="width: 350px;">
+                    {{ purchaseDetail?.product?.name }}
+                  </td>
+                  <td>
+                    <input
+                      class="form-control"
+                      style="width: 100px;"
+                      type="number"
+                      #qty
+                      min="1"
+                      value="{{ purchaseDetail?.quantity }}"
+                      (change)="
+                        calculatePrice(
+                          qty.value,
+                          purchaseDetail?.product?.price,
+                          purchaseDetail?.product?.discount,
+                          purchaseDetail?._id
+                        )
+                      "
+                    />
+                  </td>
+                  <td class="text-right">
+                    {{ purchaseDetail?.subTotal | number: ".3" }}DT
+                  </td>
+                  <td class="text-right" style="padding-right: 20px;">
+                    <button
+                      class="btn btn-sm btn-danger"
+                      (click)="delete(purchaseDetail?._id)"
+                    >
+                      <i class="fa fa-trash"></i>
+                    </button>
                   </td>
                 </tr>
                 <tr>
@@ -126,7 +238,9 @@
                   <td></td>
                   <td></td>
                   <td><strong>Sub-Total</strong></td>
-                  <td class="text-right">{{calculateSubTotal() | number:'.3'}}DT</td>
+                  <td class="text-right">
+                    {{ calculateSubTotal() | number: ".3" }}DT
+                  </td>
                 </tr>
                 <tr>
                   <td></td>
@@ -140,56 +254,271 @@
                   <td></td>
                   <td></td>
                   <td><strong>Total</strong></td>
-                  <td class="text-right"><strong>{{calculateTotal() | number:'.3'}}DT</strong></td>
+                  <td class="text-right">
+                    <strong>{{ calculateTotal() | number: ".3" }}DT</strong>
+                  </td>
                   <td style="visibility: hidden;"></td>
                 </tr>
               </tbody>
             </table>
           </div>
-          <div class="col-xs-12" style="margin-left:740px">
-            <br>
-            <a data-toggle="tab" href="#home"><button class="btn btn-lg" type="button"
-              style="width:150px ; margin-right:10px ; color: white; background-color: rgb(124, 124, 124);" (click)="previous()">
-              < Previous</button></a>
-            <button type="button" class="btn btn-lg" style="width: 200px; color: white; background-color: #fe9126;" *ngIf="!isEmpty()">
-              Confirm</button>
+          <div class="col-xs-12" style="margin-left: 740px;" *ngIf="!isEmpty()">
+            <br />
+            <a data-toggle="tab" href="#home"
+              ><button
+                class="btn btn-lg"
+                type="button"
+                style="
+                  width: 150px;
+                  margin-right: 10px;
+                  color: white;
+                  background-color: rgb(124, 124, 124);
+                "
+                (click)="previous()"
+              >
+                < Previous
+              </button></a
+            >
+            <button
+              *ngIf="!isEmpty()"
+              type="button"
+              class="btn btn-lg"
+              style="width: 200px; color: white; background-color: #fe9126;"
+              data-toggle="modal"
+              data-target="#confirmModal"
+              (click)="confirm()"
+            >
+              Confirm
+            </button>
           </div>
-
+          <div
+            class="col-xs-12"
+            style="margin-left: 473px; margin-top: -130px;"
+            *ngIf="isEmpty()"
+          >
+            <a href="shop">
+              <button
+                type="button"
+                class="btn btn-lg"
+                style="width: 200px; color: white; background-color: #fe9126;"
+              >
+                Go to Shop
+              </button></a
+            >
+          </div>
         </div>
       </div>
       <!--/tab-pane-->
     </div>
     <!--/tab-content-->
-
   </div>
 </div>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
 
 <!--/row-->
+
+<div
+  class="modal fade"
+  id="confirmModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="confirmModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" style="margin-left: 370px;" role="document">
+    <div class="modal-content" style="width: 600px;">
+      <div class="modal-header">
+        <h4 class="modal-title" id="exampleModalLabel">CONFIRM PURCHASE</h4>
+        <button
+          style="margin-top: -30px;"
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true" style="font-size: 40px;">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container mb-4">
+          <div class="row">
+            <div class="col-12">
+              <p
+                style="
+                  width: 560px;
+                  margin-bottom: 12px;
+                  margin-left: 15px;
+                  font-weight: 600;
+                "
+              >
+                <i class="far fa fa-clipboard" style="color: #5cb85c;"></i>
+                Your shipping information
+              </p>
+              <div class="table-responsive">
+                <table class="table table-striped" style="width: 48%;">
+                  <tbody>
+                    <tr>
+                      <td style="font-weight: 600; width: 150px;">Full name</td>
+                      <td>{{ info?.name }} {{ info?.lastname }}</td>
+                    </tr>
+                    <tr>
+                      <td style="font-weight: 600; width: 150px;">Email</td>
+                      <td>{{ info?.email }}</td>
+                    </tr>
+                    <tr>
+                      <td style="font-weight: 600; width: 150px;">Phone</td>
+                      <td>(+216) {{ form?.phone }}</td>
+                    </tr>
+                    <tr>
+                      <td style="font-weight: 600; width: 150px;">Address</td>
+                      <td>
+                        {{ form?.address }}, {{ form?.code }} {{ form?.city }}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="font-weight: 600; width: 150px;">
+                        Total price
+                      </td>
+                      <td>
+                        <strong>{{ calculateTotal() | number: ".3" }}DT</strong>
+                        (Delivery fees included)
+                      </td>
+                    </tr>
+                    <tr></tr>
+                  </tbody>
+                </table>
+                <p
+                  style="
+                    width: 560px;
+                    margin-top: 30px;
+                    margin-bottom: 10px;
+                    margin-left: 20px;
+                  "
+                >
+                  <i
+                    class="fas fa fa-truck"
+                    style="font-size: 18px; color: #5cb85c;"
+                  ></i>
+                  Your order will be delivered on
+                  <span style="font-weight: 600; font-style: italic;">{{
+                    form?.shippingDate
+                  }}</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div class="col mb-2">
+          <button
+            style="margin-left: 20px; width: 25%;"
+            type="button"
+            class="btn btn-light text-uppercase"
+            data-dismiss="modal"
+          >
+            Cancel
+          </button>
+          <a>
+            <button
+              style="width: 25%; margin-left: 10px;"
+              (click)="order()"
+              class="btn btn-light btn-success text-uppercase"
+              data-toggle="modal"
+              data-target="#orderModal"
+              data-dismiss="modal"
+            >
+              Order Now
+            </button>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  class="modal fade"
+  id="orderModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="orderModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" style="margin-left: 370px;" role="document">
+    <div class="modal-content" style="width: 600px;">
+      <div class="modal-header">
+        <h4 class="modal-title" id="exampleModalLabel">
+          THANK YOU FOR YOUR PURCHASE!
+        </h4>
+        <button
+          style="margin-top: -30px;"
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true" style="font-size: 40px;">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container mb-4">
+          <div class="row">
+            <div class="col-12">
+              <p
+                style="
+                  width: 560px;
+                  margin-top: 10px;
+                  margin-bottom: 10px;
+                  margin-left: 20px;
+                "
+              >
+                <i
+                  class="fas fa fa-check-circle"
+                  style="font-size: 18px; color: #5cb85c;"
+                ></i>
+                <span> Your order has been successfully submitted.</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div class="col mb-2">
+          <a href="profile"> <!--FIX ME-->
+            <button
+              style="width: 25%; margin-left: 10px;"
+              class="btn btn-light btn-success text-uppercase"
+            >
+              My orders
+            </button>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <app-footer></app-footer>
 <script>
   $(document).ready(function () {
-
-
     var readURL = function (input) {
       if (input.files && input.files[0]) {
         var reader = new FileReader();
 
         reader.onload = function (e) {
-          $('.avatar').attr('src', e.target.result);
-        }
+          $(".avatar").attr("src", e.target.result);
+        };
 
         reader.readAsDataURL(input.files[0]);
       }
-    }
+    };
 
-
-    $(".file-upload").on('change', function () {
+    $(".file-upload").on("change", function () {
       readURL(this);
     });
   });

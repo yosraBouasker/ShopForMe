@@ -14,6 +14,7 @@ export class CheckoutComponent implements OnInit {
   info;
   cart;
   purchaseDetails = [];
+  total;
 
   constructor(public cartApiService: CartService, private apiService: ApiAuthService, private profileService: ProfileService, private router: Router, private activatedRoute: ActivatedRoute) {
   }
@@ -27,16 +28,10 @@ export class CheckoutComponent implements OnInit {
   }
 
   setPurchase(add, cit, cod, phon) {
-    this.form = {
-      address: add,
-      city: cit,
-      code: cod,
-      phone: phon,
-    }
-  var first = document.getElementById("first");
-  first.className = "";
-  var second = document.getElementById("second");
-  second.className = "active";
+    var first = document.getElementById("first");
+    first.className = "";
+    var second = document.getElementById("second");
+    second.className = "active";
     this.apiService.decodeToken();
     var address = add + ", " + cit + ", " + cod;
     var clientId = this.apiService.clientId;
@@ -49,6 +44,15 @@ export class CheckoutComponent implements OnInit {
       phone: phon,
       shippingDate: sdate,
       orderDate: odate,
+    }
+    var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    let shdate = sdate.toLocaleDateString("en-US", options)
+    this.form = {
+      address: add,
+      city: cit,
+      code: cod,
+      phone: phon,
+      shippingDate: shdate,
     }
 
     this.cartApiService.updatePurchase(this.cartApiService.cart._id, purch).subscribe((res: any) => {
@@ -86,11 +90,7 @@ export class CheckoutComponent implements OnInit {
     }
   }
   public isEmpty(): boolean {
-    if (this.cartApiService.cart == undefined
-      || this.cartApiService.cart == null) {
-      return true;
-    }
-    else if (this.cartApiService.cart.purchaseDetails == undefined
+    if (this.cartApiService.cart.purchaseDetails == undefined
       || this.cartApiService.cart.purchaseDetails.length == 0) {
       return true;
     }
@@ -106,6 +106,7 @@ export class CheckoutComponent implements OnInit {
   }
 
   calculateTotal(): number {
+    this.total = this.calculateSubTotal() + 6;
     return this.calculateSubTotal() + 6;
   }
 
@@ -118,6 +119,23 @@ export class CheckoutComponent implements OnInit {
         this.purchaseDetails = res.data.purchaseDetails;
         this.cartApiService.purchaseDetailsList = res.data.purchaseDetails;
       });
+    });
+  }
+
+  confirm(){
+    const purchase = {
+      'total': this.total,
+    }
+    this.cartApiService.updatePurchase(this.cartApiService.cart._id, purchase).subscribe((res: any) => {
+    });
+  }
+
+  order() {
+    const purchase = {
+      'progress': 'accepted',
+    }
+    this.cartApiService.updatePurchase(this.cartApiService.cart._id, purchase).subscribe((res: any) => {
+      localStorage.removeItem('cart');
     });
   }
 

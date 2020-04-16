@@ -7,6 +7,7 @@ const purchase = new mongoose.Schema({
   shippingAddress: String,
   phone: String,
   total: Number,
+  progress: String,
   purchaseDetails: [{ type: mongoose.Schema.Types.ObjectId, ref: 'purchaseDetail' }]
 })
 
