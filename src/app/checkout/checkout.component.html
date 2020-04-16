@@ -92,7 +92,12 @@
         </div>
         <!--/tab-pane-->
         <div class="tab-pane" id="messages">
-          <div class="table-responsive" style="margin-left:70px">
+          <div class="loginStyle" style="padding-bottom: 70px;" *ngIf="isEmpty()">
+            <img src="assets/images/empty-cart.jpg" style="margin-left: 280px;
+            width: 600px;
+            margin-top: 70px;">
+          </div>
+          <div class="table-responsive" style="margin-left:70px" *ngIf="!isEmpty()">
             <table class="table table-striped">
               <thead>
                 <tr>
@@ -146,7 +151,7 @@
             <a data-toggle="tab" href="#home"><button class="btn btn-lg" type="button"
               style="width:150px ; margin-right:10px ; color: white; background-color: rgb(124, 124, 124);" (click)="previous()">
               < Previous</button></a>
-            <button type="button" class="btn btn-lg" style="width: 200px; color: white; background-color: #fe9126;">
+            <button type="button" class="btn btn-lg" style="width: 200px; color: white; background-color: #fe9126;" *ngIf="!isEmpty()">
               Confirm</button>
           </div>
 
