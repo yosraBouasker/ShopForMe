@@ -5,7 +5,7 @@ const client = new mongoose.Schema({
   birthDate: Date,
   location: String,
   phone : String,
-  image:{ type: String, default: 'http://ssl.gstatic.com/accounts/ui/avatar_2x.png' },
+  image: String,
   purchases: [{ type: mongoose.Schema.Types.ObjectId, ref: 'purchase' }],
 })
 

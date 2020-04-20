@@ -12,6 +12,8 @@ app.use(function(req, res, next) {
     next();
   });
 
+app.use('/uploads', express.static('uploads')); 
+
 const auth = require('./server/routes/auth')
 app.use('/auth', auth);
 
