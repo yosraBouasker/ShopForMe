@@ -118,9 +118,10 @@
               <div class="col-md-12" *ngFor="let purchase of purchases.slice().reverse(); let i=index;">
                 <div class="well">
                   <div class="row">
-                    <h4 style="margin:10px;margin-bottom:15px;font-size: 20px;margin-left: 15px;">Order n°{{totalPurchases - i}}</h4>
+                    <h4 style="margin:10px;margin-bottom:15px;font-size: 20px;margin-left: 15px;">Order
+                      n°{{totalPurchases - i}}</h4>
                     <button class="btn btn-warning" (click)="orderDetail(i)"
-                    style="margin-right: 12px;float: right;margin-top: -45px;font-weight: 600;">
+                      style="margin-right: 12px;float: right;margin-top: -45px;font-weight: 600;">
                       View Details</button>
                   </div>
                   <ul class="list-group" style="width: 90%;margin-left: 40px;">
@@ -141,49 +142,45 @@
                       </span>
                     </li>
                   </ul>
-            <div id={{i}} style="margin-top:35px; visibility: hidden; height: 0;">
-              <h4 style="font-size: 20px;margin-top:15px;">Order Details</h4>
-              <div class="table-responsive" style="width:90%;margin-left: 40px;">
-                <table class="table table-striped">
-                  <thead>
-                    <tr>
-                      <th scope="col"></th>
-                      <th scope="col">Product</th>
-                      <th scope="col" class="text-center">
-                        Quantity
-                      </th>
-                      <th scope="col" class="text-right">Price</th>
-                      <th></th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr
-                      *ngFor="
+                  <div id={{i}} style="margin-top:35px; visibility: hidden; height: 0;">
+                    <h4 style="font-size: 20px;margin-top:15px;">Order Details</h4>
+                    <div class="table-responsive" style="width:90%;margin-left: 40px;">
+                      <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th scope="col"></th>
+                            <th scope="col">Product</th>
+                            <th scope="col" class="text-center">
+                              Quantity
+                            </th>
+                            <th scope="col" class="text-right">Price</th>
+                            <th></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="
                         let purchaseDetail of purchase?.purchaseDetails
-                      "
-                    >
-                      <td style="width: 120px;">
-                        <img
-                          style="padding-left: 20px; width: 70px; height: 50px;"
-                          src="{{ purchaseDetail?.product?.image }}"
-                        />
-                      </td>
-                      <td style = "width: 220px;">
-                        {{ purchaseDetail?.product?.name }}
-                      </td>
-                      <td class="text-center">
-                        {{ purchaseDetail?.quantity }}
-                      </td>
-                      <td class="text-right">
-                        {{ purchaseDetail?.subTotal | number: ".3" }}DT
-                      </td>
-                      <td class="text-right">
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
+                      ">
+                            <td style="width: 120px;">
+                              <img style="padding-left: 20px; width: 70px; height: 50px;"
+                                src="{{ purchaseDetail?.product?.image }}" />
+                            </td>
+                            <td style="width: 220px;">
+                              {{ purchaseDetail?.product?.name }}
+                            </td>
+                            <td class="text-center">
+                              {{ purchaseDetail?.quantity }}
+                            </td>
+                            <td class="text-right">
+                              {{ purchaseDetail?.subTotal | number: ".3" }}DT
+                            </td>
+                            <td class="text-right">
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
 
                   <div class="order-status" style="margin-top:120px">
 
@@ -213,7 +210,6 @@
                     </div>
 
                   </div>
-        
                 </div>
               </div>
 
