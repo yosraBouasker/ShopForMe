@@ -19,8 +19,7 @@
 
 
         <div class="text-center">
-          <img src={{info?.client.image}} class="avatar img-circle img-thumbnail"
-            alt="">
+          <img src="{{profileImage}}" class="avatar img-circle img-thumbnail" alt="">
           <div class="col-sm-10" style="margin-top:12px ;margin-left:20px ; margin-bottom:30px ; ">
             <h3>{{info?.name}} {{info?.lastname}}</h3>
           </div>
@@ -38,72 +37,74 @@
           <div class="tab-pane active" id="home">
 
             <form class="form">
-                <div class="col-xs-6">
-                  <label for="first_name">
-                    <h4>First name</h4>
-                  </label>
-                  <input type="text" class="form-control" name="first_name" id="first_name" value={{info?.name}} placeholder="First name"
-                    title="Edit your first name." #name>
-                </div>
+              <div class="col-xs-6">
+                <label for="first_name">
+                  <h4>First name</h4>
+                </label>
+                <input type="text" class="form-control" name="first_name" id="first_name" value={{info?.name}}
+                  placeholder="First name" title="Edit your first name." #name>
+              </div>
 
-                <div class="col-xs-6">
-                  <label for="last_name">
-                    <h4>Last name </h4>
-                  </label>
-                  <input type="text" class="form-control" name="last_name" id="last_name" value={{info?.lastname}} placeholder="Last name"
-                    title="Edit your last name." #lastname>
-                </div>
+              <div class="col-xs-6">
+                <label for="last_name">
+                  <h4>Last name </h4>
+                </label>
+                <input type="text" class="form-control" name="last_name" id="last_name" value={{info?.lastname}}
+                  placeholder="Last name" title="Edit your last name." #lastname>
+              </div>
 
-                <div class="col-xs-6">
-                  <label for="email">
-                    <h4>Email</h4>
-                  </label>
-                  <input disabled type="email" class="form-control" name="email" id="email" value={{info?.email}} placeholder="Email"
-                  title="Please contact us to change your email" #email>
-                </div>
+              <div class="col-xs-6">
+                <label for="email">
+                  <h4>Email</h4>
+                </label>
+                <input disabled type="email" class="form-control" name="email" id="email" value={{info?.email}}
+                  placeholder="Email" title="Please contact us to change your email" #email>
+              </div>
 
-                <div class="col-xs-6">
-                  <label for="password">
-                    <h4>Password</h4>
-                  </label>
-                  <input type="password" class="form-control" name="password" id="password" value={{info?.password}} placeholder="*********"
-                    title="Edit your password." #password>
-                </div>
+              <div class="col-xs-6">
+                <label for="password">
+                  <h4>Password</h4>
+                </label>
+                <input type="password" class="form-control" name="password" id="password" value={{info?.password}}
+                  placeholder="*********" title="Edit your password." #password>
+              </div>
 
-                <div class="col-xs-6">
-                  <label for="phone">
-                    <h4>Phone</h4>
-                  </label>
-                  <input type="text" class="form-control" name="phone" id="phone" value="(+216) {{info?.client?.phone}}" placeholder="(+216) XX XXX XXX"
-                    title="Edit your phone number." #phone>
-                </div>
+              <div class="col-xs-6">
+                <label for="phone">
+                  <h4>Phone</h4>
+                </label>
+                <input type="text" class="form-control" name="phone" id="phone" value="(+216) {{info?.client?.phone}}"
+                  placeholder="(+216) XX XXX XXX" title="Edit your phone number." #phone>
+              </div>
 
-                <div class="col-xs-6">
-                  <label for="location">
-                    <h4>Location</h4>
-                  </label>
-                  <input type="text" class="form-control" id="location" value={{info?.client?.location}} placeholder="Enter Address, City, Postal code"
-                    title="Edit your location" #location>
-                </div>
+              <div class="col-xs-6">
+                <label for="location">
+                  <h4>Location</h4>
+                </label>
+                <input type="text" class="form-control" id="location" value={{info?.client?.location}}
+                  placeholder="Enter Address, City, Postal code" title="Edit your location" #location>
+              </div>
 
-                <div class="col-xs-6">
-                  <label for="Image">
-                    <h4>Profile Image</h4>
-                  </label>
-                  <button class="form-control" style="height:40px">
-                    <input type="file" style="font-size:16px" class="text-center center-block file-upload" #image>
-                  </button>
-                </div>
+              <div class="col-xs-6">
+                <label for="Image">
+                  <h4>Profile Image</h4>
+                </label>
+                <button class="form-control" style="height:40px">
+                  <input type="file" style="font-size:16px" class="text-center center-block file-upload" #image
+                    (change)="selectImage($event)">
+                </button>
+              </div>
 
-                <div class="col-xs-12" style="margin-left:530px">
-                  <br>
-                  <br>
-                  <button class="btn btn-lg" type="button"
-                    style="width:150px ; margin-right:10px ; color: black; background-color: #dcdcdc;" (click)="resetBtn()">Reset</button>
-                  <button type="button" class="btn btn-lg" style="width:150px; color: black; background-color: #fe9126;"
-                    (click)="updateProfile(name.value, lastname.value, email.value, location.value, phone.value, image.value, password.value)">
-                    Save</button>
-                </div>
+              <div class="col-xs-12" style="margin-left:530px">
+                <br>
+                <br>
+                <button class="btn btn-lg" type="button"
+                  style="width:150px ; margin-right:10px ; color: black; background-color: #dcdcdc;"
+                  (click)="resetBtn()">Reset</button>
+                <button type="button" class="btn btn-lg" style="width:150px; color: black; background-color: #fe9126;"
+                  (click)="updateProfile(name.value, lastname.value, email.value, location.value, phone.value, image.value, password.value)">
+                  Save</button>
+              </div>
 
             </form>
           </div>
@@ -112,6 +113,111 @@
 
             <!--  ****************************HOUNI EL ORDERS YE LEBNET ************************************-->
 
+            <div class="row shop-tracking-status">
+
+              <div class="col-md-12" *ngFor="let purchase of purchases.slice().reverse(); let i=index;">
+                <div class="well">
+                  <div class="row">
+                    <h4 style="margin:10px;margin-bottom:15px;font-size: 20px;margin-left: 15px;">Order n°{{totalPurchases - i}}</h4>
+                    <button class="btn btn-warning" (click)="orderDetail(i)"
+                    style="margin-right: 12px;float: right;margin-top: -45px;font-weight: 600;">
+                      View Details</button>
+                  </div>
+                  <ul class="list-group" style="width: 90%;margin-left: 40px;">
+                    <li class="list-group-item">
+                      <span class="prefix" style="font-weight: 600;">Order Date </span>
+                      <span class="label label-success"
+                        style="font-size: 100%;margin-left: 30px;">{{purchase?.orderDate | date : 'medium'}}</span>
+                    </li>
+                    <li class="list-group-item">
+                      <span class="prefix" style="font-weight: 600;">Shipping Date </span>
+                      <span class="label label-success"
+                        style="font-size: 100%;margin-left: 12px;">{{purchase?.shippingDate | date : 'longDate'}}</span>
+                    </li>
+                    <li class="list-group-item">
+                      <span class="prefix" style="font-weight: 600;">Total Price </span>
+                      <span class="label label-success" style="font-size: 100%;margin-left: 35px;">
+                        {{ purchase?.total | number: ".3" }}DT
+                      </span>
+                    </li>
+                  </ul>
+            <div id={{i}} style="margin-top:35px; visibility: hidden; height: 0;">
+              <h4 style="font-size: 20px;margin-top:15px;">Order Details</h4>
+              <div class="table-responsive" style="width:90%;margin-left: 40px;">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th scope="col"></th>
+                      <th scope="col">Product</th>
+                      <th scope="col" class="text-center">
+                        Quantity
+                      </th>
+                      <th scope="col" class="text-right">Price</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr
+                      *ngFor="
+                        let purchaseDetail of purchase?.purchaseDetails
+                      "
+                    >
+                      <td style="width: 120px;">
+                        <img
+                          style="padding-left: 20px; width: 70px; height: 50px;"
+                          src="{{ purchaseDetail?.product?.image }}"
+                        />
+                      </td>
+                      <td style = "width: 220px;">
+                        {{ purchaseDetail?.product?.name }}
+                      </td>
+                      <td class="text-center">
+                        {{ purchaseDetail?.quantity }}
+                      </td>
+                      <td class="text-right">
+                        {{ purchaseDetail?.subTotal | number: ".3" }}DT
+                      </td>
+                      <td class="text-right">
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+                  <div class="order-status" style="margin-top:120px">
+
+                    <div class="order-status-timeline">
+                      <div class="order-status-timeline-completion c3"></div>
+                    </div>
+
+                    <div class="image-order-status image-order-status-new active img-circle">
+                      <span class="status">Accepted</span>
+                      <div class="icon"></div>
+                    </div>
+                    <div class="image-order-status image-order-status-active active img-circle">
+                      <span class="status">In progress</span>
+                      <div class="icon"></div>
+                    </div>
+                    <div class="image-order-status image-order-status-intransit active img-circle">
+                      <span class="status">Shipped</span>
+                      <div class="icon"></div>
+                    </div>
+                    <div class="image-order-status image-order-status-delivered active img-circle">
+                      <span class="status">Delivered</span>
+                      <div class="icon"></div>
+                    </div>
+                    <div class="image-order-status image-order-status-completed active img-circle">
+                      <span class="status">Completed</span>
+                      <div class="icon"></div>
+                    </div>
+
+                  </div>
+        
+                </div>
+              </div>
+
+            </div>
           </div>
         </div>
         <!--/tab-pane-->

@@ -24,8 +24,8 @@ router.get('/byId/:idPurchase', async (req, res) => {
     res.send({ data: Result })
 })
 
-router.get('/allClient/:idClient', async (req, res) => {
-    const Result = await purchase.find({ "_id": req.params.idClient }).populate({ path: 'purchaseDetails', populate: { path: 'product'}}).exec();
+router.get('/purchasesByClient/:idClient', async (req, res) => {
+    const Result = await purchase.find({ "client": req.params.idClient }).populate({ path: 'purchaseDetails', populate: { path: 'product'}}).exec();
     res.send({ data: Result })
 })
 
