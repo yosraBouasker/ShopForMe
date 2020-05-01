@@ -16,7 +16,6 @@ export class CartComponent implements OnInit {
   purchaseDetails = [];
 
   constructor(private productApiService:ApiProductService ,private apiService: ApiAuthService, public cartApiService: CartService) {
-    console.log("marhbé");
     this.idProduct = this.cartApiService.idProductToAdd;
     this.apiService.decodeToken();
     this.idClient = this.apiService.clientId;
@@ -55,7 +54,6 @@ export class CartComponent implements OnInit {
           let hasCart: boolean = idCart != null || idCart != undefined;
           //if never used cart    
           if (!hasCart){
-            console.log("sahha")
             let body = {};
             this.cartApiService.addPurchase(this.idClient,body).subscribe((res: any) => {
               this.cart = res.data;
@@ -71,11 +69,19 @@ export class CartComponent implements OnInit {
                 this.cartApiService.isCartEmpty = this.isEmpty();
                 this.purchaseDetails = this.cart.purchaseDetails;
                 this.cartApiService.purchaseDetailsList = res.data.purchaseDetails;
+                //get item after first add
+                var idCart = localStorage.getItem('cart');
+                this.cartApiService.getPurchase(idCart).subscribe((res: any) => {
+                  this.cart = res.data;
+                  this.cartApiService.cart = res.data;
+                  this.purchaseDetails = res.data.purchaseDetails;
+                  this.cartApiService.isCartEmpty = this.isEmpty();
+                  this.cartApiService.purchaseDetailsList = res.data.purchaseDetails;
+                });
               });
             });
           }
           else {
-            console.log("deja aandek")
             var exists: boolean = false;
             var idPurchaseDetail;
             var oldQty;

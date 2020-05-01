@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiCategoryService } from '../shared/api-category.service';
 import { ApiAuthService } from '../shared/api-auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-footer',
@@ -10,7 +11,7 @@ import { ApiAuthService } from '../shared/api-auth.service';
 export class FooterComponent implements OnInit {
   categories =[];
 
-  constructor(private apiCategoryService: ApiCategoryService, private apiService: ApiAuthService) { }
+  constructor(private apiCategoryService: ApiCategoryService, private apiService: ApiAuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.apiCategoryService.getCategories().subscribe((res: any) => {
@@ -25,6 +26,9 @@ export class FooterComponent implements OnInit {
 
   logout(){
     this.apiService.logout();
-    document.location.reload();
+    this.router.navigate(['/home'])
+          .then(() => {
+            window.location.reload();
+          });
   }
 }

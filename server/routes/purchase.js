@@ -26,7 +26,8 @@ router.get('/byId/:idPurchase', async (req, res) => {
 
 router.get('/purchasesByClient/:idClient', async (req, res) => {
     const Result = await purchase.find({ "client": req.params.idClient }).populate({ path: 'purchaseDetails', populate: { path: 'product'}}).exec();
-    res.send({ data: Result })
+    var finalResult = Result.filter(r => r.orderDate!=undefined)
+    res.send({ data: finalResult })
 })
 
 router.get('/all', async (req, res) => {
