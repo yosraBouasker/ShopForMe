@@ -58,7 +58,7 @@ export class ProfileComponent implements OnInit {
       pass=pass1;
     else
       pass=this.password;
-    phone1 = phone1.replace("(+216) ", "")
+      phone1 = phone1.replace("(+216) ", "")
     const profile = {
       name: name1,
       lastname: lastname1,
