@@ -24,6 +24,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { CartComponent } from './cart/cart.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { AdminComponent } from './admin/admin.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +41,8 @@ import { CheckoutComponent } from './checkout/checkout.component';
     AboutComponent,
     ProfileComponent,
     CartComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
