@@ -3,6 +3,7 @@ import { ApiAuthService } from '../shared/api-auth.service';
 import { CartComponent } from '../cart/cart.component';
 import { CartService } from '../shared/cart.service';
 import { ApiProductService } from '../shared/api-product.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -11,7 +12,7 @@ import { ApiProductService } from '../shared/api-product.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private apiService: ApiAuthService, private cartService: CartService, private productService: ApiProductService) { }
+  constructor(private apiService: ApiAuthService, private cartService: CartService, private productService: ApiProductService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -23,7 +24,10 @@ export class HeaderComponent implements OnInit {
   
   logout(){
     this.apiService.logout();
-    document.location.reload();
+    this.router.navigate(['/home'])
+          .then(() => {
+            window.location.reload();
+          });
   }
   openModal(val) {
     this.cartService.idProductToAdd = val;

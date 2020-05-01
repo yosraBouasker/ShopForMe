@@ -36,7 +36,6 @@ export class ShopGridComponent implements OnInit {
       this.filterProducts(id);
     } else {
       this.apiProductService.getProducts().subscribe((res: any) => {
-        //console.log(res);
         this.products = res.data;
         this.allProd = res.data;
         this.config.itemsPerPage = this.products.length;
@@ -49,8 +48,6 @@ export class ShopGridComponent implements OnInit {
 
   getSubCategoriesByCat(id){
     this.apiCategoryService.getSubCatByCat(id).subscribe((res: any) => {
-      console.log("ahiiiiiiiiiiiiiiiii");
-      console.log(res);
       this.subCategories = res.data;
 
     });
@@ -98,7 +95,6 @@ export class ShopGridComponent implements OnInit {
     var names=[];
     var prices = [];
     var filtered = [];
-    console.log(filtered)
     // reset
     if (val.value == "Default sorting") {
       if (dis.value == "All"){
@@ -113,9 +109,7 @@ export class ShopGridComponent implements OnInit {
       for (let i=0; i<this.products.length; i++){
             names[i] = this.products[i].name.toLowerCase();
         }
-        console.log(names);
       names.sort();
-      console.log(names);
       for (let j=0; j<names.length; j++) {
         for (let i=0; i<this.products.length; i++) {
             if (this.products[i].name.toLowerCase() == names[j]){
@@ -123,7 +117,6 @@ export class ShopGridComponent implements OnInit {
             }
         }
       }
-      console.log(filtered)
       this.products = filtered;
     }
     // Z-A
@@ -131,10 +124,8 @@ export class ShopGridComponent implements OnInit {
       for (let i=0; i<this.products.length; i++){
             names[i] = this.products[i].name.toLowerCase();
         }
-        console.log(names);
         names.sort();
       names.reverse();
-      console.log(names);
       for (let j=0; j<names.length; j++) {
         for (let i=0; i<this.products.length; i++) {
             if (this.products[i].name.toLowerCase() == names[j]){
@@ -142,7 +133,6 @@ export class ShopGridComponent implements OnInit {
             }
         }
       }
-      console.log(filtered)
       this.products = filtered;
     }
     // low
@@ -150,11 +140,9 @@ export class ShopGridComponent implements OnInit {
       for (let i=0; i<this.products.length; i++){
             prices[i] = this.getDiscountedPrice(this.products[i].price, this.products[i].discount);
         }
-      console.log(prices);
       prices.sort(function(a, b){
           return a - b;
       });
-      console.log(prices);
       for (let j=0; j<prices.length; j++) {
         for (let i=0; i<this.products.length; i++) {
             if (this.getDiscountedPrice(this.products[i].price, this.products[i].discount) == prices[j]){
@@ -170,7 +158,6 @@ export class ShopGridComponent implements OnInit {
             }
         }
       }
-      console.log(filtered)
       this.products = filtered;
     }
     // high
@@ -178,11 +165,9 @@ export class ShopGridComponent implements OnInit {
       for (let i=0; i<this.products.length; i++){
             prices[i] = this.getDiscountedPrice(this.products[i].price, this.products[i].discount);
         }
-      console.log(prices);
       prices.sort(function(a, b){
           return b - a;
       });
-      console.log(prices);
       for (let j=0; j<prices.length; j++) {
         for (let i=0; i<this.products.length; i++) {
             if (this.getDiscountedPrice(this.products[i].price, this.products[i].discount) == prices[j]){
@@ -198,16 +183,13 @@ export class ShopGridComponent implements OnInit {
             }
         }
       }
-      console.log(filtered)
       this.products = filtered;
     }
   }
 
   discounted(dis, val){
-    console.log(dis.value)
     var offers=[];
     if(dis.value == "All"){
-      console.log("here?")
       this.products = this.allProd;
         this.filter(val, dis);
     }
@@ -218,7 +200,6 @@ export class ShopGridComponent implements OnInit {
               offers.push(this.products[i]);
           }
       }
-      console.log(offers)
       this.products = offers;
       if (val.value != "Default sorting"){
         this.filter(val, dis);
@@ -233,7 +214,6 @@ export class ShopGridComponent implements OnInit {
 
         }
       }
-      console.log(offers)
       this.products = offers;
       if (val.value != "Default sorting"){
         this.filter(val, dis);

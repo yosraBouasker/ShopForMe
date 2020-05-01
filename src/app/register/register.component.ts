@@ -31,12 +31,9 @@ export class RegisterComponent implements OnInit {
 
   registerBtn() {
     this.message = ""
-    console.log(this.registerForm.value)
     if (this.registerForm.valid) {
       this.apiService.register(this.registerForm.value).subscribe((res: any) => {
-        console.log(res);
         if (res.message === 'ok') {
-          console.log(jwt_decode(res.token))
           localStorage.setItem('token', res.token);
           this.router.navigate(['/home'])
           .then(() => {

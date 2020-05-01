@@ -22,7 +22,6 @@ export class CheckoutComponent implements OnInit {
   ngOnInit() {
     this.profileService.decodeToken();
     this.profileService.info().subscribe((res: any) => {
-      console.log(res);
       this.info = res.userResult[0];
     })
   }
@@ -38,6 +37,7 @@ export class CheckoutComponent implements OnInit {
     var odate = new Date();
     var sdate = new Date();
     sdate.setDate(odate.getDate() + 2);
+    phon = phon.replace("(+216) ", "");
     const purch = {
       client: clientId,
       shippingAddress: address,
@@ -56,7 +56,6 @@ export class CheckoutComponent implements OnInit {
     }
 
     this.cartApiService.updatePurchase(this.cartApiService.cart._id, purch).subscribe((res: any) => {
-      console.log(res)
     });
   }
 
@@ -132,12 +131,10 @@ export class CheckoutComponent implements OnInit {
 
   order() {
     const purchase = {
-      'progress': 'accepted',
+      'progress': '25%',
     }
     this.cartApiService.updatePurchase(this.cartApiService.cart._id, purchase).subscribe((res: any) => {
       localStorage.removeItem('cart');
     });
   }
-
-
 }

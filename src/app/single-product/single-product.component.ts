@@ -19,10 +19,7 @@ export class SingleProductComponent implements OnInit {
   ngOnInit() {
     //this.apiService.decodeToken();
     const id = this.activatedRoute.snapshot.paramMap.get('id')
-    console.log(id)
-
     this.apiService.getProduct(id).subscribe((res: any) => {
-      console.log(res.data);
       this.product = res.data;
     })
   }

@@ -20,7 +20,9 @@ export class ProfileComponent implements OnInit {
   profileImage;
   purchases;
   totalPurchases;
+  config: any;
   constructor(public http: HttpClient,public cartApiService: CartService,private profileService: ProfileService, private router: Router, private activatedRoute: ActivatedRoute) {
+ 
   }
 
   ngOnInit() {
@@ -28,7 +30,11 @@ export class ProfileComponent implements OnInit {
     this.profileService.purchases().subscribe((res: any) => {
       this.purchases = res.data;
       this.totalPurchases = this.purchases.length;
-      console.log(this.purchases);
+      this.config = {
+        itemsPerPage: 3,
+        currentPage: 1,
+        totalItems: this.purchases.length
+      };
     })
 
     this.profileService.info().subscribe((res: any) => {
@@ -43,7 +49,6 @@ export class ProfileComponent implements OnInit {
       }
     })
   }
-
 
   selectImage(event){
     if (event.target.files.length > 0){
@@ -87,7 +92,6 @@ export class ProfileComponent implements OnInit {
 
   orderDetail(index){
     let div=document.getElementById(index);
-    console.log(div)
     if (div.style.visibility==="hidden"){
       div.style.visibility = "visible";
       div.style.height="auto";
@@ -96,6 +100,10 @@ export class ProfileComponent implements OnInit {
       div.style.visibility = "hidden";
       div.style.height="0";
     }
+  }
+
+  pageChanged(event){
+    this.config.currentPage = event;
   }
 
 }

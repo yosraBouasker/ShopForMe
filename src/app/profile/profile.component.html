@@ -115,7 +115,7 @@
 
             <div class="row shop-tracking-status">
 
-              <div class="col-md-12" *ngFor="let purchase of purchases.slice().reverse(); let i=index;">
+              <div class="col-md-12" *ngFor="let purchase of purchases?.slice().reverse() | paginate: config; let i=index;">
                 <div class="well">
                   <div class="row">
                     <h4 style="margin:10px;margin-bottom:15px;font-size: 20px;margin-left: 15px;">Order n°{{totalPurchases - i}}</h4>
@@ -188,7 +188,9 @@
                   <div class="order-status" style="margin-top:120px">
 
                     <div class="order-status-timeline">
-                      <div class="order-status-timeline-completion c3"></div>
+                    <div class="order-status-timeline-completion c3" 
+                    [ngStyle]="{'width': purchase?.progress}"
+                    id={{purchase?._id}}></div>
                     </div>
 
                     <div class="image-order-status image-order-status-new active img-circle">
@@ -218,6 +220,12 @@
               </div>
 
             </div>
+            <div class="clearfix"> </div>
+            <nav class="numbering">
+              <div class="pagination paging" style="text-align:right">
+                <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+              </div>
+            </nav>
           </div>
         </div>
         <!--/tab-pane-->
