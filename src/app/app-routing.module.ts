@@ -10,7 +10,8 @@ import { AboutComponent } from './about/about.component';
 import { ProfileComponent } from './profile/profile.component';
 import { CartComponent } from './cart/cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
-import { AdminComponent } from './admin/admin.component';
+import { DashboardComponent } from './AdminDashboard/dashboard/dashboard.component';
+import { CategoriesAdminComponent } from './AdminDashboard/categories-admin/categories-admin.component';
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
@@ -23,7 +24,8 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent },
   { path: 'cart', component: CartComponent },
   { path: 'checkout', component: CheckoutComponent },
-  { path: 'admin', component: AdminComponent },
+  { path: 'admin', component: DashboardComponent },
+  { path: 'categoriesAdmin', component: CategoriesAdminComponent },
   { path: '**', redirectTo: '/home', pathMatch: 'full' },
 ];
 
