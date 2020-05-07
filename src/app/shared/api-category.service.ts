@@ -25,4 +25,18 @@ export class ApiCategoryService {
   getSubCategoryName(id) {
     return this.http.get('http://localhost:3000/subCategory/name/' + id);
   }
+
+  deleteSubCategory(id){
+    var body={};
+    return this.http.post('http://localhost:3000/subCategory/delete/' + id, body);
+  }
+
+  deleteCategory(id){
+    var body={};
+    return this.http.post('http://localhost:3000/category/delete/' + id, body);
+  }
+
+  updateCategory(id, body){
+    return this.http.post('http://localhost:3000/category/update/' + id, body);
+  }
 }

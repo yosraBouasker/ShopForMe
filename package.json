@@ -33,6 +33,7 @@
     "mongoose": "^5.9.3",
     "multer": "^1.4.2",
     "ng2-search-filter": "^0.5.1",
+    "ng2-tooltip-directive": "^2.9.20",
     "ngx-pagination": "^5.0.0",
     "node-addon-api": "^2.0.0",
     "node-pre-gyp": "^0.14.0",
