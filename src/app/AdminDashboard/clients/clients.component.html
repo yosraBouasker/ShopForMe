@@ -1,0 +1,75 @@
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+    <div class="wrapper">
+      <app-admin></app-admin>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Clients</h1>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+      <!-- Default box -->
+      <div class="card card-solid">
+        <div class="card-body pb-0">
+          <div class="row d-flex align-items-stretch">
+            <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch" *ngFor="let client of clients">
+              <div class="card bg-light">
+                <div class="card-body pt-0">
+                  <div class="row">
+                    <div class="col-7">
+                        <br>
+                      <h2 class="lead"><b>{{client?.user.name}} {{client?.user.lastname}}</b></h2>
+                      <br>
+                      <p class="text-muted text-sm"><b>Email: </b> {{client?.user.email}}</p>
+                      <p class="text-muted text-sm"><b>Phone: </b> (+216) {{client?.phone}}</p>
+                      <p class="text-muted text-sm"><b>Address: </b> {{client?.location}}</p>
+                    </div>
+                    <div class="col-5 text-center">
+                        <br>
+                      <img src="http://localhost:3000/{{client?.image}}" alt="image" class="img-circle img-fluid">
+                    </div>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <div class="text-right">
+                    <a href="#" class="btn btn-sm btn-primary">
+                      <i class="fas fa-user"></i> View Profile
+                    </a>
+                    <button class="btn btn-sm btn-danger"
+                      style="margin-left: 5px;"
+                      (click)= "deleteClient(client?._id)">
+                      <i class="fa fa-trash"></i> Delete Client
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer">
+          <nav class="numbering">
+            <div class="pagination paging" style="text-align:right">
+              <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+            </div>
+          </nav>
+        </div>
+        <!-- /.card-footer -->
+      </div>
+      <!-- /.card -->
+
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+</div>
+</body>

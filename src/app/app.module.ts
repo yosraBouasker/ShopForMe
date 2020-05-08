@@ -28,6 +28,7 @@ import { AdminComponent } from './AdminDashboard/admin/admin.component';
 import { DashboardComponent } from './AdminDashboard/dashboard/dashboard.component';
 import { CategoriesAdminComponent } from './AdminDashboard/categories-admin/categories-admin.component';
 import { TooltipModule } from 'ng2-tooltip-directive';
+import { ClientsComponent } from './AdminDashboard/clients/clients.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { TooltipModule } from 'ng2-tooltip-directive';
     CheckoutComponent,
     AdminComponent,
     DashboardComponent,
-    CategoriesAdminComponent
+    CategoriesAdminComponent,
+    ClientsComponent
   ],
   imports: [
     BrowserModule,

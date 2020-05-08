@@ -1,6 +1,4 @@
-<body
-  class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed"
->
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
   <div class="wrapper">
     <app-admin></app-admin>
     <!-- Content Wrapper. Contains page content -->
@@ -14,8 +12,11 @@
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="admin">Home</a></li>
-                <li class="breadcrumb-item active">Categories</li>
+                <button class="btn btn-sm btn-success" style="height: 35px; width: 150px; font-size: 16px;"
+                  (click)="setAddCategoryContext()">
+                  <i class="fa fa-plus" style="margin-right: 8px;"></i>
+                  Add Category
+                </button>
               </ol>
             </div>
           </div>
@@ -27,75 +28,119 @@
       <section class="content">
         <div class="container-fluid">
           <div class="row">
-            <!-- /.col -->
-          <div class="col-md-6" *ngFor= "let category of categories">
-            <div class="card" id="{{category?._id}}">
-              <div class="card-header">
-                <h2 class="card-title" *ngIf="!isEditContext(category?._id)">{{category?.name}}</h2>
-                <input id="{{category?.name}}"
-                type="text" *ngIf="isEditContext(category?._id)" style="padding-left: 10px; border-radius: 5px;"
-                value="{{category?.name}}" placeholder="Category Name">
-                
-                <button class="btn btn-sm btn-primary" *ngIf="isEditContext(category?._id)"
-                style="width: 33px; margin-left: 10px; margin-top: -5px;"
-                placement="top" tooltip="Save"
-                (click)="editCategory(category)">
-                  <i class="fa fa-check"></i>
-                </button>
 
-                <button class="btn btn-sm btn-danger" 
-                style="width: 33px; margin-left: 5px; float: right;"
-                placement="top" tooltip="Delete Category"
-                (click)="deleteCategory(category)">
-                    <i class="fa fa-trash"></i>
-                </button>
+            <!-- Add category -->
+            <div class="col-md-6" *ngIf="isAddCategoryContext">
+              <div class="card">
+                <div class="card-header">
+                  <input id="add" type="text" style="padding-left: 10px; border-radius: 5px;"
+                    placeholder="Category Name">
 
-                <button class="btn btn-sm btn-primary" *ngIf="!isEditContext(category?._id)"
-                style="width: 33px; margin-left: 5px; float: right;"
-                placement="top" tooltip="Edit Category"
-                (click)="editCategory(category)">
-                  <i class="fa fa-edit"></i>
-                </button>
-                
-                <button class="btn btn-sm btn-success" *ngIf="isEditContext(category?._id)"
-                placement="top" tooltip="Add Subcategory"
-                style="width: 33px; margin-left: 5px; float: right;">
-                    <i class="fa fa-plus"></i>
-                </button>
+                  <button class="btn btn-sm btn-primary" style="width: 33px; margin-left: 10px; margin-top: -5px;"
+                    placement="top" tooltip="Save" (click)="addCategory()">
+                    <i class="fa fa-check"></i>
+                  </button>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body p-0">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th style="width: 10px">#</th>
+                        <th>Subcategory</th>
+                        <th class="text-center">Total Products</th>
+                        <th style="width: 140px"></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                  </table>
+                </div>
               </div>
-              <!-- /.card-header -->
-              <div class="card-body p-0">
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th style="width: 10px">#</th>
-                      <th>Subcategory</th>
-                      <th class="text-center">Total Products</th>
-                      <th style="width: 140px"></th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr *ngFor = "let subCat of category.subCategories; let i= index">
-                      <td>{{ i+1 }}.</td>
-                      <td>{{subCat?.name}}</td>
-                      <td class="text-center">
-                        {{subCat?.products.length}}
-                      </td>
-                      <td class="text-center" *ngIf="isEditContext(category?._id)">
-                        <button class="btn btn-sm btn-primary"
-                        placement="top" tooltip="Edit Subcategory">
-                            <i class="fa fa-edit"></i>
-                        </button>
-                        <button class="btn btn-sm btn-danger" 
-                        style="width: 33px; margin-left: 5px;"
-                        placement="top" tooltip="Delete Subcategory"
-                        (click)="deleteSubCategory(subCat?._id)">
-                            <i class="fa fa-trash"></i>
-                        </button>
-                      </td>
-                    </tr>
-                  </tbody>
-                 <!-- <div class="card-footer clearfix">
+            </div>
+              <!-- /.col -->
+              <div class="col-md-6" *ngFor="let category of categories.slice().reverse()">
+                <div class="card" id="{{category?._id}}">
+                  <div class="card-header">
+                    <h2 class="card-title" *ngIf="!isEditContext(category?._id)">{{category?.name}}</h2>
+                    <input id="{{category?.name}}" type="text" *ngIf="isEditContext(category?._id)"
+                      style="padding-left: 10px; border-radius: 5px;" value="{{category?.name}}"
+                      placeholder="Category Name">
+
+                    <button class="btn btn-sm btn-primary" *ngIf="isEditContext(category?._id)"
+                      style="width: 33px; margin-left: 10px; margin-top: -5px;" placement="top" tooltip="Save"
+                      (click)="editCategory(category)">
+                      <i class="fa fa-check"></i>
+                    </button>
+
+                    <button class="btn btn-sm btn-danger" style="width: 33px; margin-left: 5px; float: right;"
+                      placement="top" tooltip="Delete Category" (click)="deleteCategory(category)">
+                      <i class="fa fa-trash"></i>
+                    </button>
+
+                    <button class="btn btn-sm btn-primary" *ngIf="!isEditContext(category?._id)"
+                      style="width: 33px; margin-left: 5px; float: right;" placement="top" tooltip="Edit Category"
+                      (click)="editCategory(category)">
+                      <i class="fa fa-edit"></i>
+                    </button>
+
+                    <button class="btn btn-sm btn-success" *ngIf="isEditContext(category?._id)" placement="top"
+                      tooltip="Add Subcategory" style="width: 33px; margin-left: 5px; float: right;"
+                      (click)="setAddContext(category)">
+                      <i class="fa fa-plus"></i>
+                    </button>
+                  </div>
+                  <!-- /.card-header -->
+                  <div class="card-body p-0">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th style="width: 10px">#</th>
+                          <th>Subcategory</th>
+                          <th class="text-center">Total Products</th>
+                          <th style="width: 140px"></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let subCat of category.subCategories; let i= index">
+                          <td>{{ i+1 }}.</td>
+                          <td>{{subCat?.name}}</td>
+                          <td class="text-center">
+                            {{subCat?.products.length}}
+                          </td>
+                          <td class="text-center">
+                            <button class="btn btn-sm btn-primary" *ngIf="isEditContext(category?._id)" placement="top"
+                              tooltip="Edit Subcategory">
+                              <i class="fa fa-edit"></i>
+                            </button>
+                            <button class="btn btn-sm btn-danger" *ngIf="isEditContext(category?._id)"
+                              style="width: 33px; margin-left: 5px;" placement="top" tooltip="Delete Subcategory"
+                              (click)="deleteSubCategory(subCat?._id)">
+                              <i class="fa fa-trash"></i>
+                            </button>
+                          </td>
+                        </tr>
+
+                        <tr *ngIf="isAddContext(category?._id)">
+                          <td>{{ category?.subCategories?.length + 1 }}.</td>
+                          <td>
+                            <input id="{{category?._id}}1" type="text" style="padding-left: 10px; border-radius: 5px; width: 180px;"
+                              placeholder="subCategory Name">
+
+                            <button class="btn btn-sm btn-primary" *ngIf="isEditContext(category?._id)"
+                              style="width: 33px; margin-left: 10px; margin-top: -5px;" placement="top" tooltip="Save"
+                              (click)="addSubCategory(category?._id)">
+                              <i class="fa fa-check"></i>
+                            </button>
+                          </td>
+                          <td class="text-center">
+
+                          </td>
+                          <td class="text-center">
+                          </td>
+                        </tr>
+                      </tbody>
+                      <!-- <div class="card-footer clearfix">
                     <ul class="pagination pagination-sm m-0 float-right">
                       <li class="page-item"><a class="page-link" (click)="pageChanged($event)">&laquo;</a></li>
                       <li class="page-item" *ngFor="let number of numbers">
@@ -104,16 +149,15 @@
                       <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
                     </ul>
                   </div>-->
-                </table>
+                    </table>
+                  </div>
+                  <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
               </div>
-              <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
             </div>
           </div>
-        </div>
       </section>
     </div>
   </div>
 </body>
-

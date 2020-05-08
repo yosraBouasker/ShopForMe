@@ -12,6 +12,7 @@ import { CartComponent } from './cart/cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { DashboardComponent } from './AdminDashboard/dashboard/dashboard.component';
 import { CategoriesAdminComponent } from './AdminDashboard/categories-admin/categories-admin.component';
+import { ClientsComponent } from './AdminDashboard/clients/clients.component';
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: 'checkout', component: CheckoutComponent },
   { path: 'admin', component: DashboardComponent },
   { path: 'categoriesAdmin', component: CategoriesAdminComponent },
+  { path: 'clientsAdmin', component: ClientsComponent },
   { path: '**', redirectTo: '/home', pathMatch: 'full' },
 ];
 

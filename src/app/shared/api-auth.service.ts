@@ -34,4 +34,13 @@ export class ApiAuthService {
     localStorage.removeItem('cart');
     this.router.navigate(['home']);
   }
+
+  getClients(){
+    return this.http.get('http://localhost:3000/client/all');
+  }
+
+  deleteClient(id){
+    var body = {}
+    return this.http.post('http://localhost:3000/client/delete/' + id, body);
+  }
 }

@@ -16,6 +16,8 @@ editedId;
   config: any;
   numbers;
   editContext: boolean =false;
+  isAddCategoryContext: boolean =false;
+  addContext: boolean =false;
   constructor(private apiCategoryService: ApiCategoryService, private apiProductService: ApiProductService, 
     private activatedRoute: ActivatedRoute, private cartService: CartService, private apiService: ApiAuthService) { }
 
@@ -69,6 +71,7 @@ editedId;
       this.apiCategoryService.updateCategory(category._id, body).subscribe((res: any) => {
         this.apiCategoryService.getCategories().subscribe((res: any) => {
           this.categories = res.data;
+          this.addContext = false;
         });
       });
     }
@@ -81,5 +84,51 @@ editedId;
     else
       isDiv = false;
     return isDiv && this.editContext;
+  }
+
+  addSubCategory(id){
+    var divId = id+"1";
+    var newName = (<HTMLInputElement>document.getElementById(divId)).value;
+    var body = {
+      name: newName,
+      products: []
+    };
+    this.apiCategoryService.addSubCategory(id, body).subscribe((res: any) => {
+      this.apiCategoryService.getCategories().subscribe((res: any) => {
+        this.categories = res.data;
+        this.addContext = false;
+      });
+    });
+  }
+
+  setAddContext(category){
+    if(this.addContext == false) {
+      this.addContext = true;
+    }
+  }
+
+  isAddContext(id) : boolean{
+    return this.isEditContext(id) && this.addContext;
+  }
+
+  addCategory() {
+  var newName = (<HTMLInputElement>document.getElementById("add")).value;
+  var body = {
+    name: newName
+  };
+    this.apiCategoryService.addCategory(body).subscribe((ress: any) => {
+      this.isAddCategoryContext = false;
+      var newCatId = ress.data._id;
+      this.apiCategoryService.getCategories().subscribe((res: any) => {
+        this.categories = res.data;
+        this.addContext = true;
+        this.editedId = newCatId;
+        this.editContext = true;
+      });
+    });
+  }
+
+  setAddCategoryContext() {
+    this.isAddCategoryContext = true;
   }
 }
