@@ -41,7 +41,7 @@
                 </div>
                 <div class="card-footer">
                   <div class="text-right">
-                    <a href="#" class="btn btn-sm btn-primary">
+                    <a href="/profileAdmin/{{client?.user?._id}}" class="btn btn-sm btn-primary">
                       <i class="fas fa-user"></i> View Profile
                     </a>
                     <button class="btn btn-sm btn-danger"
@@ -56,13 +56,6 @@
           </div>
         </div>
         <!-- /.card-body -->
-        <div class="card-footer">
-          <nav class="numbering">
-            <div class="pagination paging" style="text-align:right">
-              <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
-            </div>
-          </nav>
-        </div>
         <!-- /.card-footer -->
       </div>
       <!-- /.card -->
@@ -73,3 +66,5 @@
   <!-- /.content-wrapper -->
 </div>
 </body>
+
+

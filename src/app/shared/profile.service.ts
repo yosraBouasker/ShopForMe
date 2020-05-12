@@ -18,6 +18,14 @@ export class ProfileService {
     return this.http.get('http://localhost:3000/profile/info/' + this.id);
   }
 
+  getProfile(id) {
+    return this.http.get('http://localhost:3000/profile/info/' + id);
+  }
+
+  updateProfile(id,form) {
+    return this.http.post('http://localhost:3000/profile/update/' + id, form);
+  }
+
   purchases() {
     return this.http.get('http://localhost:3000/purchase/purchasesByClient/' + this.clientId);
   }

@@ -13,6 +13,7 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import { DashboardComponent } from './AdminDashboard/dashboard/dashboard.component';
 import { CategoriesAdminComponent } from './AdminDashboard/categories-admin/categories-admin.component';
 import { ClientsComponent } from './AdminDashboard/clients/clients.component';
+import { ProfileAdminComponent } from './AdminDashboard/profile-admin/profile-admin.component';
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: 'admin', component: DashboardComponent },
   { path: 'categoriesAdmin', component: CategoriesAdminComponent },
   { path: 'clientsAdmin', component: ClientsComponent },
+  { path: 'profileAdmin/:id', component: ProfileAdminComponent },
   { path: '**', redirectTo: '/home', pathMatch: 'full' },
 ];
 
@@ -37,3 +39,4 @@ const routes: Routes = [
 })
 // {onSameUrlNavigation: 'reload'}
 export class AppRoutingModule { }
+

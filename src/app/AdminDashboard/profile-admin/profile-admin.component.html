@@ -1,0 +1,247 @@
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+  <div class="wrapper">
+    <app-admin></app-admin>
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <section class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1>Profile</h1>
+            </div>
+          </div>
+        </div><!-- /.container-fluid -->
+      </section>
+      <!-- Main content -->
+      <section class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-3">
+
+              <!-- Profile Image -->
+              <div class="card card-primary card-outline">
+                <div class="card-body box-profile">
+                  <div class="text-center">
+                    <img class="profile-user-img img-fluid img-circle"
+                         src="http://localhost:3000/{{info?.client?.image}}"
+                         alt="User profile picture">
+                  </div>
+                  <h3 class="profile-username text-center">{{info?.name}} {{info?.lastname}}</h3>
+                  <ul class="list-group list-group-unbordered mb-3">
+                      <li class="list-group-item" style="margin-top: 15px;
+                      border-bottom: none;
+                      padding-top: 15px;
+                      padding-bottom: 0;
+                      margin-bottom: -10px;">
+                        <b>Number of orders</b> <a class="float-right">{{info?.client?.purchases.length}}</a>
+                      </li>
+                  </ul>
+                </div>
+                <!-- /.card-body -->
+              </div>
+              <!-- /.card -->
+
+              <!-- About Me Box -->
+              <div class="card card-primary">
+                <div class="card-header">
+                  <h3 class="card-title">About {{info?.name}}</h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                  <strong><i class="fas fa-envelope"></i> E-mail</strong>
+
+                  <p class="text-muted">
+                      {{info?.email}}
+                  </p>
+                  <hr>
+
+                  <strong><i class="fas fa-phone"></i> Phone</strong>
+
+                  <p class="text-muted">(+216) {{info?.client?.phone}}</p>
+
+                  <hr>
+
+                  <strong><i class="fas fa-map-marker-alt mr-1"></i> Location</strong>
+
+                  <p class="text-muted">{{info?.client?.location}}</p>
+                </div>
+                <!-- /.card-body -->
+              </div>
+              <!-- /.card -->
+            </div>
+            <!-- /.col -->
+            <div class="col-md-9">
+              <div class="card">
+                <div class="card-header p-2">
+                  <ul class="nav nav-pills">
+                    <li class="nav-item"><a class="nav-link active" href="#timeline" data-toggle="tab">Orders</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Information</a></li>
+                  </ul>
+                </div><!-- /.card-header -->
+                <div class="card-body">
+                  <div class="tab-content">
+                    <div class="active tab-pane" id="timeline">
+                      <div class="row shop-tracking-status">
+<!--| paginate: config-->
+                          <div class="col-md-12" *ngFor="let purchase of purchases?.slice().reverse(); let i=index;">
+                            <div class="well">
+                              <div class="row">
+                                <h4 style="margin:10px;margin-bottom:15px;font-size: 20px;margin-left: 15px;">Order
+                                  n°{{totalPurchases - i}}</h4>
+                                <button class="btn btn-warning" (click)="orderDetail(i)"
+                                  style="height: 40px;
+                                  margin-left: 500px;
+                                  font-weight: 600;">
+                                  View Details</button>
+                              </div>
+                              <ul class="list-group" style="width: 90%;margin-left: 40px;">
+                                <li class="list-group-item">
+                                  <span class="prefix" style="font-weight: 600;">Order Date </span>
+                                  <span class="label label-success"
+                                    style="font-size: 100%;margin-left: 30px;">{{purchase?.orderDate | date : 'medium'}}</span>
+                                </li>
+                                <li class="list-group-item">
+                                  <span class="prefix" style="font-weight: 600;">Shipping Date </span>
+                                  <span class="label label-success"
+                                    style="font-size: 100%;margin-left: 12px;">{{purchase?.shippingDate | date : 'longDate'}}</span>
+                                </li>
+                                <li class="list-group-item">
+                                  <span class="prefix" style="font-weight: 600;">Total Price </span>
+                                  <span class="label label-success" style="font-size: 100%;margin-left: 35px;">
+                                    {{ purchase?.total | number: ".3" }}DT
+                                  </span>
+                                </li>
+                              </ul>
+                              <div id={{i}} style="margin-top:35px; visibility: hidden; height: 0;">
+                                <h4 style="font-size: 20px;margin-top:15px;">Order Details</h4>
+                                <div class="table-responsive" style="width:90%;margin-left: 40px;">
+                                  <table class="table table-striped">
+                                    <thead>
+                                      <tr>
+                                        <th scope="col"></th>
+                                        <th scope="col">Product</th>
+                                        <th scope="col" class="text-center">
+                                          Quantity
+                                        </th>
+                                        <th scope="col" class="text-right">Price</th>
+                                        <th></th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr *ngFor="
+                                    let purchaseDetail of purchase?.purchaseDetails
+                                  ">
+                                        <td style="width: 120px;">
+                                          <img style="padding-left: 20px; width: 70px; height: 50px;"
+                                            src="{{ purchaseDetail?.product?.image }}" />
+                                        </td>
+                                        <td style="width: 220px;">
+                                          {{ purchaseDetail?.product?.name }}
+                                        </td>
+                                        <td class="text-center">
+                                          {{ purchaseDetail?.quantity }}
+                                        </td>
+                                        <td class="text-right">
+                                          {{ purchaseDetail?.subTotal | number: ".3" }}DT
+                                        </td>
+                                        <td class="text-right">
+                                        </td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </div>
+                              </div>
+
+                              <div class="order-status" style="margin-top:120px">
+
+                                <div class="order-status-timeline">
+                                <div class="order-status-timeline-completion c3"
+                                [ngStyle]="{'width': purchase?.progress}"
+                                id={{purchase?._id}}></div>
+                                </div>
+
+                                <div class="image-order-status image-order-status-new active img-circle">
+                                  <span class="status">Accepted</span>
+                                  <div class="icon"></div>
+                                </div>
+                                <div class="image-order-status image-order-status-active active img-circle">
+                                  <span class="status">In progress</span>
+                                  <div class="icon"></div>
+                                </div>
+                                <div class="image-order-status image-order-status-intransit active img-circle">
+                                  <span class="status">Shipped</span>
+                                  <div class="icon"></div>
+                                </div>
+                                <div class="image-order-status image-order-status-delivered active img-circle">
+                                  <span class="status">Delivered</span>
+                                  <div class="icon"></div>
+                                </div>
+                                <div class="image-order-status image-order-status-completed active img-circle">
+                                  <span class="status">Completed</span>
+                                  <div class="icon"></div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                    </div>
+                    <!-- /.tab-pane -->
+
+                    <div class="tab-pane" id="settings">
+                      <form class="form-horizontal">
+                        <div class="form-group row">
+                          <label for="inputName" class="col-sm-2 col-form-label">First Name</label>
+                          <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputName" placeholder="Name" value={{info?.name}} #name>
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label for="inputName2" class="col-sm-2 col-form-label">Last Name</label>
+                          <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputName2" placeholder="Last Name" value={{info?.lastname}} #lastname>
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
+                          <div class="col-sm-10">
+                            <input type="email" class="form-control" id="inputEmail" placeholder="Email" value={{info?.email}} #email>
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label for="inputExperience" class="col-sm-2 col-form-label">Phone</label>
+                          <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputExperience" placeholder="Phone" value="(+216) {{info?.client?.phone}}" #phone>
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label for="inputSkills" class="col-sm-2 col-form-label">Location</label>
+                          <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputSkills" placeholder="Location" value={{info?.client?.location}} #location>
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <div class="offset-sm-2 col-sm-10"  style="margin-left: 608px;">
+                            <button type="submit" class="btn btn-success" style="width: 150px;"
+                            (click)="updateProfile(name.value, lastname.value, email.value, location.value, phone.value)">
+                            Submit</button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                    <!-- /.tab-pane -->
+                  </div>
+                  <!-- /.tab-content -->
+                </div><!-- /.card-body -->
+              </div>
+              <!-- /.nav-tabs-custom -->
+            </div>
+            <!-- /.col -->
+          </div>
+          <!-- /.row -->
+        </div><!-- /.container-fluid -->
+      </section>
+      <!-- /.content -->
+    </div>
+    </div>
+  </body>
