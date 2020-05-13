@@ -30,6 +30,8 @@ import { CategoriesAdminComponent } from './AdminDashboard/categories-admin/cate
 import { TooltipModule } from 'ng2-tooltip-directive';
 import { ClientsComponent } from './AdminDashboard/clients/clients.component';
 import { ProfileAdminComponent } from './AdminDashboard/profile-admin/profile-admin.component';
+import { ProductsAdminComponent } from './AdminDashboard/products-admin/products-admin.component';
+import { SingleProdAdminComponent } from './AdminDashboard/single-prod-admin/single-prod-admin.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +54,9 @@ import { ProfileAdminComponent } from './AdminDashboard/profile-admin/profile-ad
     DashboardComponent,
     CategoriesAdminComponent,
     ClientsComponent,
-    ProfileAdminComponent
+    ProfileAdminComponent,
+    ProductsAdminComponent,
+    SingleProdAdminComponent
   ],
   imports: [
     BrowserModule,

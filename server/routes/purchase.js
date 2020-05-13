@@ -15,6 +15,9 @@ router.post('/update/:idPurchase', async (req, res) => {
 })
 
 router.post('/delete/:idPurchase', async (req, res) => {
+    var purchaseP = await purchase.findOne({ "_id": req.params.idPurchase }).populate({path: 'client', populate: { path: 'user'}}).exec();
+    var clientId = purchaseP.client._id;
+    var listResult = await client.updateOne({ "_id": clientId }, { $pull: { purchases: req.params.idPurchase } }).exec(); 
     const Result = await purchase.deleteOne({ "_id": req.params.idPurchase }).exec();
     res.send({ data: Result })
 })

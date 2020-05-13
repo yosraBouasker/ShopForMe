@@ -7,7 +7,7 @@ const product = new mongoose.Schema({
   description: String,
   price: Number,
   discount: Number,
-  image:{ data: Buffer, contentType: String },
+  image: String,
   createdAt: Date,
   updatedAt: Date,
   advertised: Boolean

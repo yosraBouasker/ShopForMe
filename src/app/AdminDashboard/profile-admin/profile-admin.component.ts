@@ -14,6 +14,7 @@ export class ProfileAdminComponent implements OnInit {
   info;
   purchases;
   totalPurchases;
+  profileImage;
   constructor(public http: HttpClient,public cartApiService: CartService,private profileService: ProfileService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -21,10 +22,17 @@ export class ProfileAdminComponent implements OnInit {
     const id = this.activatedRoute.snapshot.paramMap.get('id')
     this.profileService.getProfile(id).subscribe((res: any) => {
       this.info = res.userResult[0];
+      if(this.info.client.image != undefined && this.info.client.image != null){
+        this.profileImage = "http://localhost:3000/" + this.info.client.image;
+      }
+      else {
+        this.profileImage = 'http://ssl.gstatic.com/accounts/ui/avatar_2x.png';
+      }
     })
     this.profileService.purchases().subscribe((res: any) => {
       this.purchases = res.data;
       this.totalPurchases = this.purchases.length;
+      console.log(this.purchases)
     })
   }
 
@@ -57,5 +65,20 @@ export class ProfileAdminComponent implements OnInit {
     })
   }
 
+  deleteOrder(id) {
+    this.profileService.decodeToken();
+    this.profileService.deletePurchase(id).subscribe((ress: any) => {
+      this.ngOnInit();
+    })
+  }
+
+  setProgress(idPurchase, progress) {
+    var body = {
+      progress: progress
+    }
+    this.cartApiService.updatePurchase(idPurchase,body).subscribe((res: any) => {
+      this.ngOnInit();
+    })
+  }
 
 }

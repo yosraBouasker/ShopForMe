@@ -28,7 +28,7 @@ router.post('/delete/:idSubCat', async (req, res) => {
   })
 
 router.get('/all', async (req, res) => {
-    const result = await subCategory.find().populate({ path: 'products' }).exec();
+    const result = await subCategory.find().populate({ path: 'products' }).populate({ path: 'category' }).exec();
     res.send({ data: result })
   })
 

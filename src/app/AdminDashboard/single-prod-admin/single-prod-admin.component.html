@@ -1,0 +1,61 @@
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+  <div class="wrapper">
+    <app-admin></app-admin>
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>{{product?.reference}} - {{product?.name}} Review</h1>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+      <!-- Default box -->
+      <div class="card card-solid">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-12 col-sm-4">
+              <h3 class="d-inline-block d-sm-none">{{product?.name}} Review</h3>
+              <div class=" col-md-12">
+                <img src="http://localhost:3000/{{product?.image}}" class="product-image" alt="Product Image">
+              </div>
+            </div>
+            <div class=" col-12 col-sm-8">
+              <h3 class="my-3">{{product?.reference}} - {{product?.name}}</h3>
+              <p>{{product?.description}}</p>
+
+              <hr>
+
+              <h4 class="my-3">{{product?.subCategory?.category.name}} > {{product?.subCategory?.name}}</h4>
+ 
+              <div class="bg-gray py-2 px-3 mt-4">
+                <h2 class="mb-0">
+                  {{product?.price | number:'.3'}}DT
+                </h2>
+                <h4 class="mt-0">
+                  <small style="color: whitesmoke;">Discount: {{product?.discount}}% </small>
+                </h4>
+              </div>
+
+              <h5 class="my-3">Advertised: <span *ngIf="product?.advertised">Yes</span>
+                <span *ngIf="!product?.advertised">No</span></h5>
+
+            </div>
+          </div>
+        </div>
+        <!-- /.card-body -->
+      </div>
+      <!-- /.card -->
+
+    </section>
+    <!-- /.content -->
+  </div>
+    </div>
+</body>

@@ -37,4 +37,9 @@ export class ProfileService {
       this.clientId=jwt_decode(token).data.client;
     }
   }
+
+  deletePurchase(id) {
+    var body = {}
+    return this.http.post('http://localhost:3000/purchase/delete/'+id , body);
+  }
 }

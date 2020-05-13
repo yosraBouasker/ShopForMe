@@ -23,7 +23,7 @@
                 <div class="card-body box-profile">
                   <div class="text-center">
                     <img class="profile-user-img img-fluid img-circle"
-                         src="http://localhost:3000/{{info?.client?.image}}"
+                         src="{{profileImage}}"
                          alt="User profile picture">
                   </div>
                   <h3 class="profile-username text-center">{{info?.name}} {{info?.lastname}}</h3>
@@ -90,9 +90,19 @@
                                   n°{{totalPurchases - i}}</h4>
                                 <button class="btn btn-warning" (click)="orderDetail(i)"
                                   style="height: 40px;
-                                  margin-left: 500px;
+                                  margin-left: 460px;
                                   font-weight: 600;">
                                   View Details</button>
+                                <button class="btn btn-sm btn-danger"
+                                style="margin-left: 5px;
+                                height: 40px;
+                                width: 40px;"
+                                tooltip="Delete Order"
+                                placement="top"
+                                (click)="deleteOrder(purchase?._id)"
+                                >
+                                <i class="fa fa-trash"></i>
+                              </button>
                               </div>
                               <ul class="list-group" style="width: 90%;margin-left: 40px;">
                                 <li class="list-group-item">
@@ -161,23 +171,28 @@
                                 </div>
 
                                 <div class="image-order-status image-order-status-new active img-circle">
-                                  <span class="status">Accepted</span>
+                                  <span class="status"><a>
+                                    Accepted</a></span>
                                   <div class="icon"></div>
                                 </div>
                                 <div class="image-order-status image-order-status-active active img-circle">
-                                  <span class="status">In progress</span>
+                                  <span class="status"><a style="cursor: pointer;" (click)="setProgress(purchase?._id, '25%')">
+                                    In progress</a></span>
                                   <div class="icon"></div>
                                 </div>
                                 <div class="image-order-status image-order-status-intransit active img-circle">
-                                  <span class="status">Shipped</span>
+                                  <span class="status"><a style="cursor: pointer;" (click)="setProgress(purchase?._id, '50%')">
+                                    Shipped</a></span>
                                   <div class="icon"></div>
                                 </div>
                                 <div class="image-order-status image-order-status-delivered active img-circle">
-                                  <span class="status">Delivered</span>
+                                  <span class="status"><a style="cursor: pointer;" (click)="setProgress(purchase?._id, '75%')">
+                                    Delivered</a></span>
                                   <div class="icon"></div>
                                 </div>
                                 <div class="image-order-status image-order-status-completed active img-circle">
-                                  <span class="status">Completed</span>
+                                  <span class="status"><a style="cursor: pointer;" (click)="setProgress(purchase?._id, '100%')">
+                                    Completed</a></span>
                                   <div class="icon"></div>
                                 </div>
                               </div>

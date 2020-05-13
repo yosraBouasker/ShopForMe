@@ -1,0 +1,248 @@
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+  <div class="wrapper">
+    <app-admin></app-admin>
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <section class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1>Products</h1>
+            </div>
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+                <button class="btn btn-sm btn-success" style="height: 35px; width: 150px; font-size: 16px;"
+                data-toggle="modal" 
+                data-target="#addModal">
+                  <i class="fa fa-plus" style="margin-right: 8px;"></i>
+                  Add Product
+                </button>
+              </ol>
+            </div>
+          </div>
+        </div>
+        <!-- /.container-fluid -->
+      </section>
+      <!-- Main content -->
+    <section class="content">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example2" class="table table-bordered table-hover">
+                  <thead>
+                  <tr class="text-center">
+                    <th></th>
+                    <th>Reference</th>
+                    <th>Name</th>
+                    <th>Category > SubCategory</th>
+                    <th>Initial Price</th>
+                    <th>Discount</th>
+                    <th>Advertised</th>
+                    <th></th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr *ngFor="let product of products" style="height: 50px;">
+                    <td style="width: 100px;" class="text-center">
+                        <a href="/singleProductAdmin/{{product?._id}}" style="cursor: pointer;"><img src="http://localhost:3000/{{product?.image}}"
+                        style="width: 50px; height: 50px;"></a></td>
+                    <td>{{product?.reference}}</td>
+                    <td>{{product?.name}}</td>
+                    <td class="text-center">{{product?.subCategory?.category?.name}} > {{product?.subCategory?.name}}</td>
+                    <td class="text-center">{{product?.price | number:'.3'}}DT</td>
+                    <td class="text-center">{{product?.discount}}%</td>
+                    <td class="text-center"><input type="checkbox" [checked]="product?.advertised"></td>
+                    <td class="text-center">
+                        <button class="btn btn-sm btn-primary" placement="top"
+                          tooltip="Edit Product"
+                          (click)= "setSelectedProduct(product)"
+                          data-toggle="modal" 
+                          data-target="#editModal">
+                          <i class="fa fa-edit"></i>
+                        </button>
+                        <button class="btn btn-sm btn-danger"
+                          style="width: 33px; margin-left: 5px;" placement="top" tooltip="Delete Product"
+                          (click)="deleteProduct(product?._id)">
+                          <i class="fa fa-trash"></i>
+                        </button>
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </section>
+    </div>
+  </div>
+  <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+  style="overflow: auto;">
+  <div class="modal-dialog">
+	<div class="modal-content" style="width: 600px;">
+		<div class="modal-header" style="padding-top: 10px">
+            <h4 class="modal-title">Add Product</h4>
+            <button style="margin-top: -20px;" type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true" style="font-size: 40px;">&times;</span>
+            </button>
+        </div>
+		<div class="modal-body">
+            <!-- content goes here -->
+			<form>
+              <div class="form-group col-md-8">
+                <label>Reference</label>
+                <input type="text" class="form-control" placeholder="Enter reference" #ref>
+              </div>
+              <div class="form-group col-md-8">
+                <label>Name</label>
+                <input type="text" class="form-control" placeholder="Enter name" #name>
+              </div>
+              <div class="dropdown form-group col-md-4" >
+                    <button style="margin-top: 32px;
+                    background-color: white;
+                    width: 173px;
+                    color: black;
+                    border-color: #d0d0d0;"
+                    class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{subCat}}  
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                      <a class="dropdown-item" style="cursor: pointer;" *ngFor="let sub of subCategories" 
+                      (click)="setSubCat(sub)">{{sub?.name}}</a>
+                    </div>
+              </div>
+              <div class="form-group col-md-12">
+                <label>Description</label>
+                <textarea class="form-control" placeholder="Enter description" #desc></textarea>
+              </div>
+              <div class="form-group col-md-6">
+                <label>Price</label>
+                <input type="text" class="form-control" placeholder="Enter price" #price>
+              </div>
+              <div class="form-group col-md-6">
+                <label>Discount</label>
+                <input type="text" class="form-control" placeholder="Enter Discount" value="0%" #disc>
+              </div>
+              <div class="form-group col-md-6" style="margin-top: 20px;">
+                <label>Advertised</label>
+                <input type="checkbox" 
+                style="width: 20px;
+                margin-top: -38px;
+                margin-left: 100px;"
+                class="form-control" id="advertised" #ad>
+              </div>
+              <div class="form-group col-md-6">
+                <label>Image</label>
+                <input type="file" #image
+                (change)="selectImage($event)">
+              </div>
+            </form>
+
+		</div>
+		<div class="modal-footer">
+            <div class="col mb-2">
+                  <button style="margin-left: 20px;
+                  width: 20%;
+                  background-color: lightgrey;"
+                  type="button" class="btn btn-light"
+                  data-dismiss="modal">Cancel</button>
+                  <a>
+                      <button style="margin-left: 10px; width: 15%;" 
+                      class="btn btn-success" data-dismiss="modal"
+                      (click)="addProduct(ref.value, name.value, desc.value, price.value, disc.value, ad.checked)">Add</button></a>
+            </div>
+        </div>
+	</div>
+  </div>
+  </div>
+<!--Edit modal-->
+  <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+  style="overflow: auto;">
+  <div class="modal-dialog">
+	<div class="modal-content" style="width: 600px;">
+		<div class="modal-header" style="padding-top: 10px">
+            <h4 class="modal-title">Edit Product</h4>
+            <button style="margin-top: -20px;" type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true" style="font-size: 40px;">&times;</span>
+            </button>
+        </div>
+		<div class="modal-body">
+            <!-- content goes here -->
+			<form>
+              <div class="form-group col-md-8">
+                <label>Reference</label>
+                <input type="text" class="form-control" placeholder="Enter reference" #ref1 value={{selectedProduct?.reference}}>
+              </div>
+              <div class="form-group col-md-8">
+                <label>Name</label>
+                <input type="text" class="form-control" placeholder="Enter name" #name1 value={{selectedProduct?.name}}>
+              </div>
+              <div class="dropdown form-group col-md-4" >
+                    <button style="margin-top: 32px;
+                    background-color: white;
+                    width: 173px;
+                    color: black;
+                    border-color: #d0d0d0;"
+                    class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" 
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{subCat}}  
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                      <a class="dropdown-item" style="cursor: pointer;" *ngFor="let sub of subCategories" 
+                      (click)="setSubCat(sub)">{{sub?.name}}</a>
+                    </div>
+              </div>
+              <div class="form-group col-md-12">
+                <label>Description</label>
+                <textarea class="form-control" placeholder="Enter description" #desc1 value={{selectedProduct?.description}}></textarea>
+              </div>
+              <div class="form-group col-md-6">
+                <label>Price</label>
+                <input type="text" class="form-control" placeholder="Enter price" #price1 value={{selectedProduct?.price}}>
+              </div>
+              <div class="form-group col-md-6">
+                <label>Discount</label>
+                <input type="text" class="form-control" placeholder="Enter Discount" value="{{selectedProduct?.discount}}%" #disc1 >
+              </div>
+              <div class="form-group col-md-6" style="margin-top: 20px;">
+                <label>Advertised</label>
+                <input type="checkbox" 
+                style="width: 20px;
+                margin-top: -38px;
+                margin-left: 100px;"
+                class="form-control" id="advertised" #ad1
+                [checked]="selectedProduct?.advertised">
+              </div>
+              <div class="form-group col-md-6">
+                <label>Image</label>
+                <input type="file" #image1
+                (change)="selectImage($event)" >
+              </div>
+            </form>
+
+		</div>
+		<div class="modal-footer">
+            <div class="col mb-2">
+                  <button style="margin-left: 20px;
+                  width: 20%;
+                  background-color: lightgrey;"
+                  type="button" class="btn btn-light"
+                  data-dismiss="modal">Cancel</button>
+                  <a>
+                      <button style="margin-left: 10px; width: 15%;" 
+                      class="btn btn-success" data-dismiss="modal"
+                      (click)="editProduct(ref1.value, name1.value, desc1.value, price1.value, disc1.value, ad1.checked, image1.value)">Edit</button></a>
+            </div>
+        </div>
+	</div>
+  </div>
+  </div>
+</body>

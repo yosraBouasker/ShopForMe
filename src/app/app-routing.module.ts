@@ -14,6 +14,8 @@ import { DashboardComponent } from './AdminDashboard/dashboard/dashboard.compone
 import { CategoriesAdminComponent } from './AdminDashboard/categories-admin/categories-admin.component';
 import { ClientsComponent } from './AdminDashboard/clients/clients.component';
 import { ProfileAdminComponent } from './AdminDashboard/profile-admin/profile-admin.component';
+import { ProductsAdminComponent } from './AdminDashboard/products-admin/products-admin.component';
+import { SingleProdAdminComponent } from './AdminDashboard/single-prod-admin/single-prod-admin.component';
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
@@ -30,6 +32,8 @@ const routes: Routes = [
   { path: 'categoriesAdmin', component: CategoriesAdminComponent },
   { path: 'clientsAdmin', component: ClientsComponent },
   { path: 'profileAdmin/:id', component: ProfileAdminComponent },
+  { path: 'productsAdmin', component: ProductsAdminComponent },
+  { path: 'singleProductAdmin/:id', component: SingleProdAdminComponent },
   { path: '**', redirectTo: '/home', pathMatch: 'full' },
 ];
 

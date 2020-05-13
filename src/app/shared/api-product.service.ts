@@ -22,4 +22,18 @@ export class ApiProductService {
   getProductsBySubCat(id) {
     return this.http.get('http://localhost:3000/product/all/' + id);
   }
+
+  deleteProduct(id) {
+    var body={};
+    return this.http.post('http://localhost:3000/product/delete/' + id, body);
+  }
+
+  updateProduct(idProd, body) {
+    return this.http.post('http://localhost:3000/product/update/' + idProd, body);
+  }
+  
+  addProduct(idSubCat, body) {
+    return this.http.post('http://localhost:3000/product/add/' + idSubCat, body);
+  }
+
 }
