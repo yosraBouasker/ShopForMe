@@ -32,6 +32,9 @@ import { ClientsComponent } from './AdminDashboard/clients/clients.component';
 import { ProfileAdminComponent } from './AdminDashboard/profile-admin/profile-admin.component';
 import { ProductsAdminComponent } from './AdminDashboard/products-admin/products-admin.component';
 import { SingleProdAdminComponent } from './AdminDashboard/single-prod-admin/single-prod-admin.component';
+import { OrdersAdminComponent } from './AdminDashboard/orders-admin/orders-admin.component';
+import { MessagesAdminComponent } from './AdminDashboard/messages-admin/messages-admin.component';
+import { TimeagoModule } from 'ngx-timeago';
 
 @NgModule({
   declarations: [
@@ -56,7 +59,9 @@ import { SingleProdAdminComponent } from './AdminDashboard/single-prod-admin/sin
     ClientsComponent,
     ProfileAdminComponent,
     ProductsAdminComponent,
-    SingleProdAdminComponent
+    SingleProdAdminComponent,
+    OrdersAdminComponent,
+    MessagesAdminComponent
   ],
   imports: [
     BrowserModule,
@@ -68,7 +73,8 @@ import { SingleProdAdminComponent } from './AdminDashboard/single-prod-admin/sin
     NgxPaginationModule,
     Ng2SearchPipeModule,
     NgbModule,
-    TooltipModule
+    TooltipModule,
+    TimeagoModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,0 +1,162 @@
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+    <div class="wrapper">
+      <app-admin></app-admin>
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <div class="container-fluid">
+            <div class="row mb-2">
+              <div class="col-sm-6">
+                <h1>Orders</h1>
+              </div>
+              <div class="col-sm-6">
+                <form class="form-inline ml-3" style="margin-left: 370px !important;"
+                 action="#" method="post" >
+                    <div class="input-group input-group-sm">
+                      <input #myInput class="form-control form-control-navbar" 
+                      [(ngModel)] ="term"
+                      type="search" placeholder="Search order" aria-label="Search" >
+                      <div class="input-group-append">
+                        <button class="btn btn-navbar" type="submit">
+                          <i class="fas fa-search"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+              </div>
+            </div>
+          </div>
+          <!-- /.container-fluid -->
+        </section>
+        <!-- Main content -->
+      <section class="content">
+          <div class="row">
+            <div class="col-12">
+              <div class="card">
+                <!-- /.card-header -->
+                <div class="card-body">
+                  <table id="example2" class="table table-bordered table-hover">
+                    <thead>
+                    <tr class="text-center">
+                      <th></th>
+                      <th>Client</th>
+                      <th>Order Date</th>
+                      <th>Shipping Date</th>
+                      <th>Shipping Address</th>
+                      <th>Total Price</th>
+                      <th>Progress</th>
+                      <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let order of orders.slice().reverse() | filter:term; let i=index" style="height: 50px;">
+                      <td class="text-center"> {{ orders.length - i}} </td>
+                      <td>{{order?.client?.user?.name}} {{order?.client?.user?.lastname}}</td>
+                      <td>{{order?.orderDate | date : 'medium'}}</td>
+                      <td class="text-center">{{order?.shippingDate | date : 'longDate'}}</td>
+                      <td class="text-center">{{order?.shippingAddress}}</td>
+                      <td class="text-center">{{order?.total | number:'.3'}}DT</td>
+                      <td class="text-center">{{getProgress(order?.progress)}}</td>
+                      <td class="text-center">
+                          <button class="btn btn-sm btn-primary" placement="top"
+                            tooltip="Edit Order"
+                            data-toggle="modal" 
+                            data-target="#editModal"
+                            (click)= "setSelectedOrder(order)">
+                            <i class="fa fa-edit"></i>
+                          </button>
+                          <button class="btn btn-sm btn-danger"
+                            style="width: 33px; margin-left: 5px;" placement="top" tooltip="Delete Order"
+                            (click) ="deleteOrder(order?._id)">
+                            <i class="fa fa-trash"></i>
+                          </button>
+                      </td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <!-- /.card-body -->
+              </div>
+              <!-- /.card -->
+            </div>
+            <!-- /.col -->
+          </div>
+          <!-- /.row -->
+        </section>
+      </div>
+    </div>
+   
+  <!--Edit modal-->
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+    style="overflow: auto;">
+    <div class="modal-dialog">
+      <div class="modal-content" style="width: 600px;">
+          <div class="modal-header" style="padding-top: 10px">
+              <h4 class="modal-title">Edit Order</h4>
+              <button style="margin-top: -20px;" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true" style="font-size: 40px;">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+              <form>
+                <div class="form-group col-md-12">
+                  <label>Client</label>
+                  <input disabled type="text" class="form-control" 
+                  value="{{selectedOrder?.client?.user?.name}} {{selectedOrder?.client?.user?.lastname}}">
+                </div>
+                <div class="form-group col-md-12">
+                  <label>Order Date</label>
+                  <input disabled type="text" class="form-control" #oDate value="{{selectedOrder?.orderDate | date : 'medium'}}">
+                </div>
+                <div class="form-group col-md-12">
+                  <label>Shipping Date</label>
+                  <input type="date" class="form-control" #sDate value="{{selectedOrder?.shippingDate | date : 'yyyy-MM-dd'}}">
+                </div>
+                <div class="form-group col-md-12">
+                  <label>Shipping Address</label>
+                  <input #sAdd type="text" class="form-control" value="{{selectedOrder?.shippingAddress}}">
+                </div>
+                <div class="form-group col-md-12">
+                  <label>Total Price</label>
+                  <input disabled type="text" class="form-control" #total value={{selectedOrder?.total}}>
+                </div>
+                <div class="dropdown form-group col-md-12" >
+                    <label>Progress</label>
+                    <br>
+                    <button style="background-color: white;
+                    width: 173px;
+                    color: black;
+                    border-color: #d0d0d0;"
+                    class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" 
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{getProgress(progToEdit)}}  
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                      <a class="dropdown-item" #inProg style="cursor: pointer;" (click)="setProgress(inProg)">In Progress</a>
+                      <a class="dropdown-item" #deliv style="cursor: pointer;" (click)="setProgress(deliv)">Delivered</a>
+                      <a class="dropdown-item" #ship style="cursor: pointer;" (click)="setProgress(ship)">Shipped</a>
+                      <a class="dropdown-item" #comp style="cursor: pointer;" (click)="setProgress(comp)">Completed</a>
+                    </div>
+              </div>
+              </form>
+  
+          </div>
+          <div class="modal-footer">
+              <div class="col mb-2">
+                    <button style="margin-left: 20px;
+                    width: 20%;
+                    background-color: lightgrey;"
+                    type="button" class="btn btn-light"
+                    data-dismiss="modal">Cancel</button>
+                    <a>
+                        <button style="margin-left: 10px; width: 15%;" 
+                        class="btn btn-success" data-dismiss="modal"
+                        (click)="editOrder(sDate.value, sAdd.value)">Edit</button></a>
+              </div>
+          </div>
+      </div>
+    </div>
+    </div>
+  </body>
+  

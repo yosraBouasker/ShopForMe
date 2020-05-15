@@ -16,6 +16,9 @@ import { ClientsComponent } from './AdminDashboard/clients/clients.component';
 import { ProfileAdminComponent } from './AdminDashboard/profile-admin/profile-admin.component';
 import { ProductsAdminComponent } from './AdminDashboard/products-admin/products-admin.component';
 import { SingleProdAdminComponent } from './AdminDashboard/single-prod-admin/single-prod-admin.component';
+import { OrdersAdminComponent } from './AdminDashboard/orders-admin/orders-admin.component';
+import { MessagesAdminComponent } from './AdminDashboard/messages-admin/messages-admin.component';
+
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
@@ -34,6 +37,8 @@ const routes: Routes = [
   { path: 'profileAdmin/:id', component: ProfileAdminComponent },
   { path: 'productsAdmin', component: ProductsAdminComponent },
   { path: 'singleProductAdmin/:id', component: SingleProdAdminComponent },
+  { path: 'ordersAdmin', component: OrdersAdminComponent },
+  { path: 'messages', component: MessagesAdminComponent },
   { path: '**', redirectTo: '/home', pathMatch: 'full' },
 ];
 

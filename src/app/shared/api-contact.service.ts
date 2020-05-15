@@ -18,4 +18,9 @@ export class ApiContactService {
   getMessages() {
     return this.http.get('http://localhost:3000/message/all');
   }
+
+  deleteMessage(id) {
+    var body = {}
+    return this.http.post('http://localhost:3000/message/delete/'+id, body);
+  }
 }

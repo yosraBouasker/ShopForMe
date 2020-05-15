@@ -1,0 +1,88 @@
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+    <div class="wrapper">
+    <app-admin></app-admin>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Messages</h1>
+          </div>
+          
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card card-primary card-outline">
+            <div class="card-header">
+              <div class="card-tools">
+                <div class="input-group input-group-sm">
+                  <input type="text" class="form-control" placeholder="Search Message">
+                  <div class="input-group-append">
+                    <div class="btn btn-primary">
+                      <i class="fas fa-search"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /.card-tools -->
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body p-0">
+              <div class="table-responsive mailbox-messages">
+                <table class="table table-hover table-striped">
+                  <tbody>
+                  <tr *ngFor="let message of messages.slice().reverse(); let i=index"> 
+                    <td class="mailbox-star">{{ messages.length - i}}</td>
+                    <td class="mailbox-name"style="width: 200px !important;"><a href="read-mail.html">{{message?.fullName}}</a></td>
+                    <td class="mailbox-subject" style="max-width: 700px !important; min-width: 700px !important;"><b>{{message?.email}}</b> - {{message?.text}}
+                    </td>
+                    <td class="mailbox-attachment"></td>
+                    <td class="mailbox-date">{{message?.createdAt | timeago}}</td>
+                    <td>
+                        <button class="btn btn-sm btn-danger"
+                          style="width: 33px; margin-left: 5px;" placement="top" tooltip="Delete Message"
+                          (click)="deleteMessage(message?._id)">
+                          <i class="fa fa-trash"></i>
+                        </button>
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+                <!-- /.table -->
+              </div>
+              <!-- /.mail-box-messages -->
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer p-0">
+              <div class="mailbox-controls">
+                <!-- /.btn-group -->
+                <div class="float-right">
+                  1-50/200
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-default btn-sm"><i class="fas fa-chevron-left"></i></button>
+                    <button type="button" class="btn btn-default btn-sm"><i class="fas fa-chevron-right"></i></button>
+                  </div>
+                  <!-- /.btn-group -->
+                </div>
+                <!-- /.float-right -->
+              </div>
+            </div>
+          </div>
+          <!-- /.card -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+  </div>
+  </body>
