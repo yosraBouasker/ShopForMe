@@ -19,9 +19,9 @@ export class HeaderComponent implements OnInit {
 
   isConnected() {
     this.apiService.decodeToken();
-    return (this.apiService.userId != undefined && this.apiService.userId != null);
+    return (this.apiService.userId != undefined && this.apiService.userId != null && localStorage.getItem("isAdmin") != "true");
   }
-  
+
   logout(){
     this.apiService.logout();
     this.router.navigate(['/home'])

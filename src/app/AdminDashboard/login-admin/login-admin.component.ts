@@ -1,28 +1,25 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiAuthService } from '../shared/api-auth.service';
-import * as jwt_decode from 'jwt-decode';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { ApiAuthService } from 'src/app/shared/api-auth.service';
 import { Router } from '@angular/router';
+import { Validators, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-login-admin',
+  templateUrl: './login-admin.component.html',
+  styleUrls: ['./login-admin.component.css']
 })
-export class LoginComponent implements OnInit {
-
-  loginForm: FormGroup;
-  message = '';
+export class LoginAdminComponent implements OnInit {
+    loginForm: FormGroup;
+    message = '';
 
   constructor(private apiService: ApiAuthService, private router: Router) {
-
     this.loginForm = new FormGroup({
-      email: new FormControl('', [Validators.email, Validators.required]),
-      password: new FormControl('', [Validators.required, Validators.minLength(5)])
-    });
-  }
+    email: new FormControl('', [Validators.email, Validators.required]),
+    password: new FormControl('', [Validators.required, Validators.minLength(5)])
+  });
+ }
 
-  ngOnInit() {
+  ngOnInit(): void {
   }
 
   loginBtn() {
@@ -32,8 +29,8 @@ export class LoginComponent implements OnInit {
         if (res.message === 'ok') {
           // redirection
           localStorage.setItem('token', res.token);
-          localStorage.setItem('isAdmin', 'false');
-          this.router.navigate(['/home'])
+          localStorage.setItem('isAdmin', 'true');
+          this.router.navigate(['/admin'])
           .then(() => {
             window.location.reload();
           });
@@ -43,4 +40,5 @@ export class LoginComponent implements OnInit {
       });
     }
   }
+
 }

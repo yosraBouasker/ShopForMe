@@ -35,6 +35,7 @@ import { SingleProdAdminComponent } from './AdminDashboard/single-prod-admin/sin
 import { OrdersAdminComponent } from './AdminDashboard/orders-admin/orders-admin.component';
 import { MessagesAdminComponent } from './AdminDashboard/messages-admin/messages-admin.component';
 import { TimeagoModule } from 'ngx-timeago';
+import { LoginAdminComponent } from './AdminDashboard/login-admin/login-admin.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { TimeagoModule } from 'ngx-timeago';
     ProductsAdminComponent,
     SingleProdAdminComponent,
     OrdersAdminComponent,
-    MessagesAdminComponent
+    MessagesAdminComponent,
+    LoginAdminComponent
   ],
   imports: [
     BrowserModule,
@@ -91,3 +93,4 @@ import { TimeagoModule } from 'ngx-timeago';
 
 })
 export class AppModule { }
+

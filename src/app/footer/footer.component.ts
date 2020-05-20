@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { ApiCategoryService } from '../shared/api-category.service';
 import { ApiAuthService } from '../shared/api-auth.service';
@@ -21,7 +22,7 @@ export class FooterComponent implements OnInit {
 
   isConnected() {
     this.apiService.decodeToken();
-    return (this.apiService.userId != undefined && this.apiService.userId != null);
+    return (this.apiService.userId != undefined && this.apiService.userId != null && localStorage.getItem("isAdmin") != "true");
   }
 
   logout(){

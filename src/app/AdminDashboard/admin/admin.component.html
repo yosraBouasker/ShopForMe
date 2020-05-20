@@ -8,7 +8,7 @@
           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="admin" class="nav-link">Home</a>
+          <a href="home" class="nav-link">Go To Site</a>
         </li>
       </ul>
 
@@ -47,7 +47,7 @@
           </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="home" role="button"><i
+          <a class="nav-link" href="admin" role="button"><i
               class="fas fa-th-large"></i></a>
         </li>
       </ul>
@@ -68,10 +68,10 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
           <div class="image">
-            <img src="../../assets/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+            <img src="http://png.pngtree.com/png-vector/20190411/ourlarge/pngtree-business-male-icon-vector-png-image_916468.jpg" class="img-circle elevation-2" alt="User Image">
           </div>
           <div class="info">
-            <a href="#" class="d-block">Alexander Pierce</a>
+            <a href="#" class="d-block">Shop For Me Admin</a>
           </div>
         </div>
 
@@ -123,17 +123,17 @@
             <li class="nav-header">More</li>
             <li class="nav-item">
               <a href="messages" class="nav-link" id="messages">
-                <i class=" nav-icon fas fa-envelope"></i>                
+                <i class=" nav-icon fas fa-envelope"></i>
                 <p>
                   Messages
                 </p>
               </a>
             </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-sign-out-alt"></i>                
+            <li class="nav-item" (click)="logout()" >
+              <a class="nav-link" style="cursor:pointer">
+                <i class="nav-icon fas fa-sign-out-alt"></i>
                 <p>
-                  Logout 
+                  Logout
                 </p>
               </a>
             </li>

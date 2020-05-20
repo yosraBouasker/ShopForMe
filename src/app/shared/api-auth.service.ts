@@ -32,6 +32,7 @@ export class ApiAuthService {
   logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('cart');
+    localStorage.removeItem('isAdmin');
     this.router.navigate(['home']);
   }
 
