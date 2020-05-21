@@ -13,7 +13,7 @@
 
             <div class="loginStyle" *ngIf="!loggedIn">
               <h2>You should be logged in!</h2>
-              <a href="login"><button style="width: 25%; margin-top: 20px;" class="btn btn-light btn-success text-uppercase loginBtn">
+              <a routerLink="/login"><button style="width: 25%; margin-top: 20px;" class="btn btn-light btn-success text-uppercase loginBtn">
                Login</button></a>
             </div>
 
@@ -34,7 +34,7 @@
                 </thead>
                 <tbody>
                   <tr *ngFor="let purchaseDetail of cartApiService?.purchaseDetailsList">
-                    <td style="width: 100px;"><img src="{{purchaseDetail?.product?.image}}" /> </td>
+                    <td style="width: 100px;"><img style="height: 50px" src="http://localhost:3000/{{purchaseDetail?.product?.image}}" /> </td>
                     <td style="width: 270px;">{{purchaseDetail?.product?.name}}</td>
                     <td style="width: 120px;">
                       <input class="form-control" type="number" #qty
@@ -81,7 +81,7 @@
             <button style="margin-left: 20px; width: 25%;"
             type="button" class="btn btn-light text-uppercase"
             data-dismiss="modal">Continue Shopping</button>
-            <a href="checkout"><button style="margin-left: 10px; width: 25%;" class="btn btn-light btn-success text-uppercase">Checkout</button></a>
+            <a routerLink="/checkout"><button style="margin-left: 10px; width: 25%;" class="btn btn-light btn-success text-uppercase">Checkout</button></a>
 
       </div>
     </div>

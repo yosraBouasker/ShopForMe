@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const product = require('../models/product');
+const user = require('../models/user');
 const subCategory = require('../models/subCategory');
 const multer = require('multer');
 
@@ -85,5 +86,28 @@ router.get('/byName/:name', async (req, res) => {
     const productResult = await product.findOne({ "name": req.params.name }).exec();
     res.send({ data: productResult })
   })
+  
+router.get('/bySearchHistory/:idUser', async (req, res) => {
+  var currentUser = await user.findOne({ "_id": req.params.idUser }).populate({ path: 'client' }).exec();
+  var allProd = await product.find().exec();
+  var result = [];
+  for (let j=0; j<allProd.length; j++){
+    for (let i=0; i<currentUser.client.searchHistory.length; i++) {
+      if (allProd[j].name.toLowerCase().includes(currentUser.client.searchHistory[i].toLowerCase())
+      || allProd[j].description.toLowerCase().includes(currentUser.client.searchHistory[i].toLowerCase())){
+        let exists = false;
+        for (let k=0; k<result.length; k++){
+          if (result[k]==allProd[j]){
+            exists=true;
+          }
+        }
+        if (!exists){
+          result.push(allProd[j]);
+        }
+      }
+    }
+  }
+  res.send({ data: result });
+})
 
 module.exports = router;

@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { CartComponent } from '../cart/cart.component';
 import { CartService } from '../shared/cart.service';
 import { ApiAuthService } from '../shared/api-auth.service';
+import { ProfileService } from '../shared/profile.service';
 
 @Component({
   selector: 'app-shop-grid',
@@ -21,7 +22,8 @@ export class ShopGridComponent implements OnInit {
   term;
   
   constructor(private apiCategoryService: ApiCategoryService, private apiProductService: ApiProductService, 
-    private activatedRoute: ActivatedRoute, private cartService: CartService, private apiService: ApiAuthService) {
+    private activatedRoute: ActivatedRoute, private cartService: CartService, private apiService: ApiAuthService,
+    private profileService: ProfileService) {
     this.config = {
       itemsPerPage: 200,
       currentPage: 1,
@@ -30,6 +32,7 @@ export class ShopGridComponent implements OnInit {
    }
 
   ngOnInit() {
+    this.profileService.decodeToken();
     const id = this.activatedRoute.snapshot.paramMap.get('id');
     // tslint:disable-next-line: triple-equals
     if (id != undefined) {
@@ -244,6 +247,29 @@ export class ShopGridComponent implements OnInit {
     this.cartService.idProductToAdd = val;
     var cart = new CartComponent(this.apiProductService, this.apiService, this.cartService);
     this.cartService.isCartEmpty = cart.isEmpty();
+  }
+
+  addSearchTerm(term: string) {
+    this.term = term;
+    if(term!=""){
+      this.profileService.info().subscribe((res: any) => {
+        var history = res.userResult[0].client.searchHistory;
+        var exists = false;
+        for (let i=0; i<history.length; i++) {
+          if (history[i]==term) {
+            exists = true;
+          }
+        }
+        if (!exists) {
+          history.push(term);
+        }
+        var body = {
+          searchHistory : history
+        }
+        this.profileService.update(body).subscribe((res: any) => {
+        })
+      })
+    }
   }
 
 }

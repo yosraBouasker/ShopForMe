@@ -12,16 +12,14 @@ import { ApiCategoryService } from 'src/app/shared/api-category.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  messages;
-  orders;
-  categories;
-  products;
-  clients;
+  messages = [];
+  orders = [];
+  categories= [];
+  products= [];
+  clients= [];
   constructor(public http: HttpClient, private apiAuthService: ApiAuthService,private apiProductService: ApiProductService, private contactApi: ApiContactService, private profileService: ProfileService,private apiCategoryService: ApiCategoryService  ) { }
 
   ngOnInit(): void {
-    let div= document.getElementById("dashboard");
-    div.className = "nav-link active";
 
     this.profileService.getAllOrders().subscribe((res: any) => {
       this.orders = res.data;

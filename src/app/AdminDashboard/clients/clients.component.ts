@@ -12,9 +12,8 @@ export class ClientsComponent implements OnInit {
   constructor(private apiAuthService: ApiAuthService, private profileService: ProfileService) { }
 
   ngOnInit(): void {
-    let div= document.getElementById("clients");
-    div.className = "nav-link active";
     this.apiAuthService.getClients().subscribe((res: any) => {
+      console.log(res)
       this.clients = res.data;
     });
   }

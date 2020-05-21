@@ -11,13 +11,11 @@ export class AuthGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-
-    if (localStorage.getItem('token')) {
+    if (localStorage.getItem('isAdmin') == "true" && localStorage.getItem('token')) {
       return true;
     }
-    this.router.navigateByUrl('/login');
+    this.router.navigateByUrl('/loginAdmin');
     return false;
-
 
   }
 

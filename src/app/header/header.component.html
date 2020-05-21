@@ -2,13 +2,13 @@
 <div class="agileits_header">
   <div class="container">
     <div class="w3l_offers">
-      <p>SALE UP TO 50% OFF. DON'T MISS OUT! <a href="shop" style="margin-left: 5px;"> SHOP NOW</a></p>
+      <p>SALE UP TO 50% OFF. DON'T MISS OUT! <a routerLink="/shop" style="margin-left: 5px;"> SHOP NOW</a></p>
     </div>
     <div class="agile-login">
       <ul>
-        <li *ngIf="!isConnected()"><a href="register">Register</a></li>
-        <li style="margin-right: -400px;" *ngIf="!isConnected()"><a href="login">Login</a></li>
-        <li *ngIf="isConnected()"><a href="profile">My Account</a></li>
+        <li *ngIf="!isConnected()"><a routerLink="/register">Register</a></li>
+        <li style="margin-right: -400px;" *ngIf="!isConnected()"><a routerLink="/login">Login</a></li>
+        <li *ngIf="isConnected()"><a routerLink="/profile">My Account</a></li>
         <li style="margin-right: -400px;" *ngIf="isConnected()"><a (click)="logout()" style="cursor: pointer;">Logout</a></li>
 
       </ul>
@@ -36,7 +36,7 @@
       </ul>
     </div>
     <div class="w3ls_logo_products_left">
-      <a href="../../index.html">
+      <a href="home">
         <img src="assets/images/logo.png" alt="logo images">
       </a>
     </div>

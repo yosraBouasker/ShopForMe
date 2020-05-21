@@ -22,9 +22,9 @@
       <div class="col-md-3 w3_footer_grid">
         <h3>Information</h3>
         <ul class="info">
-          <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="aboutUs">About Us</a></li>
-          <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="contactUs">Contact Us</a></li>
-          <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="shop">Our Products</a></li>
+          <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a routerLink="/aboutUs">About Us</a></li>
+          <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a routerLink="/contactUs">Contact Us</a></li>
+          <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a routerLink="/shop">Our Products</a></li>
         </ul>
       </div>
       <div class="col-md-3 w3_footer_grid">
@@ -32,18 +32,18 @@
         <ul class="info">
           <li *ngFor="let category of categories">
             <i class="fa fa-arrow-right" aria-hidden="true"></i>
-            <a href="shop">{{category?.name}}</a>
+            <a routerLink="/shop">{{category?.name}}</a>
           </li>
         </ul>
       </div>
       <div class="col-md-3 w3_footer_grid">
         <h3>Profile</h3>
         <ul class="info">
-          <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="shop">Store</a></li>
-          <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="cart">My Cart</a></li>
-          <li *ngIf="!isConnected()"><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="login">Login</a></li>
-          <li *ngIf="!isConnected()"><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="register">Create Account</a></li>
-          <li *ngIf="isConnected()"><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="profile">My Profile</a></li>
+          <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a routerLink="/shop">Store</a></li>
+          <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a routerLink="/cart">My Cart</a></li>
+          <li *ngIf="!isConnected()"><i class="fa fa-arrow-right" aria-hidden="true"></i><a routerLink="/login">Login</a></li>
+          <li *ngIf="!isConnected()"><i class="fa fa-arrow-right" aria-hidden="true"></i><a routerLink="/register">Create Account</a></li>
+          <li *ngIf="isConnected()"><i class="fa fa-arrow-right" aria-hidden="true"></i><a routerLink="/profile">My Profile</a></li>
           <li *ngIf="isConnected()"><i class="fa fa-arrow-right" aria-hidden="true"></i><a (click)="logout()" style="cursor: pointer;">Logout</a></li>
         </ul>
       </div>

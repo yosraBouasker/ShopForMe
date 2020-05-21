@@ -1,5 +1,7 @@
 const router = require('express').Router();
 const category = require('../models/category');
+const subCategory = require('../models/subCategory');
+const product = require('../models/product');
 
 router.post('/add', async (req, res) => {
     const catResult = await category.create(req.body).catch(err => err);
@@ -27,6 +29,13 @@ router.post('/update/:idCat', async (req, res) => {
   })
 
 router.post('/delete/:idCat', async (req, res) => {
+    var cat = await category.findOne({ "_id": req.params.idCat }).populate({ path: 'subCategories' , populate: { path: 'products'}}).exec();
+    for (let i=0; i<cat.subCategories.length; i++) {
+      const res = await subCategory.deleteOne({ "_id": cat.subCategories[i]._id }).exec();
+      for (let j=0; j<cat.subCategories[i].products.length; j++) {
+        const res1 = await product.deleteOne({ "_id": cat.subCategories[i].products[j]._id }).exec();
+      }
+    }
     const catResult = await category.deleteOne({ "_id": req.params.idCat }).exec();
     res.send({ data: catResult })
   })

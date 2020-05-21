@@ -18,5 +18,6 @@ router.get('/all', async (req, res) => {
     const userResult = await user.deleteOne({ "_id": userRes._id }).exec();
     res.send({ data: clientResult })
   })
+  
 module.exports = router;
 

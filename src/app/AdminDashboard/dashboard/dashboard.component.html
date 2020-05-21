@@ -30,7 +30,7 @@
                 <div class="icon">
                   <i class="fas fa-shopping-cart"></i>
                 </div>
-                <a href="ordersAdmin" class="small-box-footer">
+                <a routerLink="/ordersAdmin" class="small-box-footer">
                   More info <i class="fas fa-arrow-circle-right"></i>
                 </a>
               </div>
@@ -47,7 +47,7 @@
                 <div class="icon">
                   <i class="nav-icon fas fa-store"></i>
                  </div>
-                <a href="productsAdmin" class="small-box-footer">
+                <a routerLink="/productsAdmin" class="small-box-footer">
                   More info <i class="fas fa-arrow-circle-right"></i>
                 </a>
               </div>
@@ -64,7 +64,7 @@
                 <div class="icon">
                   <i class="fas fa-user-plus"></i>
                 </div>
-                <a href="clientsAdmin" class="small-box-footer">
+                <a routerLink="/clientsAdmin" class="small-box-footer">
                   More info <i class="fas fa-arrow-circle-right"></i>
                 </a>
               </div>
@@ -81,7 +81,7 @@
                 <div class="icon">
                   <i class="nav-icon fa fa-list-alt"></i>
                 </div>
-                <a href="categoriesAdmin" class="small-box-footer">
+                <a routerLink="/categoriesAdmin" class="small-box-footer">
                   More info <i class="fas fa-arrow-circle-right"></i>
                 </a>
               </div>
@@ -134,7 +134,7 @@
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer text-center">
-                      <a href="messages">View All Messages</a>
+                      <a routerLink="/messages">View All Messages</a>
                     </div>
                     <!-- /.card-footer-->
                   </div>
@@ -158,9 +158,9 @@
                     <!-- /.card-header -->
                     <div class="card-body p-0">
                       <ul class="users-list clearfix">
-                        <li *ngFor="let client of clients.slice().reverse().slice(0,8)">
+                        <li *ngFor="let client of clients.slice().reverse().slice(0,4)">
                           <img src="{{getProfileImg(client?.image)}}" alt="User Image">
-                          <a class="users-list-name" href="/profileAdmin/{{client?.user?._id}}"
+                          <a class="users-list-name" routerLink="/profileAdmin/{{client?.user?._id}}"
                             style="white-space: break-spaces;">
                             {{client?.user.name}} {{client?.user.lastname}}
                           </a>
@@ -170,7 +170,7 @@
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer text-center">
-                      <a href="clientsAdmin">View All Members</a>
+                      <a routerLink="/clientsAdmin">View All Members</a>
                     </div>
                     <!-- /.card-footer -->
                   </div>
@@ -223,7 +223,7 @@
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer clearfix">
-                  <a href="ordersAdmin" class="btn btn-sm btn-secondary float-right">View All Orders</a>
+                  <a routerLink="/ordersAdmin" class="btn btn-sm btn-secondary float-right">View All Orders</a>
                 </div>
                 <!-- /.card-footer -->
               </div>
@@ -255,7 +255,7 @@
                         <img src="http://localhost:3000/{{product?.image}}" alt="Product Image" class="img-size-50">
                       </div>
                       <div class="product-info">
-                        <a href="/singleProductAdmin/{{product?._id}}" class="product-title">{{product?.reference}} | {{product?.name}}
+                        <a routerLink="/singleProductAdmin/{{product?._id}}" class="product-title">{{product?.reference}} | {{product?.name}}
                           <span class="badge badge-warning float-right">{{product?.price | number:'.3'}}DT</span></a>
                         <span class="product-description">
                           {{product?.subCategory?.category?.name}} > {{product?.subCategory?.name}}
@@ -266,7 +266,7 @@
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer text-center">
-                  <a href="productsAdmin" class="uppercase">View All Products</a>
+                  <a routerLink="/productsAdmin" class="uppercase">View All Products</a>
                 </div>
                 <!-- /.card-footer -->
               </div>

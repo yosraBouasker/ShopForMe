@@ -25,8 +25,6 @@ export class ProductsAdminComponent implements OnInit {
     private activatedRoute: ActivatedRoute, private cartService: CartService, private apiService: ApiAuthService) { }
 
   ngOnInit(): void {
-    let div= document.getElementById("products");
-    div.className = "nav-link active";
     this.subCat="SubCategory";
     this.apiProductService.getProducts().subscribe((res: any) => {
       this.products = res.data;

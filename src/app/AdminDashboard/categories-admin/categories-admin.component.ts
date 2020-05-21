@@ -22,8 +22,6 @@ editedId;
     private activatedRoute: ActivatedRoute, private cartService: CartService, private apiService: ApiAuthService) { }
 
   ngOnInit(): void {
-    let div= document.getElementById("categories");
-    div.className = "nav-link active";
     this.apiCategoryService.getCategories().subscribe((res: any) => {
       this.categories = res.data;
       this.config = {

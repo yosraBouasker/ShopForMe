@@ -6,6 +6,7 @@ import { ApiCategoryService } from 'src/app/shared/api-category.service';
 import { ApiProductService } from 'src/app/shared/api-product.service';
 import { ApiAuthService } from 'src/app/shared/api-auth.service';
 import { Router } from '@angular/router';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-admin',
@@ -13,22 +14,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
-messages;
+messages=[];
 
   constructor(public http: HttpClient,private contactApi: ApiContactService, private apiService: ApiAuthService, private router:Router) { }
 
   ngOnInit(): void {
-    if (localStorage.getItem('isAdmin')=='true') {
     this.contactApi.getMessages().subscribe((res: any) => {
       this.messages = res.data;
     });
-  }
-  else {
-    this.router.navigate(['/loginAdmin'])
-          .then(() => {
-            window.location.reload();
-          });
-  }
   }
 
   logout(){

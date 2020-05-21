@@ -7,6 +7,7 @@ const client = new mongoose.Schema({
   phone : String,
   image: String,
   purchases: [{ type: mongoose.Schema.Types.ObjectId, ref: 'purchase' }],
+  searchHistory: [{type: String}]
 })
 
 module.exports = mongoose.model('client', client);

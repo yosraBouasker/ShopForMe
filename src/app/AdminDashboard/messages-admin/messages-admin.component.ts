@@ -12,10 +12,7 @@ export class MessagesAdminComponent implements OnInit {
   constructor(public http: HttpClient, private contactApi: ApiContactService) { }
 
   ngOnInit(): void {
-    let div= document.getElementById("messages");
-    div.className = "nav-link active";
-
-    this.contactApi.getMessages().subscribe((res: any) => {
+        this.contactApi.getMessages().subscribe((res: any) => {
       this.messages = res.data;
       console.log(res)
     });

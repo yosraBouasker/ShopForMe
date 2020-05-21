@@ -23,8 +23,6 @@ export class OrdersAdminComponent implements OnInit {
     private activatedRoute: ActivatedRoute, private cartService: CartService, private apiService: ApiAuthService, private profileService: ProfileService) { }
 
   ngOnInit(): void {
-    let div= document.getElementById("orders");
-    div.className = "nav-link active";
     this.profileService.getAllOrders().subscribe((res: any) => {
       this.orders = res.data;
       console.log(this.orders)

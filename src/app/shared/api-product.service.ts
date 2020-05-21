@@ -36,4 +36,7 @@ export class ApiProductService {
     return this.http.post('http://localhost:3000/product/add/' + idSubCat, body);
   }
 
+  getRecommendedProducts(userId) {
+    return this.http.get('http://localhost:3000/product/bySearchHistory/' + userId);
+  }
 }

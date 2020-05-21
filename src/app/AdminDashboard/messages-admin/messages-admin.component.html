@@ -40,7 +40,7 @@
                   <tbody>
                   <tr *ngFor="let message of messages.slice().reverse(); let i=index"> 
                     <td class="mailbox-star">{{ messages.length - i}}</td>
-                    <td class="mailbox-name"style="width: 200px !important;"><a href="read-mail.html">{{message?.fullName}}</a></td>
+                    <td class="mailbox-name"style="width: 200px !important;"><a>{{message?.fullName}}</a></td>
                     <td class="mailbox-subject" style="max-width: 700px !important; min-width: 700px !important;"><b>{{message?.email}}</b> - {{message?.text}}
                     </td>
                     <td class="mailbox-attachment"></td>
@@ -59,21 +59,7 @@
               </div>
               <!-- /.mail-box-messages -->
             </div>
-            <!-- /.card-body -->
-            <div class="card-footer p-0">
-              <div class="mailbox-controls">
-                <!-- /.btn-group -->
-                <div class="float-right">
-                  1-50/200
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-default btn-sm"><i class="fas fa-chevron-left"></i></button>
-                    <button type="button" class="btn btn-default btn-sm"><i class="fas fa-chevron-right"></i></button>
-                  </div>
-                  <!-- /.btn-group -->
-                </div>
-                <!-- /.float-right -->
-              </div>
-            </div>
+            <!-- /.card-body --> 
           </div>
           <!-- /.card -->
         </div>

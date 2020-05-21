@@ -24,7 +24,7 @@
         <li class="nav-item dropdown">
           <a class="nav-link" data-toggle="dropdown" href="#">
             <i class="far fa-comments"></i>
-            <span class="badge badge-danger navbar-badge">{{messages.length}}</span>
+            <span class="badge badge-danger navbar-badge">{{messages?.length}}</span>
           </a>
           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
             <a href="#" class="dropdown-item">
@@ -35,7 +35,7 @@
                   <h3 class="dropdown-item-title">
                     {{message?.fullName}}
                   </h3>
-                  <p class="text-sm">{{message?.text.slice(0,25)}} ...</p>
+                  <p class="text-sm">{{message?.text?.slice(0,25)}} ...</p>
                   <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i>
                     <span>{{message?.createdAt | timeago}}</span></p>
                 </div>
@@ -43,11 +43,11 @@
               <!-- Message End -->
             </a>
             <div class="dropdown-divider"></div>
-            <a href="messages" class="dropdown-item dropdown-footer">See All Messages</a>
+            <a routerLink="/messages" class="dropdown-item dropdown-footer">See All Messages</a>
           </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="admin" role="button"><i
+          <a class="nav-link" routerLink="/admin" role="button"><i
               class="fas fa-th-large"></i></a>
         </li>
       </ul>
@@ -57,14 +57,14 @@
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <!-- Brand Logo -->
-      <a href="admin" class="brand-link" style="padding-left: 60px;">
+      <a routerLink="/admin" class="brand-link" style="padding-left: 60px;">
         <img src="" class="brand-image img-circle elevation-3"
              style="opacity: .8">
         <span class="brand-text font-weight-light">Administrator</span>
       </a>
 
       <!-- Sidebar -->
-      <div class="sidebar" style="height: 50px;">
+      <div class="sidebar" id="sidebar" >
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
           <div class="image">
@@ -81,7 +81,7 @@
             <!-- Add icons to the links using the .nav-icon class
                  with font-awesome or any other icon font library -->
             <li class="nav-item">
-              <a href="admin" class="nav-link" id="dashboard">
+              <a routerLink="/admin" routerLinkActive="active" class="nav-link" id="dashboard">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
                 <p>
                   Dashboard
@@ -89,7 +89,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="clientsAdmin" class="nav-link" id="clients">
+              <a routerLink="/clientsAdmin" routerLinkActive="active" class="nav-link" id="clients">
                 <i class="nav-icon fa fa-users"></i>
                 <p>
                   Clients
@@ -97,7 +97,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="categoriesAdmin" class="nav-link" id="categories">
+              <a routerLink="/categoriesAdmin" routerLinkActive="active" class="nav-link" id="categories">
                 <i class="nav-icon fa fa-list-alt"></i>
                 <p>
                   Categories
@@ -105,7 +105,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="productsAdmin" class="nav-link" id="products">
+              <a routerLink="/productsAdmin" routerLinkActive="active" class="nav-link" id="products">
                 <i class="nav-icon fas fa-store"></i>
                 <p>
                   Products
@@ -113,7 +113,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="ordersAdmin" class="nav-link" id="orders">
+              <a routerLink="/ordersAdmin" routerLinkActive="active" class="nav-link" id="orders">
                 <i class=" nav-icon fas fa-shopping-bag"></i>
                 <p>
                   Orders
@@ -122,7 +122,7 @@
             </li>
             <li class="nav-header">More</li>
             <li class="nav-item">
-              <a href="messages" class="nav-link" id="messages">
+              <a routerLink="/messages" routerLinkActive="active" class="nav-link" id="messages">
                 <i class=" nav-icon fas fa-envelope"></i>
                 <p>
                   Messages
@@ -145,7 +145,6 @@
     </aside>
 
     <!-- Content Wrapper. Contains page content -->
-
     <!-- /.control-sidebar -->
 </div>
 </body>

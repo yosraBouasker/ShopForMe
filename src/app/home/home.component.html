@@ -26,7 +26,8 @@
 	<!-- //main-slider -->
 	<!-- //top-header and slider -->
 	<!-- top-brands -->
-	<div class="top-brands">
+	<app-recommended-products></app-recommended-products>
+	<div class="top-brands" id="top">
 		<div class="container">
 		<h2>Top selling offers</h2>
 			<div class="grid_3 grid_5">
@@ -52,7 +53,7 @@
 												<figure>
 													<div class="snipcart-item block" >
 														<div class="snipcart-thumb">
-															<a href="/product/{{adOffer?._id}}"><img title=" " alt=" " src="{{adOffer?.image}}" /></a>
+															<a routerLink="/product/{{adOffer?._id}}"><img title=" " alt=" " style="height: 150px" src="http://localhost:3000/{{adOffer?.image}}" /></a>
 															<p>{{adOffer?.name}}</p>
 															<div class="stars">
 																<i class="fa fa-star blue-star" aria-hidden="true"></i>
@@ -98,7 +99,7 @@
 												<figure>
 													<div class="snipcart-item block" >
 														<div class="snipcart-thumb">
-															<a href="/product/{{newOffer?._id}}"><img title=" " alt=" " src="{{newOffer?.image}}" /></a>
+															<a routerLink="/product/{{newOffer?._id}}"><img title=" " alt=" " style="height: 150px" src="http://localhost:3000/{{newOffer?.image}}" /></a>
 															<p>{{newOffer?.name}}</p>
 															<div class="stars">
 																<i class="fa fa-star blue-star" aria-hidden="true"></i>

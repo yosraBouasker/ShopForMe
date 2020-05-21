@@ -19,6 +19,7 @@ import { SingleProdAdminComponent } from './AdminDashboard/single-prod-admin/sin
 import { OrdersAdminComponent } from './AdminDashboard/orders-admin/orders-admin.component';
 import { MessagesAdminComponent } from './AdminDashboard/messages-admin/messages-admin.component';
 import { LoginAdminComponent } from './AdminDashboard/login-admin/login-admin.component';
+import { AuthGuard } from './shared/auth.guard.service';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -32,14 +33,14 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent },
   { path: 'cart', component: CartComponent },
   { path: 'checkout', component: CheckoutComponent },
-  { path: 'admin', component: DashboardComponent },
-  { path: 'categoriesAdmin', component: CategoriesAdminComponent },
-  { path: 'clientsAdmin', component: ClientsComponent },
-  { path: 'profileAdmin/:id', component: ProfileAdminComponent },
-  { path: 'productsAdmin', component: ProductsAdminComponent },
-  { path: 'singleProductAdmin/:id', component: SingleProdAdminComponent },
-  { path: 'ordersAdmin', component: OrdersAdminComponent },
-  { path: 'messages', component: MessagesAdminComponent },
+  { path: 'admin', component: DashboardComponent, canActivate: [AuthGuard] },
+  { path: 'categoriesAdmin', component: CategoriesAdminComponent, canActivate: [AuthGuard] },
+  { path: 'clientsAdmin', component: ClientsComponent, canActivate: [AuthGuard] },
+  { path: 'profileAdmin/:id', component: ProfileAdminComponent, canActivate: [AuthGuard] },
+  { path: 'productsAdmin', component: ProductsAdminComponent, canActivate: [AuthGuard] },
+  { path: 'singleProductAdmin/:id', component: SingleProdAdminComponent, canActivate: [AuthGuard] },
+  { path: 'ordersAdmin', component: OrdersAdminComponent , canActivate: [AuthGuard]},
+  { path: 'messages', component: MessagesAdminComponent, canActivate: [AuthGuard] },
   { path: 'loginAdmin', component: LoginAdminComponent },
   { path: '**', redirectTo: '/home', pathMatch: 'full' },
 ];
