@@ -110,4 +110,52 @@ router.get('/bySearchHistory/:idUser', async (req, res) => {
   res.send({ data: result });
 })
 
+router.get('/similarToPurchases/:idUser', async (req, res) => {
+  var currentUser = await user.findOne({ "_id": req.params.idUser }).populate({ path: 'client', populate: { path: 'purchases', populate: { path: 'purchaseDetails', populate: { path: 'product', populate: { path: 'subCategory'}}}}}).exec();
+  var allProd = await product.find().populate({ path: 'subCategory'}).exec();
+  var result = [];
+  var max=0;
+  var min=0;
+  var purchasedProducts = [];
+  for (let i=0; i<currentUser.client.purchases.length; i++) {
+    for (let k=0; k<currentUser.client.purchases[i].purchaseDetails.length; k++) {
+      for (let l=0; l<purchasedProducts.length; l++){
+        let exists = false;
+        if (currentUser.client.purchases[i].purchaseDetails[k].product._id.equals(purchasedProducts[l]._id))
+          exists=true; 
+      }
+      purchasedProducts.push(currentUser.client.purchases[i].purchaseDetails[k].product);
+    }
+  }
+
+  for (let j=0; j<allProd.length; j++){
+    for (let i=0; i<currentUser.client.purchases.length; i++) {
+      for (let k=0; k<currentUser.client.purchases[i].purchaseDetails.length; k++) {
+        if (allProd[j].subCategory._id.equals(currentUser.client.purchases[i].purchaseDetails[k].product.subCategory._id)){
+          if (currentUser.client.purchases[i].purchaseDetails[k].product.price>max){
+            max = currentUser.client.purchases[i].purchaseDetails[k].product.price
+          }
+          if (currentUser.client.purchases[i].purchaseDetails[k].product.price<min){
+            min = currentUser.client.purchases[i].purchaseDetails[k].product.price
+          }
+          let exists = false;
+          for (let l=0; l<result.length; l++){
+            if (allProd[j] == result[l])
+              exists=true; 
+          }
+          let alreadyPurchased = false;
+          for (let l=0; l<purchasedProducts.length; l++){
+            if (allProd[j]._id.equals( purchasedProducts[l]._id))
+              alreadyPurchased=true; 
+          }
+         if (!exists && allProd[j].price<=max && allProd[j].price>=min && !alreadyPurchased){
+          result.push(allProd[j]);
+          }
+        }
+      }
+    }
+  }
+  res.send({ data: result });
+})
+
 module.exports = router;

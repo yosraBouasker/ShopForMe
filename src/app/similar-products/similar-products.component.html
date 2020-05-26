@@ -1,0 +1,51 @@
+<!-- new -->
+<div  class="newproducts-w3agile" id="similar">
+    <div class="container">
+        <h3>Similar to your purchases</h3>
+            <div class="agile_top_brands_grids">
+                <div class="col-md-3 top_brand_left-1" *ngFor="let product of allProducts">
+                    <div class="hover14 column">
+                        <div class="agile_top_brand_left_grid">
+                            <div class="agile_top_brand_left_grid_pos">
+                                <img src="../../assets/images/offer.png" alt=" " class="img-responsive">
+                            </div>
+                            <div class="agile_top_brand_left_grid1">
+                                <figure>
+                                    <div class="snipcart-item block">
+                                        <div class="snipcart-thumb">
+                                            <a routerLink="/product/{{product?._id}}"><img title=" " alt=" " style="height: 150px" src="http://localhost:3000/{{product?.image}}"></a>
+                                            <p>{{product?.name}}</p>
+                                            <div class="stars">
+                                                <i class="fa fa-star blue-star" aria-hidden="true"></i>
+                                                <i class="fa fa-star blue-star" aria-hidden="true"></i>
+                                                <i class="fa fa-star blue-star" aria-hidden="true"></i>
+                                                <i class="fa fa-star blue-star" aria-hidden="true"></i>
+                                                <i class="fa fa-star gray-star" aria-hidden="true"></i>
+                                            </div>
+                                                <h4>{{getFinalPrice(product?.price, product?.discount) | number:'.3'}}DT <span>{{product?.price | number:'.3'}}DT</span></h4>
+                                        </div>
+                                        <div class="snipcart-details top_brand_home_details">
+                                            <form action="#" method="post">
+                                                <fieldset>
+                                                  <input type="hidden" name="cmd" #inp value={{product?._id}}>
+                                                  <input type="submit" name="submit" value="Add to cart" 
+                                                  class="button" data-toggle="modal" 
+                                                  data-target="#cartModal" 
+                                                  (click)="openModal(inp.value)">
+                                                </fieldset>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    <div class="clearfix"> </div>
+            </div>
+    </div>
+</div>
+<div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <app-cart></app-cart>
+</div>

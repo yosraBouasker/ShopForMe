@@ -39,4 +39,8 @@ export class ApiProductService {
   getRecommendedProducts(userId) {
     return this.http.get('http://localhost:3000/product/bySearchHistory/' + userId);
   }
+
+  getSimilarProducts(userId) {
+    return this.http.get('http://localhost:3000/product/similarToPurchases/' + userId);
+  }
 }

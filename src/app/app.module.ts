@@ -37,6 +37,7 @@ import { MessagesAdminComponent } from './AdminDashboard/messages-admin/messages
 import { TimeagoModule } from 'ngx-timeago';
 import { LoginAdminComponent } from './AdminDashboard/login-admin/login-admin.component';
 import { RecommendedProductsComponent } from './recommended-products/recommended-products.component';
+import { SimilarProductsComponent } from './similar-products/similar-products.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { RecommendedProductsComponent } from './recommended-products/recommended
     OrdersAdminComponent,
     MessagesAdminComponent,
     LoginAdminComponent,
-    RecommendedProductsComponent
+    RecommendedProductsComponent,
+    SimilarProductsComponent
   ],
   imports: [
     BrowserModule,
