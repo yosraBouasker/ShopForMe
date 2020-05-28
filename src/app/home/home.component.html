@@ -27,7 +27,47 @@
 	<!-- //top-header and slider -->
 	<!-- top-brands -->
 	<app-recommended-products></app-recommended-products>
-	<div class="top-brands" id="top">
+ <!-- Carousel================================================== -->
+ <div id="myCarousel" class="carousel slide" data-ride="carousel">
+	<!-- Indicators -->
+	<ol class="carousel-indicators">
+	  <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+	  <li data-target="#myCarousel" data-slide-to="1"></li>
+	  <li data-target="#myCarousel" data-slide-to="2"></li>
+	</ol>
+	<div class="carousel-inner" role="listbox">
+	  <div class="item active">
+	   <a href="beverages.html"><img class="first-slide" src="../../assets/images/carts.jpg" alt="First slide"></a>
+	   <div class="carousel-caption d-none d-md-block" style="margin-left: -60%;margin-bottom: 9%;">
+		<h1 style="margin-bottom: 1%;
+		font-size: 55px;">LOYALTY CARD</h1>
+      <p style="margin-bottom: -5%; text-align: left; width: 40%; margin-left: 660px;">Benefit from many opportunities and discounts applicable on more than 500 products, all year long ! <br>
+		After your first purchase, you will able to collect points (10% of every order are added to your balance) that will allow you to win coupons, free delivery and special gifts.</p>
+		<button type="button" class="btn btn-dark btn-lg" style="margin-top: 7%;margin-left: -10%;background-color: grey;">View My Loyalty Card</button>
+	  </div>
+	  </div>
+
+	  <div class="item">
+	   <a href="personalcare.html"><img class="second-slide" src="../../assets/images/carts.jpg" alt="second slide"></a>
+	   <div class="carousel-caption d-none d-md-block" style="margin-left: -60%;margin-bottom: 25%;">
+		<h1 style="margin-bottom: 1%;
+		font-size: 55px;">FREE DELIVERY</h1>
+      <p style="margin-bottom: -5%; text-align: left; width: 40%; margin-left: 650px;">Benefit from free delivery once you reach 1000 points on your loyalty card.</p>
+	  </div>
+	  </div>
+
+	  <div class="item">
+		<a href="household.html"><img class="third-slide " src="../../assets/images/carts.jpg" alt="Third slide"></a>
+		<div class="carousel-caption d-none d-md-block" style="margin-left: -60%;margin-bottom: 25%;">
+			<h1 style="margin-bottom: 1%;
+			font-size: 55px;">WIN COUPONS</h1>
+		  <p style="margin-bottom: -5%; text-align: left; width: 40%; margin-left: 660px;">You will be getting coupons that you can use to benefit from special discounts.</p>
+		  </div>
+	  </div> 
+	</div>
+
+  </div><!-- /.carousel -->
+  	<div class="top-brands" id="top">
 		<div class="container">
 		<h2>Top selling offers</h2>
 			<div class="grid_3 grid_5">
@@ -136,8 +176,7 @@
 		</div>
 	</div>
 <!-- //top-brands -->
- <!-- Carousel
-    ================================================== -->
+ <!-- Carousel================================================== -->
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
       <!-- Indicators -->
       <ol class="carousel-indicators">

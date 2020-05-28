@@ -13,6 +13,7 @@ import { CartService } from '../shared/cart.service';
 })
 export class ProfileComponent implements OnInit {
   cart;
+  card;
   purchaseDetails;
   info;
   password;
@@ -48,6 +49,10 @@ export class ProfileComponent implements OnInit {
         this.profileImage = 'http://ssl.gstatic.com/accounts/ui/avatar_2x.png';
       }
     })
+    this.profileService.getCard().subscribe((res: any) => {
+      this.card=res.cardResult[0];
+    })
+
   }
 
   selectImage(event){

@@ -50,4 +50,8 @@ export class ProfileService {
   updateOrder(id, body) {
     return this.http.post('http://localhost:3000/purchase/update/'+id , body);
   }
+
+  getCard() {
+    return this.http.get('http://localhost:3000/card/getCard/'+ this.clientId);
+  }
 }

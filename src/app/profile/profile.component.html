@@ -30,6 +30,8 @@
         <ul class="nav nav-tabs" style="margin-bottom:40px ;">
           <li class="active"><a data-toggle="tab" href="#home">Information</a></li>
           <li><a data-toggle="tab" href="#orders">Orders</a></li>
+          <li><a data-toggle="tab" href="#card">Loyalty Card</a></li>
+
         </ul>
 
 
@@ -223,6 +225,31 @@
               </div>
             </nav>
           </div>
+          <div class="tab-pane" id="card">
+            <div class="col-md-6">
+              <img src="../../assets/images/card.jpg" style="width:100%">
+            </div>
+            <div class="col-md-6"></div>
+            <ul class="list-group" style="width: 50%;margin-left: 50%;padding-top: 70px;">
+              <li class="list-group-item" style="height:50px">
+                <span class="prefix" style="font-weight:700;font-size: 16px;">Collected Points</span>
+                <span class="label label-warning"
+                  style="font-size: 100%;margin-left: 50px;">{{card?.points}}</span>
+              </li>
+              <li class="list-group-item" style="height:50px">
+                <span class="prefix" style="    font-size: 16px;font-weight: 700;">Creation Date</span>
+                <span class="label label-warning"
+                  style="font-size: 100%;margin-left: 65px;">{{card?.createdAt | date : 'longDate'}}</span>
+              </li>
+              <li class="list-group-item" style="height:50px">
+                <span class="prefix" style="font-weight: 700;font-size: 16px">Expiration Date</span>
+                <span class="label label-warning" style="font-size: 100%;margin-left: 52px;">
+                  {{card?.expirationDate | date : 'longDate'}}
+                </span>
+              </li>
+            </ul>
+          </div>
+
         </div>
         <!--/tab-pane-->
       </div>

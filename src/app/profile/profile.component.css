@@ -24,6 +24,9 @@
   color: #333;
   border: 0px solid transparent;
 }
+.nav-tabs > li {
+  width: 30%;
+}
 
 .nav> li>a:hover, .nav>li>a:focus {
   background: none;

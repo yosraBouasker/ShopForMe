@@ -58,4 +58,10 @@ router.get('/info/:id', async (req, res) => {
   res.send({ userResult });
 })
 
+router.get('/card/:idUser', async (req, res) => {
+  const userResult = await user.find({ "_id": req.params.id }).populate({path : 'client'}).exec();
+
+});
+
+
 module.exports = router;
