@@ -14,7 +14,6 @@ export class MessagesAdminComponent implements OnInit {
   ngOnInit(): void {
         this.contactApi.getMessages().subscribe((res: any) => {
       this.messages = res.data;
-      console.log(res)
     });
   }
 

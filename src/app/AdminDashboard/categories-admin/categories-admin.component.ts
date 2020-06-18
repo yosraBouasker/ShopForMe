@@ -30,7 +30,6 @@ editedId;
         totalItems: 2
       };
       this.numbers = this.config.totalItems/this.config.itemsPerPage;
-      console.log(this.categories)
     });
   }
 

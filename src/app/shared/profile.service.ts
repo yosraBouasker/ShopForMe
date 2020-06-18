@@ -30,6 +30,11 @@ export class ProfileService {
     return this.http.get('http://localhost:3000/purchase/purchasesByClient/' + this.clientId);
   }
 
+  
+  purchasesAdmin(idClient) {
+    return this.http.get('http://localhost:3000/purchase/purchasesByClient/' + idClient);
+  }
+
   decodeToken() {
     if (localStorage.getItem('token')) {
       const token = localStorage.getItem('token');
@@ -53,5 +58,13 @@ export class ProfileService {
 
   getCard() {
     return this.http.get('http://localhost:3000/card/getCard/'+ this.clientId);
+  }
+  
+  addCard(id, body) {
+    return this.http.post('http://localhost:3000/card/addCard/'+ id, body);
+  }
+
+  updateCard(id, body) {
+    return this.http.post('http://localhost:3000/card/updateCard/'+ id, body);
   }
 }

@@ -64,14 +64,6 @@
               </div>
 
               <div class="col-xs-6">
-                <label for="password">
-                  <h4>Password</h4>
-                </label>
-                <input type="password" class="form-control" name="password" id="password" value={{info?.password}}
-                  placeholder="*********" title="Edit your password." #password>
-              </div>
-
-              <div class="col-xs-6">
                 <label for="phone">
                   <h4>Phone</h4>
                 </label>
@@ -91,7 +83,7 @@
                 <label for="Image">
                   <h4>Profile Image</h4>
                 </label>
-                <button class="form-control" style="height:40px">
+                <button class="form-control" style="padding-top: 4px;">
                   <input type="file" style="font-size:16px" class="text-center center-block file-upload" #image
                     (change)="selectImage($event)">
                 </button>
@@ -104,7 +96,7 @@
                   style="width:150px ; margin-right:10px ; color: black; background-color: #dcdcdc;"
                   (click)="resetBtn()">Reset</button>
                 <button type="button" class="btn btn-lg" style="width:150px; color: black; background-color: #fe9126;"
-                  (click)="updateProfile(name.value, lastname.value, email.value, location.value, phone.value, image.value, password.value)">
+                  (click)="updateProfile(name.value, lastname.value, email.value, location.value, phone.value, image.value)">
                   Save</button>
               </div>
 
@@ -113,9 +105,11 @@
           <!--/tab-pane-->
           <div class="tab-pane" id="orders">
 
-            <!--  ****************************HOUNI EL ORDERS YE LEBNET ************************************-->
-
-            <div class="row shop-tracking-status">
+            <!--  **************************************************************-->
+            <div *ngIf="!hasOrders">
+              <img src="../../assets/images/no_order.png">
+            </div>
+            <div *ngIf="hasOrders" class="row shop-tracking-status">
 
               <div class="col-md-12" *ngFor="let purchase of purchases?.slice().reverse() | paginate: config; let i=index;">
                 <div class="well">
@@ -165,7 +159,7 @@
                       ">
                             <td style="width: 120px;">
                               <img style="padding-left: 20px; width: 70px; height: 50px;"
-                                src="{{ purchaseDetail?.product?.image }}" />
+                                src="http://localhost:3000/{{ purchaseDetail?.product?.image }}" />
                             </td>
                             <td style="width: 220px;">
                               {{ purchaseDetail?.product?.name }}
@@ -219,7 +213,7 @@
 
             </div>
             <div class="clearfix"> </div>
-            <nav class="numbering">
+            <nav *ngIf="hasOrders" class="numbering">
               <div class="pagination paging" style="text-align:right">
                 <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
               </div>

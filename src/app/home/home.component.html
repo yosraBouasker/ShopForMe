@@ -28,7 +28,7 @@
 	<!-- top-brands -->
 	<app-recommended-products></app-recommended-products>
  <!-- Carousel================================================== -->
- <div id="myCarousel" class="carousel slide" data-ride="carousel">
+ <div id="myCarousel" *ngIf="isConnected()" class="carousel slide" data-ride="carousel" id="cardCarousel">
 	<!-- Indicators -->
 	<ol class="carousel-indicators">
 	  <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -43,7 +43,8 @@
 		font-size: 55px;">LOYALTY CARD</h1>
       <p style="margin-bottom: -5%; text-align: left; width: 40%; margin-left: 660px;">Benefit from many opportunities and discounts applicable on more than 500 products, all year long ! <br>
 		After your first purchase, you will able to collect points (10% of every order are added to your balance) that will allow you to win coupons, free delivery and special gifts.</p>
-		<button type="button" class="btn btn-dark btn-lg" style="margin-top: 7%;margin-left: -10%;background-color: grey;">View My Loyalty Card</button>
+		<a style="color: white" routerLink="/profile"><button type="button" class="btn btn-dark btn-lg" style="margin-top: 7%;margin-left: -10%;background-color: grey;">
+			View My Loyalty Card</button></a>
 	  </div>
 	  </div>
 
@@ -52,7 +53,9 @@
 	   <div class="carousel-caption d-none d-md-block" style="margin-left: -60%;margin-bottom: 25%;">
 		<h1 style="margin-bottom: 1%;
 		font-size: 55px;">FREE DELIVERY</h1>
-      <p style="margin-bottom: -5%; text-align: left; width: 40%; margin-left: 650px;">Benefit from free delivery once you reach 1000 points on your loyalty card.</p>
+	  <p style="margin-bottom: -5%; text-align: left; width: 40%; margin-left: 650px;">Benefit from free delivery once you reach 1000 points on your loyalty card.</p>
+	  <a style="color: white" routerLink="/profile"><button type="button" class="btn btn-dark btn-lg" style="margin-bottom: -255px;margin-left: -10%;background-color: grey;">
+		View My Loyalty Card</button></a>
 	  </div>
 	  </div>
 
@@ -62,7 +65,10 @@
 			<h1 style="margin-bottom: 1%;
 			font-size: 55px;">WIN COUPONS</h1>
 		  <p style="margin-bottom: -5%; text-align: left; width: 40%; margin-left: 660px;">You will be getting coupons that you can use to benefit from special discounts.</p>
-		  </div>
+		  <a style="color: white" routerLink="/profile"><button type="button" class="btn btn-dark btn-lg" style="    margin-bottom: -255px;
+		  ;margin-left: -10%;background-color: grey;">
+		  View My Loyalty Card</button></a>
+		</div>
 	  </div> 
 	</div>
 

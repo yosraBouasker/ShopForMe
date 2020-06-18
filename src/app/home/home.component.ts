@@ -58,6 +58,17 @@ export class HomeComponent implements OnInit {
           }
         }
       }
+
+      //card Carousel
+      // if (this.isConnected()) {
+      //       var divv = document.getElementById("cardCarousel");
+      //       divv.style.marginTop= "-185px";
+      // }
+      // else {
+      // var div = document.getElementById("cardCarousel");
+      //   var divv = document.getElementById("top");
+      //   divv.style.marginTop= "-185px";
+      // }
     })
   }
 
@@ -72,4 +83,8 @@ export class HomeComponent implements OnInit {
     this.cartService.isCartEmpty = cart.isEmpty();
   }
 
+  isConnected() {
+    this.authService.decodeToken();
+    return (this.authService.userId != undefined && this.authService.userId != null && localStorage.getItem("isAdmin") != "true");
+  }
 }

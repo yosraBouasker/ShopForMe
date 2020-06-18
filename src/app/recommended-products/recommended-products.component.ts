@@ -30,7 +30,6 @@ export class RecommendedProductsComponent implements OnInit {
         if (!this.hasSearchHistory) {
           div.style.visibility = "hidden";
           var divv = document.getElementById("top");
-          divv.style.marginTop= "-185px";
         }
       })
     }

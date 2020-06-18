@@ -468,7 +468,7 @@
         <div class="container mb-4">
           <div class="row">
             <div class="col-12">
-              <p
+              <div
                 style="
                   width: 560px;
                   margin-top: 10px;
@@ -481,7 +481,21 @@
                   style="font-size: 18px; color: #5cb85c;"
                 ></i>
                 <span> Your order has been successfully submitted.</span>
-              </p>
+                <br>
+                <span style="padding: 20px;"> Your Fidelity Card Points: <strong>{{cardPoints}}</strong></span>
+                <br>
+                <div *ngIf="congrats" style="color: darkgreen;
+                margin-top: 20px;
+                font-weight: 600;
+                text-align: center;">
+                  Congratulations! You have reached 100 Fidelity Points. You'll have this order delivered to you for FREE!
+                </div>
+                <br>
+                <div style="text-align: center;
+                margin-top: -20px;" *ngIf="congrats">
+                  To pay at delivery: <strong>{{ calculateTotalInCongrats() | number: ".3" }}DT</strong>
+                </div>
+              </div>
             </div>
           </div>
         </div>

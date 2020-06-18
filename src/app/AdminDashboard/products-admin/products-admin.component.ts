@@ -72,7 +72,6 @@ export class ProductsAdminComponent implements OnInit {
   setSubCat(subcate){
     this.subCat = subcate.name;
     this.selectedSubCatId = subcate._id;
-    console.log(this.selectedSubCatId)
   }
 
   setSelectedProduct(product) {

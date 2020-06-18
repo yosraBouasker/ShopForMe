@@ -28,11 +28,10 @@ export class ProfileAdminComponent implements OnInit {
       else {
         this.profileImage = 'http://ssl.gstatic.com/accounts/ui/avatar_2x.png';
       }
-    })
-    this.profileService.purchases().subscribe((res: any) => {
-      this.purchases = res.data;
-      this.totalPurchases = this.purchases.length;
-      console.log(this.purchases)
+      this.profileService.purchasesAdmin(this.info.client._id).subscribe((res: any) => {
+        this.purchases = res.data;
+        this.totalPurchases = this.purchases.length;
+      })
     })
   }
 

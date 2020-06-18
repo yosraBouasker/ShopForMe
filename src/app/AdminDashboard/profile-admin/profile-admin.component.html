@@ -82,7 +82,6 @@
                   <div class="tab-content">
                     <div class="active tab-pane" id="timeline">
                       <div class="row shop-tracking-status">
-<!--| paginate: config-->
                           <div class="col-md-12" *ngFor="let purchase of purchases?.slice().reverse(); let i=index;">
                             <div class="well">
                               <div class="row">
@@ -143,7 +142,7 @@
                                   ">
                                         <td style="width: 120px;">
                                           <img style="padding-left: 20px; width: 70px; height: 50px;"
-                                            src="{{ purchaseDetail?.product?.image }}" />
+                                            src="http://localhost:3000/{{ purchaseDetail?.product?.image }}" />
                                         </td>
                                         <td style="width: 220px;">
                                           {{ purchaseDetail?.product?.name }}

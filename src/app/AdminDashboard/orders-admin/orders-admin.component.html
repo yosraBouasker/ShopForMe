@@ -14,7 +14,7 @@
                  action="#" method="post" >
                     <div class="input-group input-group-sm">
                       <input #myInput class="form-control form-control-navbar" 
-                      [(ngModel)] ="term"
+                    
                       type="search" placeholder="Search order" aria-label="Search" >
                       <div class="input-group-append">
                         <button class="btn btn-navbar" type="submit">
@@ -49,12 +49,12 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr *ngFor="let order of orders.slice().reverse() | filter:term; let i=index" style="height: 50px;">
+                    <tr *ngFor="let order of orders?.slice().reverse() | filter:term; let i=index" style="height: 50px;">
                       <td class="text-center"> {{ orders.length - i}} </td>
                       <td>{{order?.client?.user?.name}} {{order?.client?.user?.lastname}}</td>
                       <td>{{order?.orderDate | date : 'medium'}}</td>
                       <td class="text-center">{{order?.shippingDate | date : 'longDate'}}</td>
-                      <td class="text-center">{{order?.shippingAddress}}</td>
+                      <td class="text-center" style="width: 200px;">{{order?.shippingAddress}}</td>
                       <td class="text-center">{{order?.total | number:'.3'}}DT</td>
                       <td class="text-center">{{getProgress(order?.progress)}}</td>
                       <td class="text-center">

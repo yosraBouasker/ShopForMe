@@ -25,7 +25,6 @@ export class OrdersAdminComponent implements OnInit {
   ngOnInit(): void {
     this.profileService.getAllOrders().subscribe((res: any) => {
       this.orders = res.data;
-      console.log(this.orders)
     });
   }
 
@@ -53,7 +52,6 @@ export class OrdersAdminComponent implements OnInit {
 
   editOrder(sDate1, sAdd){
     let ship= new Date(sDate1)
-    console.log(ship)
     var body = {
       shippingDate: ship,
       progress: this.progToEdit,

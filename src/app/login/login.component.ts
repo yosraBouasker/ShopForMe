@@ -27,7 +27,6 @@ export class LoginComponent implements OnInit {
 
   loginBtn() {
     this.message = '';
-    if (this.loginForm.valid) {
       this.apiService.login(this.loginForm.value).subscribe((res: any) => {
         if (res.message === 'ok') {
           // redirection
@@ -41,6 +40,5 @@ export class LoginComponent implements OnInit {
           this.message = res.message;
         }
       });
-    }
   }
 }

@@ -15,11 +15,14 @@ export class CheckoutComponent implements OnInit {
   cart;
   purchaseDetails = [];
   total;
+  cardPoints;
+  congrats: boolean;
 
   constructor(public cartApiService: CartService, private apiService: ApiAuthService, private profileService: ProfileService, private router: Router, private activatedRoute: ActivatedRoute) {
   }
 
-  ngOnInit() {
+  ngOnInit() {   
+    window.scrollTo(0, 0)
     this.profileService.decodeToken();
     this.profileService.info().subscribe((res: any) => {
       this.info = res.userResult[0];
@@ -89,8 +92,11 @@ export class CheckoutComponent implements OnInit {
     }
   }
   public isEmpty(): boolean {
-    if (this.cartApiService.cart.purchaseDetails == undefined
-      || this.cartApiService.cart.purchaseDetails.length == 0) {
+    if (this.cartApiService.cart == undefined
+      || this.cartApiService.cart == null){
+      return true;}
+    else if (this.cartApiService.cart.purchaseDetails == undefined
+    || this.cartApiService.cart.purchaseDetails.length == 0){
       return true;
     }
     else
@@ -133,8 +139,29 @@ export class CheckoutComponent implements OnInit {
     const purchase = {
       'progress': '25%',
     }
-    this.cartApiService.updatePurchase(this.cartApiService.cart._id, purchase).subscribe((res: any) => {
-      localStorage.removeItem('cart');
+    this.profileService.getCard().subscribe((ress: any) => {
+      var nb=ress.cardResult[0].points;
+      nb = Math.round(nb+this.calculateTotal()*0.05);
+      this.cardPoints = nb;
+      if (this.cardPoints >=100) {
+        this.congrats = true;
+      }
+      else
+        this.congrats = false;
+      if(this.congrats)
+        nb=nb-100;
+      var card = {
+        points: nb
+      };
+      this.profileService.updateCard(ress.cardResult[0]._id, card).subscribe((resss: any) => {
+        this.cartApiService.updatePurchase(this.cartApiService.cart._id, purchase).subscribe((res: any) => {
+          localStorage.removeItem('cart');
+        });
+      });
     });
+  }
+
+  calculateTotalInCongrats(): number{
+    return this.calculateTotal() - 6;
   }
 }

@@ -17,6 +17,7 @@ export class SingleProductComponent implements OnInit {
   constructor(private apiService: ApiProductService,private authService: ApiAuthService, private cartService: CartService,private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
+    window.scrollTo(0, 0)
     //this.apiService.decodeToken();
     const id = this.activatedRoute.snapshot.paramMap.get('id')
     this.apiService.getProduct(id).subscribe((res: any) => {
@@ -27,14 +28,15 @@ export class SingleProductComponent implements OnInit {
   getFinalPrice() : number{
 
     var dis = document.getElementById("discount");
-
-    if (this.product.discount == 0){
-      dis.style.visibility = "hidden";
-      return this.product.price;
-    }
-    else {
-      var initialPrice= this.product.price - (this.product.price*this.product.discount)/100;
-      return initialPrice;
+    if (this.product != undefined) {
+      if (this.product.discount == 0){
+        dis.style.visibility = "hidden";
+        return this.product.price;
+      }
+      else {
+        var initialPrice= this.product.price - (this.product.price*this.product.discount)/100;
+        return initialPrice;
+      }
     }
   }
 

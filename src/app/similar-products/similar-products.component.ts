@@ -20,10 +20,8 @@ export class SimilarProductsComponent implements OnInit {
     this.apiauthService.decodeToken();
     this.hasSimilarProducts = false;
     if (this.isConnected()) {
-      console.log("kassartli l batataa")
       this.apiService.getSimilarProducts(this.apiauthService.userId).subscribe((res: any) => {
         this.allProducts = res.data; 
-        console.log(res)
         if(this.allProducts.length != 0 && this.allProducts != null && this.allProducts != undefined){
           this.allProducts.reverse();
           this.allProducts = this.allProducts.slice(0,4);

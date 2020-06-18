@@ -13,7 +13,6 @@ export class ClientsComponent implements OnInit {
 
   ngOnInit(): void {
     this.apiAuthService.getClients().subscribe((res: any) => {
-      console.log(res)
       this.clients = res.data;
     });
   }

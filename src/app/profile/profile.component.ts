@@ -22,26 +22,29 @@ export class ProfileComponent implements OnInit {
   purchases;
   totalPurchases;
   config: any;
+  hasOrders: boolean;
   constructor(public http: HttpClient,public cartApiService: CartService,private profileService: ProfileService, private router: Router, private activatedRoute: ActivatedRoute) {
  
   }
 
   ngOnInit() {
+    window.scrollTo(0, 0)
     this.profileService.decodeToken();
     this.profileService.purchases().subscribe((res: any) => {
       this.purchases = res.data;
       this.totalPurchases = this.purchases.length;
-      this.config = {
-        itemsPerPage: 3,
-        currentPage: 1,
-        totalItems: this.purchases.length
+      this.hasOrders = this.totalPurchases != 0;
+      if (this.hasOrders){
+        this.config = {
+          itemsPerPage: 3,
+          currentPage: 1,
+          totalItems: this.purchases.length
+        }
       };
     })
 
     this.profileService.info().subscribe((res: any) => {
       this.info = res.userResult[0];
-      this.password = this.info.password;
-      delete(this.info.password);
       if(this.info.client.image != undefined && this.info.client.image != null){
         this.profileImage = "http://localhost:3000/" + this.info.client.image;
       }
@@ -62,20 +65,15 @@ export class ProfileComponent implements OnInit {
     }
   }
 
-  updateProfile(name1, lastname1, email1, location1, phone1, image1, pass1) {
+  updateProfile(name1, lastname1, email1, location1, phone1, image1) {
     var pass;
-    if (pass1!=null || pass1!=undefined)
-      pass=pass1;
-    else
-      pass=this.password;
       phone1 = phone1.replace("(+216) ", "")
     const profile = {
       name: name1,
       lastname: lastname1,
       email: email1,
       location: location1,
-      phone: phone1,
-      password: pass
+      phone: phone1
     }
 
 
@@ -110,5 +108,4 @@ export class ProfileComponent implements OnInit {
   pageChanged(event){
     this.config.currentPage = event;
   }
-
 }

@@ -23,7 +23,6 @@ export class DashboardComponent implements OnInit {
 
     this.profileService.getAllOrders().subscribe((res: any) => {
       this.orders = res.data;
-      console.log(this.orders);
     });
 
     this.apiCategoryService.getCategories().subscribe((res: any) => {

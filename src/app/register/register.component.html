@@ -18,34 +18,32 @@
       <h5 style="text-align: center;">join us!</h5>
       <form [formGroup]="registerForm" method="post">
         <div class="form-group">
-        <input type="text" placeholder="First Name" required formControlName="name">
+        <input type="text" placeholder="First Name*" required formControlName="name">
       </div>
       <div class="form-group">
-        <input type="text" placeholder="Last Name" required formControlName="lastname">
+        <input type="text" placeholder="Last Name*" required formControlName="lastname">
       </div>
       <div class="form-group">
-        <input type="email" placeholder="Email Address" required formControlName="email">
+        <input type="email" placeholder="Email Address*" required formControlName="email" #email
+        (keyup)="validateEmail(email.value)">
       </div>
-        <div class="form-group">
-        <input type="password" placeholder="Password" required formControlName="password" #password (keyup)="validatePassword(password.value)">
+      <div class="text-muted font-italic" id="emailValid" style="font-size: 14px;
+      margin-left: 5px; color: red;"><span
+        class="font-weight-700" >{{ emailValidation }}</span></div>
+      <div class="form-group">
+        <input type="password" placeholder="Password*" required formControlName="password" #password (keyup)="validatePassword(password.value)">
       </div>
-      <div class="text-muted font-italic" id="pwdVisibility"><small>Password strength:<span
+      <div class="text-muted font-italic" id="pwdVisibility" style="font-size: 15px; margin-top: -12px;"><small>Password strength:<span
         class="font-weight-700"
         id="strength">{{ strength }}</span></small></div>
       <!-- <div class="form-group">
         <input type="password" placeholder="Password Confirmation" required >
       </div> -->
         <div class="register-check-box form-group">
-          <div class="check">
-            <label class="checkbox"><input type="checkbox" name="checkbox" required><i> </i>I accept the terms and conditions</label>
-          </div>
-        </div>
-        <div class="register-check-box form-group">
-          <div class="check">
-            <label class="checkbox"><input type="checkbox" name="checkbox"><i> </i>Subscribe to Newsletter</label>
-          </div>
         </div>
         <input type="submit" value="Register" (click)="registerBtn()">
+        <div class="text-muted font-italic" style="font-size: 15px; margin-top: 7px; color: red;text-align: center;"><span
+          class="font-weight-700">{{message}}</span></div>
       </form>
     </div>
     <!-- <div class="register-home">

@@ -47,4 +47,8 @@ export class ApiCategoryService {
   addCategory(body){
     return this.http.post('http://localhost:3000/category/add', body);
   }
+
+  updateSubCategory(id, body){
+    return this.http.post('http://localhost:3000/category/update/' + id, body);
+  }
 }
